@@ -9,7 +9,7 @@
     nixosConfigurations = {
       hotbox = nixpkgs.lib.nixosSystem {
         modules = [
-          ./hosts/hotbox/configuration.nix
+          ./hosts/hotbox
         ];
       };
     };
