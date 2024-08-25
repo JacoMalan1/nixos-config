@@ -2,29 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ config, pkgs, ... }: {
+  imports = [
+    ./hardware-configuration.nix
+    ./fs.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
-  boot.initrd.luks.fido2Support = false;
-
-  boot.initrd.luks.devices = {
-    "luks-ba3cf3e3-a001-4e13-9740-8116f72bc66c" = {
-      crypttabExtraOpts = ["fido2-device=auto"];
-    };
-  };
+  
   boot.kernelPackages = pkgs.linuxPackages_hardened;
   boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia_drm.modeset=1" ];
-  fileSystems."/home".device = "/dev/mapper/crypthome";
-  fileSystems."/mnt/bulk".device = "/dev/mapper/crypthdd";
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -39,7 +29,7 @@
     inter
   ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "hotbox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -49,11 +39,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Africa/Johannesburg";
-
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_ZA.UTF-8";
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
@@ -185,13 +171,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.etc.crypttab.text = ''
-    crypthome UUID=7b8ccd1d-d947-4378-bc49-e6cb397e4261 /root/keyfile
-    crypthdd UUID=a57428e5-3717-4b8b-8ea3-c05090942a7d /root/keyfile
-  '';
-  
+  # System packages
   environment.systemPackages = with pkgs; [
     leftwm
     rofi
@@ -245,7 +225,6 @@
     wl-clipboard
     mako
     libdrm
-    mesa
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -277,5 +256,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

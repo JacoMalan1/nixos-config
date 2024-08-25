@@ -6,11 +6,12 @@
   };
 
   outputs = { nixpkgs, ... }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      modules = [
-        ./configuration.nix
-        ./hardware-configuration.nix
-      ];
+    nixosConfigurations = {
+      hotbox = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/hotbox/configuration.nix
+        ];
+      };
     };
   };
 }
