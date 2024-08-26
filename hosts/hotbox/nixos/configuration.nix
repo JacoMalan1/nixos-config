@@ -8,14 +8,12 @@ let
   pkgs-stable = import nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
 
   stablePackages = with pkgs-stable.pkgs; [
-    leftwm
     rustdesk
     librewolf
+    spotify
   ];
 
   unstablePackages  = with pkgs.pkgs; [
-    rofi
-    polybar
     neovim
     zsh
     mesa
@@ -27,17 +25,14 @@ let
     bat
     dust
     discord
-    picom
     prismlauncher
     feh
-    dunst
     pciutils
     usb-modeswitch
     usbutils
     networkmanagerapplet
     element-desktop
     signal-desktop
-    spotify
     gitui
     gcc_multi
     rustup
@@ -49,7 +44,6 @@ let
     cmake
     gnumake
     pam_u2f
-    i3lock
     xss-lock
     gnupg
     macchanger
@@ -64,6 +58,10 @@ let
     neofetch
     onefetch
     btop
+
+    lm_sensors
+    zenmonitor
+    playerctl
   ];
 in
 {
@@ -112,7 +110,6 @@ in
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
   # services.xserver.displayManager.gdm.enable = true;
-  services.xserver.windowManager.leftwm.enable = true;
   services.libinput = {
     enable = true;
     mouse = {
@@ -181,6 +178,8 @@ in
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.ssh.startAgent = false;
 
   # List services that you want to enable:
 

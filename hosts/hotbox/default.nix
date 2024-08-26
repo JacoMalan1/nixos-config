@@ -10,5 +10,6 @@
     ../../modules/dns.nix
     ../../modules/fonts.nix
     ../../modules/wifi.nix
+    ../../modules/leftwm.nix
   ];
 }
