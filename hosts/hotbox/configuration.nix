@@ -6,6 +6,65 @@
 let 
   pkgs = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
   pkgs-stable = import nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
+
+  stablePackages = with pkgs-stable.pkgs; [
+    leftwm
+    rustdesk
+    librewolf
+  ];
+
+  unstablePackages  = with pkgs.pkgs; [
+    rofi
+    polybar
+    neovim
+    zsh
+    mesa
+    keepassxc
+    zsh-powerlevel10k
+    zsh-autosuggestions
+    git
+    eza
+    bat
+    dust
+    discord
+    picom
+    prismlauncher
+    feh
+    dunst
+    pciutils
+    usb-modeswitch
+    usbutils
+    networkmanagerapplet
+    element-desktop
+    signal-desktop
+    spotify
+    gitui
+    gcc_multi
+    rustup
+    easyeffects
+    psmisc
+    xorg.xkill
+    lshw
+    glxinfo
+    cmake
+    gnumake
+    pam_u2f
+    i3lock
+    xss-lock
+    gnupg
+    macchanger
+    kdePackages.breeze
+    scrot
+    
+    # GNOME utilities
+    nautilus
+    gnome-disk-utility
+    evince
+    
+    neofetch
+    onefetch
+    btop
+  ];
 in
 {
   imports = [
@@ -146,66 +205,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   # System packages
-  environment.systemPackages = [
-    pkgs-stable.pkgs.leftwm
-    pkgs-stable.pkgs.rustdesk
-    pkgs-stable.pkgs.librewolf
-    
-    pkgs.pkgs.rofi
-    pkgs.pkgs.polybar
-    pkgs.pkgs.neovim
-    pkgs.pkgs.zsh
-    pkgs.pkgs.mesa
-    pkgs.pkgs.keepassxc
-    pkgs.pkgs.zsh-powerlevel10k
-    pkgs.pkgs.zsh-autosuggestions
-    pkgs.pkgs.git
-    pkgs.pkgs.eza
-    pkgs.pkgs.bat
-    pkgs.pkgs.dust
-    pkgs.pkgs.discord
-    pkgs.pkgs.picom
-    pkgs.pkgs.prismlauncher
-    pkgs.pkgs.feh
-    pkgs.pkgs.dunst
-    pkgs.pkgs.pciutils
-    pkgs.pkgs.usb-modeswitch
-    pkgs.pkgs.usbutils
-    pkgs.pkgs.networkmanagerapplet
-    pkgs.pkgs.element-desktop
-    pkgs.pkgs.signal-desktop
-    pkgs.pkgs.spotify
-    pkgs.pkgs.gcc_multi
-    pkgs.pkgs.rustup
-    pkgs.pkgs.easyeffects
-    pkgs.pkgs.psmisc
-    pkgs.pkgs.xorg.xkill
-    pkgs.pkgs.lshw
-    pkgs.pkgs.glxinfo
-    pkgs.pkgs.cmake
-    pkgs.pkgs.gnumake
-    pkgs.pkgs.pam_u2f
-    pkgs.pkgs.i3lock
-    pkgs.pkgs.xss-lock
-    pkgs.pkgs.gnupg
-    pkgs.pkgs.macchanger
-    pkgs.pkgs.kdePackages.breeze
-    pkgs.pkgs.scrot
-    
-    # GNOME utilities
-    pkgs.pkgs.gnome.nautilus
-    pkgs.pkgs.gnome.gnome-disk-utility
-    pkgs.pkgs.evince
-    
-    pkgs.pkgs.neofetch
-    pkgs.pkgs.onefetch
-    pkgs.pkgs.btop
-    pkgs.pkgs.grim
-    pkgs.pkgs.slurp
-    pkgs.pkgs.wl-clipboard
-    pkgs.pkgs.mako
-    pkgs.pkgs.libdrm
-  ];
+  environment.systemPackages = stablePackages ++ unstablePackages;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
