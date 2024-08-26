@@ -69,7 +69,6 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./fs.nix
   ];
 
   # Bootloader.
@@ -196,10 +195,6 @@ in
   programs.firefox.enable = true;
 
   programs.hyprland.enable = true;
-
-  programs.steam = {
-    enable = true;
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

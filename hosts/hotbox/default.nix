@@ -1,7 +1,9 @@
 { ... }: {
   imports = [
-    ./configuration.nix
+    ./nixos/configuration.nix
+    ./nixos/fs.nix
     ../common.nix
     ../../modules/nvidia.nix
+    ../../modules/steam.nix
   ];
 }
