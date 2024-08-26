@@ -64,7 +64,6 @@ let
     neofetch
     onefetch
     btop
-    gtest
   ];
 in
 {
