@@ -34,7 +34,7 @@
   home.file = {
     ".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/Breeze_Light";
     ".local/share/icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/Breeze_Light";
-    ".config/leftwm/config.ron".source = "./leftwm.ron";
+    ".config/leftwm/config.ron".source = ./leftwm.ron;
   };
 
   # Home Manager can also manage your environment variables through
