@@ -90,6 +90,10 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
+  environment.sessionVariables = {
+    FLAKE = "$HOME/nix";
+  };
+
   # Select internationalisation properties.
 
   hardware.cpu.amd.updateMicrocode = true;

@@ -8,4 +8,8 @@
     
     programs.zsh.enable = true;
     users.defaultUserShell = pkgs.pkgs.zsh;
+
+    programs.nh = {
+      enable = true;
+    };
   }
