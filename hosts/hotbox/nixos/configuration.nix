@@ -64,6 +64,7 @@ let
     neofetch
     onefetch
     btop
+    gtest
   ];
 in
 {
@@ -79,17 +80,6 @@ in
   boot.kernelPackages = pkgs.linuxPackages_hardened;
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    meslo-lgs-nf
-    fira-code
-    fira-code-symbols
-    cantarell-fonts
-    inter
-  ];
 
   networking.hostName = "hotbox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -141,13 +131,8 @@ in
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  security.pam.u2f.cue = true;
   security.unprivilegedUsernsClone = true;
-  security.pam.services = {
-    login.u2fAuth = true;
-    sudo.u2fAuth = true;
-    i3lock.u2fAuth = true;
-  };
+  
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -161,26 +146,10 @@ in
     #media-session.enable = true;
   };
 
-  services.syncthing = {
-    enable = true;
-    user = "jacom";
-    dataDir = "/home/jacom/Sync";
-    configDir = "/home/jacom/.config/syncthing";
-  };
-
-  services.resolved = {
-    enable = true;
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    dnsovertls = "true";
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
@@ -220,9 +189,6 @@ in
   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  networking.nameservers = [ "194.242.2.2#dns.mullvad.net" ];
-  networking.networkmanager.wifi.macAddress = "random";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

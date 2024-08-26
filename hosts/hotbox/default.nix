@@ -5,5 +5,6 @@
     ../common.nix
     ../../modules/nvidia.nix
     ../../modules/steam.nix
+    ../../modules/syncthing.nix
   ];
 }
