@@ -11,5 +11,6 @@
     ../../modules/fonts.nix
     ../../modules/wifi.nix
     ../../modules/leftwm.nix
+    ../../modules/qemu.nix
   ];
 }
