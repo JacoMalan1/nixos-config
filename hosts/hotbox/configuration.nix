@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }: {
+{ nixpkgs-unstable, nixpkgs-stable, ... }: 
+let 
+  pkgs = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
+  pkgs-stable = import nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
+in
+{
   imports = [
     ./hardware-configuration.nix
     ./fs.nix
@@ -141,64 +146,65 @@
   nixpkgs.config.allowUnfree = true;
 
   # System packages
-  environment.systemPackages = with pkgs; [
-    leftwm
-    rofi
-    polybar
-    neovim
-    zsh
-    mesa
-    librewolf
-    keepassxc
-    zsh-powerlevel10k
-    zsh-autosuggestions
-    git
-    eza
-    bat
-    dust
-    rustdesk
-    discord
-    picom
-    prismlauncher
-    feh
-    dunst
-    pciutils
-    usb-modeswitch
-    usbutils
-    networkmanagerapplet
-    element-desktop
-    signal-desktop
-    spotify
-    gcc_multi
-    rustup
-    easyeffects
-    psmisc
-    xorg.xkill
-    lshw
-    glxinfo
-    cmake
-    gnumake
-    pam_u2f
-    i3lock
-    xss-lock
-    gnupg
-    macchanger
-    kdePackages.breeze
-    scrot
+  environment.systemPackages = [
+    pkgs-stable.pkgs.leftwm
+    pkgs-stable.pkgs.rustdesk
+    pkgs-stable.pkgs.librewolf
+    
+    pkgs.pkgs.rofi
+    pkgs.pkgs.polybar
+    pkgs.pkgs.neovim
+    pkgs.pkgs.zsh
+    pkgs.pkgs.mesa
+    pkgs.pkgs.keepassxc
+    pkgs.pkgs.zsh-powerlevel10k
+    pkgs.pkgs.zsh-autosuggestions
+    pkgs.pkgs.git
+    pkgs.pkgs.eza
+    pkgs.pkgs.bat
+    pkgs.pkgs.dust
+    pkgs.pkgs.discord
+    pkgs.pkgs.picom
+    pkgs.pkgs.prismlauncher
+    pkgs.pkgs.feh
+    pkgs.pkgs.dunst
+    pkgs.pkgs.pciutils
+    pkgs.pkgs.usb-modeswitch
+    pkgs.pkgs.usbutils
+    pkgs.pkgs.networkmanagerapplet
+    pkgs.pkgs.element-desktop
+    pkgs.pkgs.signal-desktop
+    pkgs.pkgs.spotify
+    pkgs.pkgs.gcc_multi
+    pkgs.pkgs.rustup
+    pkgs.pkgs.easyeffects
+    pkgs.pkgs.psmisc
+    pkgs.pkgs.xorg.xkill
+    pkgs.pkgs.lshw
+    pkgs.pkgs.glxinfo
+    pkgs.pkgs.cmake
+    pkgs.pkgs.gnumake
+    pkgs.pkgs.pam_u2f
+    pkgs.pkgs.i3lock
+    pkgs.pkgs.xss-lock
+    pkgs.pkgs.gnupg
+    pkgs.pkgs.macchanger
+    pkgs.pkgs.kdePackages.breeze
+    pkgs.pkgs.scrot
     
     # GNOME utilities
-    gnome.nautilus
-    gnome.gnome-disk-utility
-    evince
+    pkgs.pkgs.gnome.nautilus
+    pkgs.pkgs.gnome.gnome-disk-utility
+    pkgs.pkgs.evince
     
-    neofetch
-    onefetch
-    btop
-    grim
-    slurp
-    wl-clipboard
-    mako
-    libdrm
+    pkgs.pkgs.neofetch
+    pkgs.pkgs.onefetch
+    pkgs.pkgs.btop
+    pkgs.pkgs.grim
+    pkgs.pkgs.slurp
+    pkgs.pkgs.wl-clipboard
+    pkgs.pkgs.mako
+    pkgs.pkgs.libdrm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
