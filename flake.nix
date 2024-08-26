@@ -18,6 +18,12 @@
           ./hosts/hotbox
         ];
       };
+      workhorse = nixpkgs-stable.lib.nixosSystem {
+        specialArgs = inputs;
+        modules = [
+          ./hosts/workhorse
+        ];
+      };
     };
 
     homeConfigurations = {
