@@ -174,6 +174,16 @@ in
     zenmonitor
     playerctl
     unzip
+
+    nodejs_20
+    yarn
+
+    gmp
+    mpfr
+
+    direnv
+    nix-direnv
+    mprocs
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
