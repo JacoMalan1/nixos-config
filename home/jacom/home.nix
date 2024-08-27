@@ -68,11 +68,17 @@
 
     defaultKeymap = "viins";
 
-    initExtra = "source ~/.p10k.zsh\nbindkey -M viins 'jj' vi-cmd-mode";
+    initExtra = ''
+      export PATH=$PATH:$HOME/.cargo/bin
+      source ~/.p10k.zsh
+      bindkey -M viins 'jj' vi-cmd-mode
+      eval "$(direnv hook zsh)"
+    '';
 
     shellAliases = {
       ls = "eza";
       cat = "bat";
+      nx = "yarn nx";
     };
 
     plugins = [
