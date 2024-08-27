@@ -2,67 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ nixpkgs-unstable, nixpkgs-stable, ... }: 
+{ config, lib, nixpkgs-stable, ... }: 
 let 
-  pkgs = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-  pkgs-stable = import nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
-
-  stablePackages = with pkgs-stable.pkgs; [
-    rustdesk
-    librewolf
-    spotify
-  ];
-
-  unstablePackages  = with pkgs.pkgs; [
-    neovim
-    zsh
-    mesa
-    keepassxc
-    zsh-powerlevel10k
-    zsh-autosuggestions
-    git
-    eza
-    bat
-    dust
-    discord
-    prismlauncher
-    feh
-    pciutils
-    usb-modeswitch
-    usbutils
-    networkmanagerapplet
-    element-desktop
-    signal-desktop
-    gitui
-    gcc_multi
-    rustup
-    easyeffects
-    psmisc
-    xorg.xkill
-    lshw
-    glxinfo
-    cmake
-    gnumake
-    pam_u2f
-    xss-lock
-    gnupg
-    macchanger
-    kdePackages.breeze
-    scrot
-    
-    # GNOME utilities
-    nautilus
-    gnome-disk-utility
-    evince
-    
-    neofetch
-    onefetch
-    btop
-
-    lm_sensors
-    zenmonitor
-    playerctl
-  ];
+  pkgs = import nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
 in
 {
   imports = [
@@ -74,8 +16,12 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
   
-  boot.kernelPackages = pkgs.linuxPackages_hardened;
-  
+  boot.blacklistedKernelModules = [ "k10temp" ];
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_hardened;
+  boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+
+  boot.kernelModules = [ "zenpower" ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "hotbox"; # Define your hostname.
@@ -165,11 +111,70 @@ in
 
   programs.hyprland.enable = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    
+  ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # System packages
-  environment.systemPackages = stablePackages ++ unstablePackages;
+  environment.systemPackages = with pkgs; [
+    rustdesk
+    librewolf
+    spotify
+
+    neovim
+    zsh
+    mesa
+    keepassxc
+    zsh-powerlevel10k
+    zsh-autosuggestions
+    git
+    eza
+    bat
+    dust
+    discord
+    prismlauncher
+    feh
+    pciutils
+    usb-modeswitch
+    usbutils
+    networkmanagerapplet
+    element-desktop
+    signal-desktop
+    gitui
+    gcc_multi
+    rustup
+    easyeffects
+    psmisc
+    xorg.xkill
+    lshw
+    glxinfo
+    cmake
+    gnumake
+    pam_u2f
+    xss-lock
+    gnupg
+    macchanger
+    kdePackages.breeze
+    scrot
+    
+    # GNOME utilities
+    gnome.nautilus
+    gnome.gnome-disk-utility
+    evince
+    
+    neofetch
+    onefetch
+    btop
+
+    lm_sensors
+    zenmonitor
+    playerctl
+    unzip
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
