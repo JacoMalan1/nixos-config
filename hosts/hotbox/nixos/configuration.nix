@@ -184,6 +184,8 @@ in
     direnv
     nix-direnv
     mprocs
+
+    rstudio
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
