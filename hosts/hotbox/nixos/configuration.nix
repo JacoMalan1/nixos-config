@@ -2,9 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, nixpkgs-stable, ... }: 
+{ config, lib, inputs, ... }: 
 let 
-  pkgs = import nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
+  pkgs = import inputs.nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
 in
 {
   imports = [

@@ -24,16 +24,9 @@
 
   gtk.enable = true;
   
-  home.pointerCursor.gtk.enable = true;
-  home.pointerCursor.x11.enable = true;
-  home.pointerCursor.package = pkgs.kdePackages.breeze;
-  home.pointerCursor.name = "Breeze_Light";
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/Breeze_Light";
-    ".local/share/icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/Breeze_Light";
     ".config/leftwm/config.ron".source = ./leftwm.ron;
   };
 

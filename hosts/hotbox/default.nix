@@ -12,5 +12,6 @@
     ../../modules/wifi.nix
     ../../modules/leftwm.nix
     ../../modules/qemu.nix
+    ../../modules/mongodb.nix
   ];
 }

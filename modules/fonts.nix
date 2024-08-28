@@ -1,6 +1,6 @@
-{ nixpkgs-unstable, ... }:
+{ inputs, ... }:
   let
-    pkgs = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
+    pkgs = import inputs.nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
   in
   {
     fonts.packages = with pkgs.pkgs; [

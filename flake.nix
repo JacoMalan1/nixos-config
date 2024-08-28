@@ -8,12 +8,13 @@
       url = "github:nix-community/home-manager"; 
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nixpkgs-mongodb-pin.url = "github:NixOS/nixpkgs/2527da1ef492c495d5391f3bcf9c1dd9f4514e32";
   };
 
-  outputs = { nixpkgs-stable, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs-stable, home-manager, nixpkgs-mongodb-pin, ... }@inputs: {
     nixosConfigurations = {
       hotbox = nixpkgs-stable.lib.nixosSystem {
-        specialArgs = inputs;
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/hotbox
         ];
