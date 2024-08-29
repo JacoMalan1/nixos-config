@@ -1,7 +1,7 @@
-{ inputs, ... }:
+{ inputs, system, ... }:
   let
-    pkgs = import inputs.nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-    pkgs-stable = import inputs.nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
+    pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+    pkgs-stable = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
   in
 {
   services.xserver.windowManager.leftwm.enable = true;
@@ -15,5 +15,6 @@
     pkgs.dunst
     pkgs.i3lock
     pkgs.redshift
+    pkgs.feh
   ];
 }

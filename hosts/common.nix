@@ -12,4 +12,8 @@
     programs.nh = {
       enable = true;
     };
+
+    environment.sessionVariables = {
+      FLAKE = "$HOME/nix";
+    };
   }
