@@ -2,82 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, nixpkgs-stable, nixpkgs-unstable, ... }:
+{ config, inputs, system, ... }:
 let 
-  pkgs = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-  pkgs-stable = import nixpkgs-stable { system = "x86_64-linux"; config.allowUnfree = true; };
-
-  stablePackages = with pkgs-stable.pkgs; [
-    leftwm
-    librewolf
-  ];
-
-  unstablePackages  = with pkgs.pkgs; [
-    rofi
-    polybar
-    neovim
-    zsh
-    keepassxc
-    zsh-powerlevel10k
-    zsh-autosuggestions
-    git
-    eza
-    bat
-    dust
-    discord
-    picom
-    prismlauncher
-    feh
-    dunst
-    pciutils
-    usbutils
-    networkmanagerapplet
-    signal-desktop
-    spotify
-    gitui
-    gcc_multi
-    rustup
-    easyeffects
-    psmisc
-    xorg.xkill
-    lshw
-    glxinfo
-    cmake
-    gnumake
-    pam_u2f
-    i3lock
-    xss-lock
-    gnupg
-    macchanger
-    kdePackages.breeze
-    scrot
-    
-    # GNOME utilities
-    nautilus
-    gnome-disk-utility
-    evince
-    
-    neofetch
-    onefetch
-    btop
-    kitty
-    zellij
-  ];
+  pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 in
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./fs.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.systemd.enable = true;
 
-  boot.initrd.luks.devices."luks-80fbbdb8-4d23-41c0-bc30-39349cb3d4aa".device = "/dev/disk/by-uuid/80fbbdb8-4d23-41c0-bc30-39349cb3d4aa";
-  boot.initrd.luks.devices."crypthome".device = "/dev/disk/by-uuid/bdfc4478-2c1e-4562-81ed-188060f346e4";
-  fileSystems."/home".device = "/dev/mapper/crypthome";
+  boot.blacklistedKernelModules = [ "k10temp" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+  boot.kernelModules = [ "zenpower" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -98,10 +42,10 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.libinput.naturalScrolling = true;
   
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.windowManager.leftwm.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -111,9 +55,12 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.blueman.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -146,11 +93,7 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = stablePackages ++ unstablePackages;
-
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -177,5 +120,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
