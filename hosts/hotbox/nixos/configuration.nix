@@ -40,13 +40,9 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.verbose = 7;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  # services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   services.libinput = {
     enable = true;
     mouse = {
@@ -91,7 +87,6 @@ in
   };
 
   programs.firefox.enable = true;
-  programs.hyprland.enable = true;
 
   # NixOS Dynamically linked binaries fix
   programs.nix-ld.enable = true;
