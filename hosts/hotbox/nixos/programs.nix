@@ -2,6 +2,20 @@
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+
+  rstudio-override = pkgs-unstable.rstudioWrapper.override { 
+    packages = with pkgs-unstable.rPackages; [ 
+      ggplot2 
+      dplyr 
+      tidyverse
+      maps
+      rnaturalearth
+      rnaturalearthdata
+      gganimate
+      sf
+      gifski
+    ]; 
+  };
 in
 {
   # System packages
@@ -70,6 +84,6 @@ in
     mprocs
   ] ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
-    rstudio
+    rstudio-override
   ]);
 }

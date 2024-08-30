@@ -95,8 +95,9 @@ in
 
   # NixOS Dynamically linked binaries fix
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = /*with pkgs;*/ [
-    
+  programs.nix-ld.libraries = with pkgs; [
+    libspatialite
+    libxml2
   ];
   
   programs.ssh.startAgent = false;
