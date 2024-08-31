@@ -82,29 +82,4 @@
       }
     ];
   };
-
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.settings = {
-    "$mod" = "Mod1";
-    bind = [
-      "$mod, B, exec, librewolf"
-      "SUPER, Q, exec, kitty"
-    ];
-    monitor = [
-      "HDMI-A-1, 1920x1080, 0x0, 1"
-      "HDMI-A-2, 1920x1080, 1920x0, 1"
-      "Unknown-1, disable"
-    ];
-    env = [
-      "AQ_ARM_DEVICES,/dev/dri/card1:/dev/dri/card2"
-      "LIBVA_DRIVER_NAME,nvidia"
-      "XDG_SESSION_TYPE,wayland"
-      "GBM_BACKEND,nvidia-drm"
-      "GDK_BACKEND,wayland,x11"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      "WLR_RENDERER,vulkan"
-    ];
-
-    cursor.no_hardware_cursors = true;
-  };
 }
