@@ -9,6 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixpkgs-mongodb-pin.url = "github:NixOS/nixpkgs/2527da1ef492c495d5391f3bcf9c1dd9f4514e32";
+    strain = {
+      url = "github:JacoMalan1/strain";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   outputs = { nixpkgs-stable, home-manager, ... }@inputs: 

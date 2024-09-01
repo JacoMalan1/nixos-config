@@ -1,6 +1,14 @@
 { inputs, system, ... }: 
 let
-  pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
+  pkgs = import inputs.nixpkgs-stable { 
+    inherit system; 
+    config.allowUnfree = true; 
+    overlays = [
+      (final: prev: {
+        strain = inputs.strain.defaultPackage.${system};
+      })
+    ];
+  };
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 
   rstudio-override = pkgs-unstable.rstudioWrapper.override { 
@@ -19,7 +27,7 @@ let
 in
 {
   # System packages
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     # Packages from stable 24.05
     librewolf
     rustdesk
@@ -82,7 +90,8 @@ in
     direnv
     nix-direnv
     mprocs
-  ] ++ (with pkgs-unstable; [
+    strain
+  ]) ++ ([
     # Packages from nixpkgs-unstable
     rstudio-override
   ]);
