@@ -48,7 +48,7 @@ in
     usb-modeswitch
     usbutils
     networkmanagerapplet
-    element-desktop
+    fluffychat
     signal-desktop
     gitui
     gcc_multi
