@@ -52,6 +52,12 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git.autoFetch = false;
+    };
+  };
 
   programs.zsh = {
     enable = true;
