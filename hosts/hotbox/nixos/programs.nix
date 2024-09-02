@@ -93,6 +93,7 @@ in
     inetutils
     ripgrep
     fzf
+    dig
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
