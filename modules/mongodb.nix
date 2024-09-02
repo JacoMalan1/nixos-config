@@ -19,4 +19,7 @@ in
     enable = true;
     package = pkgs.mongodb-6_0;
   };
+  environment.systemPackages = with pkgs; [
+    mongosh
+  ];
 }

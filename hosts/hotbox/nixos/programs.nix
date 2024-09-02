@@ -50,7 +50,6 @@ in
     networkmanagerapplet
     fluffychat
     signal-desktop
-    gitui
     gcc_multi
     rustup
     easyeffects
@@ -91,6 +90,10 @@ in
     nix-direnv
     mprocs
     strain
+    inetutils
+    ripgrep
+    lazygit
+    fzf
   ]) ++ ([
     # Packages from nixpkgs-unstable
     rstudio-override
