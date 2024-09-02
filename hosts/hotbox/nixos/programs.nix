@@ -92,10 +92,11 @@ in
     strain
     inetutils
     ripgrep
-    lazygit
     fzf
-  ]) ++ ([
+  ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
+    lazygit
+  ]) ++ ([
     rstudio-override
   ]);
 }
