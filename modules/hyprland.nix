@@ -25,6 +25,7 @@ in
     waybar
     swww
     rofi-wayland
+    hyprpaper
   ];
 
   environment.sessionVariables = {

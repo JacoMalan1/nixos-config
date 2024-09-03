@@ -64,7 +64,7 @@ in
     gnupg
     macchanger
     kdePackages.breeze
-    scrot
+    grim
     
     # GNOME utilities
     gnome.nautilus
@@ -97,6 +97,7 @@ in
     flat-remix-icon-theme
     xorg.xcursorthemes
     lxappearance
+    gimp
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
