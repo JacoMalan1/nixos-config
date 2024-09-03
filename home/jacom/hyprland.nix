@@ -28,6 +28,14 @@
     };
   };
 
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = "/home/jacom/nix/home/jacom/wallpaper.png";
+      wallpaper = ", /home/jacom/nix/home/jacom/wallpaper.png";
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -72,14 +80,18 @@
         "ALT, 9, focusworkspaceoncurrentmonitor, 9"
         "ALT SHIFT, q, killactive"
         "ALT, j, cyclenext"
+        "ALT SHIFT, j, swapnext"
+        "ALT SHIFT, k, swapnext, prev"
         "ALT, k, cyclenext, prev"
         "ALT, h, focusmonitor, DP-3"
         "ALT, l, focusmonitor, HDMI-A-2"
         "ALT, f, fullscreen"
         "ALT SHIFT, x, exit"
+        "ALT SHIFT, f, togglefloating"
       ];
       bindm = [
         "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
       ];
       monitor = [
         "HDMI-A-2, 1920x1080, 1920x0, 1"

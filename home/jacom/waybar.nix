@@ -5,7 +5,7 @@
       mainbar = {
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "network" "cpu" "memory" "temperature" "tray" ];
+        modules-right = [ "network" "pulseaudio" "cpu" "memory" "temperature" "tray" ];
 
         pulseaudio = {
           format =  "{volume}% {icon} {format_source}";
@@ -36,8 +36,9 @@
         };
 
         network = {
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ipaddr}/{cidr} ";
+          interval = 1;
+          format-wifi = "{essid} ({signalStrength}%) {bandwidthDownBytes} ";
+          format-ethernet = "{ipaddr}/{cidr} {bandwidthDownBytes} ";
           tooltip-format = "{ifname} via {gwaddr} ";
           format-linked = "{ifname} (No IP) ";
           format-disconnected = "Disconnected ⚠";
