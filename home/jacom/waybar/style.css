@@ -44,6 +44,10 @@
   background-color: @surface0;
 }
 
+#temperature.critical {
+  color: @maroon;
+}
+
 #custom-music,
 #tray,
 #backlight,

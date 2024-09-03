@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       mainbar = {
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
         modules-right = [ "pulseaudio" "network" "cpu" "memory" "temperature" "tray" ];
 
@@ -26,6 +26,7 @@
         };
 
         cpu = {
+          interval = 1;
           format = "{usage}% ";
           tooltip = false;
         };
@@ -48,10 +49,10 @@
         };
 
         temperature = {
+          interval = 1;
           hwmon-path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input";
-          format = "{temperatureC}°C {icon}";
-          format-icons = [ "" "" ""];
-          critical-threshold = 90;
+          format = "{temperatureC}°C ";
+          critical-threshold = 70;
         };
       };
     };
