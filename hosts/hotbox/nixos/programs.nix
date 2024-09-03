@@ -94,6 +94,9 @@ in
     ripgrep
     fzf
     dig
+    flat-remix-icon-theme
+    xorg.xcursorthemes
+    lxappearance
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
