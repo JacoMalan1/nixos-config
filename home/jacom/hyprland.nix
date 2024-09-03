@@ -12,12 +12,14 @@
     enable = true;
     settings = {
       general = {
-        lock_cmd = "hyprlock";
+        lock_cmd = "pidof hyprlock || hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
       };
       listener = [
         {
           timeout = 300;
-          on-timeout = "hyprlock";
+          on-timeout = "loginctl lock-session";
         }
         {
           timeout = 330;
@@ -45,7 +47,6 @@
       ];
       exec-once = [
         "waybar"
-        "redshift -l -29:24"
         "easyeffects --gapplication-service"
         "keepassxc & disown"
         "dunst & disown"
@@ -56,6 +57,10 @@
         gaps_out = 10;
         layout = "master";
       };
+      master = {
+        mfact = 0.5;
+      };
+      # windowrulev2 = "immediate,class:^(Minecraft.*)$";
       bind = [
         "ALT, b, exec, librewolf"
         "ALT, p, exec, rofi -show drun -show-icons"
@@ -70,6 +75,8 @@
         "ALT SHIFT, 7, movetoworkspacesilent, 7"
         "ALT SHIFT, 8, movetoworkspacesilent, 8"
         "ALT SHIFT, 9, movetoworkspacesilent, 9"
+        "ALT SHIFT, code:21, layoutmsg, mfact +0.05"
+        "ALT SHIFT, code:20, layoutmsg, mfact -0.05"
         "ALT, 1, focusworkspaceoncurrentmonitor, 1"
         "ALT, 2, focusworkspaceoncurrentmonitor, 2"
         "ALT, 3, focusworkspaceoncurrentmonitor, 3"
