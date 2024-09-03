@@ -54,6 +54,7 @@
       general = {
         allow_tearing = true;
         gaps_out = 10;
+        layout = "master";
       };
       bind = [
         "ALT, b, exec, librewolf"
@@ -88,6 +89,11 @@
         "ALT, f, fullscreen"
         "ALT SHIFT, x, exit"
         "ALT SHIFT, f, togglefloating"
+      ];
+      bindl = [
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioNext, exec, playerctl next"
       ];
       bindm = [
         "SUPER, mouse:272, movewindow"
