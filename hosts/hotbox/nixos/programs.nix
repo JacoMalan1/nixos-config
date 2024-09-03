@@ -98,6 +98,7 @@ in
     xorg.xcursorthemes
     lxappearance
     gimp
+    gamescope
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
