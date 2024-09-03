@@ -1,6 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  imports = [
+    ./hyprland.nix
+    ./waybar.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jacom";
@@ -28,6 +33,8 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/leftwm/config.ron".source = ./leftwm.ron;
+    ".config/waybar/style.css".source = ./waybar/style.css;
+    ".config/waybar/macchiato.css".source = ./waybar/macchiato.css;
   };
 
   # Home Manager can also manage your environment variables through
