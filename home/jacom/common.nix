@@ -1,11 +1,4 @@
-{ pkgs, ... }:
-
-{
-  imports = [
-    ./hyprland.nix
-    ./waybar.nix
-  ];
-
+{ pkgs, ... }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jacom";
@@ -102,6 +95,13 @@
         file = "powerlevel10k.zsh-theme";
       }
     ];
+  };
+
+  programs.mangohud = {
+    enable = true;
+    settings = {
+      position = "top-right";
+    };
   };
 
   services.wlsunset = {

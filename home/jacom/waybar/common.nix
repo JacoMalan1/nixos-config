@@ -25,6 +25,11 @@
           };
         };
 
+        clock = {
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = "{:%Y-%m-%d}";
+        };
+
         cpu = {
           interval = 1;
           format = "{usage}% ";
@@ -47,13 +52,6 @@
 
         tray = {
           spacing = 10;
-        };
-
-        temperature = {
-          interval = 1;
-          hwmon-path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input";
-          format = "{temperatureC}°C ";
-          critical-threshold = 70;
         };
       };
     };
