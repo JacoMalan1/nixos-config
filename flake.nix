@@ -36,9 +36,13 @@
     };
 
     homeConfigurations = {
-      jacom = home-manager.lib.homeManagerConfiguration {
+      hotbox-jacom = home-manager.lib.homeManagerConfiguration {
         pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-        modules = [ ./home/jacom/home.nix ];
+        modules = [ ./home/jacom/hotbox.nix ];
+      };
+      workhorse-jacom = home-manager.lib.homeManagerConfiguration {
+        pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+        modules = [ ./home/jacom/workhorse.nix ];
       };
     };
   };
