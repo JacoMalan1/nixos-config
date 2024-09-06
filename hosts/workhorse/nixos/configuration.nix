@@ -5,6 +5,7 @@
 { config, inputs, system, ... }:
 let 
   pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+  pkgs-stable = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
 in
 
 {
@@ -21,7 +22,7 @@ in
 
   boot.blacklistedKernelModules = [ "k10temp" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
-  boot.kernelModules = [ "zenpower" ];
+  boot.kernelModules = [ "zenpower" "amdgpu" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -43,9 +44,15 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.libinput.naturalScrolling = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
   
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  services.seatd = { 
+    enable = true; 
+    user = "jacom";
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -61,6 +68,13 @@ in
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+  
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -91,7 +105,17 @@ in
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.hyprland = {
+    package = pkgs-stable.hyprland;
+    portalPackage = pkgs-stable.xdg-desktop-portal-hyprland;
+    
+  };
+
   # Allow unfree packages
+  nix.settings = {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
   nixpkgs.config.allowUnfree = true;
   
   # Some programs need SUID wrappers, can be configured further or are

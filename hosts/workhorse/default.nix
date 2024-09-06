@@ -10,5 +10,6 @@
     ../../modules/syncthing.nix
     ../../modules/fonts.nix
     ../../modules/leftwm.nix
+    ../../modules/hyprland.nix
   ];
 }

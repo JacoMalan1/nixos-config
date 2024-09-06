@@ -19,7 +19,7 @@ in
     networkmanagerapplet
     signal-desktop
     spotify
-    gitui
+    lazygit
     gcc_multi
     rustup
     easyeffects
@@ -52,5 +52,8 @@ in
 
     direnv
     nix-direnv
+    fzf
+    ripgrep
+    mesa
   ];
 }
