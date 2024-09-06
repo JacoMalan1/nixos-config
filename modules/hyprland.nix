@@ -13,6 +13,7 @@ in
   security.pam.services.hyprlock = {
     text = ''
       account required pam_unix.so
+      auth sufficient pam_unix.so try_first_pass likeauth nullok
       auth sufficient ${pkgs.pam_u2f}/lib/security/pam_u2f.so pinverification=1
       auth required pam_deny.so
       password sufficient pam_unix.so nullok yescrypt

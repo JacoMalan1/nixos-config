@@ -1,6 +1,7 @@
-{ inputs, ... }: 
+{ inputs, system, ... }: 
   let
     pkgs = import inputs.nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
+    pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
   in
   {
     time.timeZone = "Africa/Johannesburg";
@@ -13,7 +14,18 @@
       enable = true;
     };
 
+    programs.dconf.enable = true;
+
+    environment.systemPackages = with pkgs-stable; [
+      transmission-gtk
+      glib
+      glib.dev
+      gsettings-desktop-schemas
+    ];
+
     environment.sessionVariables = {
       FLAKE = "$HOME/nix";
     };
+
+    services.gvfs.enable = true;
   }
