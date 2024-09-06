@@ -48,7 +48,6 @@ in
     usb-modeswitch
     usbutils
     networkmanagerapplet
-    fluffychat
     signal-desktop
     gcc_multi
     rustup
