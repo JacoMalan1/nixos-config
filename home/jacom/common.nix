@@ -134,13 +134,6 @@
     ];
   };
 
-  programs.mangohud = {
-    enable = true;
-    settings = {
-      position = "top-right";
-    };
-  };
-
   services.wlsunset = {
     enable = true;
     latitude = -29.0;

@@ -78,6 +78,7 @@
       exec-once = [
         "waybar"
         "easyeffects --gapplication-service"
+        "hyprpaper"
         "keepassxc & disown"
         "dunst & disown"
       ];
