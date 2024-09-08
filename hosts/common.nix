@@ -25,7 +25,9 @@
 
     environment.sessionVariables = {
       FLAKE = "$HOME/nix";
+      CARGO_TARGET_DIR = "$HOME/.cargo-target";
     };
 
     services.gvfs.enable = true;
+    services.smartd.enable = true;
   }

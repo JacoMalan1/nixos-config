@@ -97,6 +97,7 @@ in
     xorg.xcursorthemes
     lxappearance
     gimp
+    sshfs
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
