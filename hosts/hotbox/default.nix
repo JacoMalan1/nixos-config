@@ -16,7 +16,6 @@
     ../../modules/qemu.nix
     ../../modules/mongodb.nix
     ../../modules/retro
-    ../../modules/plymouth.nix
     ../../modules/hyprland.nix
   ];
 }

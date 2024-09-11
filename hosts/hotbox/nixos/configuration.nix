@@ -109,7 +109,7 @@ in
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8384 22000 22 ];
+  networking.firewall.allowedTCPPorts = [ 8384 22000 25565 22 ];
   networking.firewall.allowedUDPPorts = [ 22000 21027 ];
 
   # Do not remove

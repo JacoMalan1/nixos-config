@@ -98,6 +98,7 @@ in
     lxappearance
     gimp
     sshfs
+    jdk17
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

@@ -21,6 +21,11 @@
       glib
       glib.dev
       gsettings-desktop-schemas
+      smartmontools
+      man-pages
+      man-pages-posix
+      yubikey-manager
+      speedtest-cli
     ];
 
     environment.sessionVariables = {
