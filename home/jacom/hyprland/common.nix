@@ -1,6 +1,11 @@
-{ ... }: {
+{ inputs, system, ... }: 
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in
+{
   programs.hyprlock = {
     enable = true;
+    package = pkgs-unstable.hyprlock;
     settings = {
       background = {
         color = "rgba(128, 128, 128, 1.0)";
