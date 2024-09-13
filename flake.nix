@@ -37,10 +37,12 @@
 
     homeConfigurations = {
       hotbox-jacom = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs; inherit system; };
         pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
         modules = [ ./home/jacom/hotbox.nix ];
       };
       workhorse-jacom = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = { inherit inputs; inherit system; };
         pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
         modules = [ ./home/jacom/workhorse.nix ];
       };

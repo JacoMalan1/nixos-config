@@ -1,6 +1,7 @@
 { inputs, system, ... }:
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in
 {
   programs.hyprland = {
@@ -8,7 +9,10 @@ in
     xwayland.enable = true;
   };
 
-  programs.hyprlock.enable = true;
+  programs.hyprlock = {
+    enable = true;
+    package = pkgs-unstable.hyprlock;
+  };
 
   security.pam.services.hyprlock = {
     text = ''
