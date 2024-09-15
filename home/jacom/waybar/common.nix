@@ -5,7 +5,6 @@
       mainbar = {
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "network" "pulseaudio" "cpu" "memory" "temperature" "tray" ];
 
         pulseaudio = {
           format =  "{volume}% {icon} {format_source}";

@@ -35,7 +35,7 @@
   border-radius: 1rem;
 }
 
-#network,#cpu,#memory,#temperature {
+#network,#cpu,#memory,#temperature,#battery.*,#battery {
   margin-right: 1rem;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -53,6 +53,7 @@
 #backlight,
 #clock,
 #battery,
+#battery.*,
 #pulseaudio,
 #custom-lock,
 #custom-power {
@@ -83,8 +84,7 @@
   color: @yellow;
 }
 
-#backlight,
-#battery {
+#backlight {
   border-radius: 0;
 }
 
@@ -112,5 +112,6 @@
 
 #tray {
   margin-right: 1rem;
+  margin-left: 1rem;
   border-radius: 1rem;
 }
