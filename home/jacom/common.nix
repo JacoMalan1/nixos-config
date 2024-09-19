@@ -26,6 +26,19 @@
     };
   };
 
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "MesloLGS NF";
+      size = 13.0;
+    };
+    settings = {
+      enable_audio_bell = false;
+      shell = "zellij";
+      background_opacity = "0.7";
+    };
+  };
+
   qt = {
     enable = true;
     platformTheme.name = "adwaita";
