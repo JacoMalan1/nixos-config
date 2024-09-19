@@ -99,6 +99,8 @@ in
     gimp
     sshfs
     jdk17
+    postman
+    anydesk
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

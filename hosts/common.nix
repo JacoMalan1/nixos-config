@@ -35,4 +35,5 @@
 
     services.gvfs.enable = true;
     services.smartd.enable = true;
+    services.pcscd.enable = true;
   }
