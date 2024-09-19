@@ -99,6 +99,7 @@ in
       bind = [
         "ALT, b, exec, librewolf"
         "ALT, p, exec, rofi -show drun -show-icons"
+        "ALT SHIFT, p, exec, rofi -show run"
         "CTRL ALT, l, exec, hyprlock --immediate"
         "ALT SHIFT, Return, exec, kitty"
         "ALT SHIFT, 1, movetoworkspacesilent, 1"
