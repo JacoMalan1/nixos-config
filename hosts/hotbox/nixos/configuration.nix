@@ -33,6 +33,30 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.wireguard.enable = true;
+  specialisation.mullvad.configuration = {
+    networking.wg-quick.interfaces."za-jnb-wg-001" = {
+      privateKey = "2DeV2nQeXkvpMo7ZOdIpWzgkmNZYy5nG8uvK+uNmn2o=";
+      address = [
+        "10.68.13.92/32"
+        "fc00:bbbb:bbbb:bb01::5:d5b/128"
+      ];
+      dns = [
+        "10.64.0.1"
+      ];
+      peers = [
+        {
+          publicKey = "5dOGXJ9JK/Bul0q57jsuvjNnc15gRpSO1rMbxkf4J2M=";
+          allowedIPs = [
+            "0.0.0.0/0"
+            "::0/0"
+          ];
+          endpoint = "154.47.30.130:51820";
+        }
+      ];
+    };
+  };
+
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
   hardware.usb-modeswitch.enable = true;
@@ -112,8 +136,11 @@ in
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8384 22000 25565 22 ];
-  networking.firewall.allowedUDPPorts = [ 22000 21027 ];
+  networking.firewall = {
+    enable = false;
+    allowedTCPPorts = [ 8384 22000 25565 22 ];
+    allowedUDPPorts = [ 22000 21027 ];
+  };
 
   # Do not remove
   system.stateVersion = "24.05";

@@ -26,7 +26,12 @@
       man-pages-posix
       yubikey-manager
       speedtest-cli
-    ];
+      doxygen
+      valgrind
+      gdb
+      lldb
+      gnome.eog
+    ] ++ (with pkgs; [clang]);
 
     environment.sessionVariables = {
       FLAKE = "$HOME/nix";

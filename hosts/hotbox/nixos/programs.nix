@@ -49,7 +49,6 @@ in
     usbutils
     networkmanagerapplet
     signal-desktop
-    gcc_multi
     rustup
     easyeffects
     psmisc
@@ -101,9 +100,19 @@ in
     jdk17
     postman
     anydesk
+    python3
+    kdePackages.kcachegrind
+    gperftools
+    gv
+    graphviz
+    apitrace
+    wine
+
+    sage
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
+    gcc_multi
   ]) ++ ([
     rstudio-override
   ]);
