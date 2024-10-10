@@ -7,6 +7,10 @@ in
     enable = true;
     package = pkgs-unstable.hyprlock;
     settings = {
+      general = {
+        immediate_render = true;
+      };
+    
       background = {
         color = "rgba(128, 128, 128, 1.0)";
       };
