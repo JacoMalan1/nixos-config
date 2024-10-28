@@ -17,5 +17,7 @@
     ../../modules/mongodb.nix
     ../../modules/retro
     ../../modules/hyprland.nix
+    ../../modules/obs.nix
+    ../../modules/jupyter.nix
   ];
 }

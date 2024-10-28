@@ -31,6 +31,9 @@
       gdb
       lldb
       gnome.eog
+      libreoffice-fresh
+      yasm
+      jq
     ] ++ (with pkgs; [clang]);
 
     environment.sessionVariables = {

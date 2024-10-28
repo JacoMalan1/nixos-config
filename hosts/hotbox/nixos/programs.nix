@@ -22,6 +22,10 @@ let
       gganimate
       sf
       gifski
+      caret
+      car
+      mlbench
+      pROC
     ]; 
   };
 in
@@ -97,7 +101,7 @@ in
     lxappearance
     gimp
     sshfs
-    jdk17
+    jdk21
     postman
     anydesk
     python3
@@ -106,13 +110,17 @@ in
     gv
     graphviz
     apitrace
-    wine
+    wine64
 
     sage
+    vlc
+    go
+    kdePackages.kdenlive
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
     gcc_multi
+    libresplit
   ]) ++ ([
     rstudio-override
   ]);

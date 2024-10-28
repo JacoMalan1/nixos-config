@@ -1,6 +1,6 @@
-{ inputs, ... }:
+{ inputs, system, ... }:
   let
-    pkgs = import inputs.nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
+    pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
   in
 {
   virtualisation.libvirtd = {

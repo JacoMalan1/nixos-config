@@ -121,6 +121,7 @@ in
   programs.nix-ld.libraries = with pkgs; [
     libspatialite
     libxml2
+    freetype
   ];
   
   programs.ssh.startAgent = false;
