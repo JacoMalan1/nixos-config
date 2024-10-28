@@ -114,6 +114,7 @@
 
     initExtra = ''
       export PATH=$PATH:$HOME/.cargo/bin
+      export PATH=$PATH:$HOME/go/bin
       source ~/.p10k.zsh
       bindkey -M viins 'jj' vi-cmd-mode
       eval "$(direnv hook zsh)"
