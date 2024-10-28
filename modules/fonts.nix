@@ -12,5 +12,6 @@
       fira-code-symbols
       cantarell-fonts
       inter
+      jetbrains-mono
     ];
   }
