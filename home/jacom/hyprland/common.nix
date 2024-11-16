@@ -136,6 +136,8 @@ in
         "ALT, f, fullscreen"
         "ALT SHIFT, x, exit"
         "ALT SHIFT, f, togglefloating"
+        "ALT, c, togglespecialworkspace, calculator"
+        "ALT, c, exec, pgrep qalculate-gtk || qalculate-gtk &"
       ];
       bindl = [
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -146,7 +148,14 @@ in
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
       ];
+      
       input.accel_profile = "flat";
+
+      windowrulev2 = [
+        "float, class:(Tor Browser)"
+        "float, class:(qalculate-gtk)"
+        "workspace special:calculator, class:qalculate-gtk"
+      ];
     };
   };
 }

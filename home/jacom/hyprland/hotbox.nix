@@ -2,6 +2,10 @@
   imports = [ ./common.nix ];
 
   wayland.windowManager.hyprland.settings = {
+    bind = [
+      "ALT, w, swapactiveworkspaces, HDMI-A-2 DP-3"
+    ];
+  
     windowrulev2 = [
       "workspace 1, initialclass:(steam_app_311210)"
       "tile, initialclass:(steam_app_311210)"
