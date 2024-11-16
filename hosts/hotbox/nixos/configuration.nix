@@ -136,9 +136,16 @@ in
     };
   };
 
+  specialisation."nofw".configuration = {
+    networking.firewall.enable = false;
+  };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
+  '';
+
   # Open ports in the firewall.
   networking.firewall = {
-    enable = false;
     allowedTCPPorts = [ 8384 22000 25565 22 ];
     allowedUDPPorts = [ 22000 21027 ];
   };

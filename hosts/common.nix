@@ -34,7 +34,13 @@
       libreoffice-fresh
       yasm
       jq
-    ] ++ (with pkgs; [clang]);
+      tor-browser
+      freecad
+      prusa-slicer
+      qalculate-gtk
+    ] ++ (with pkgs; [
+      clang
+    ]);
 
     environment.sessionVariables = {
       FLAKE = "$HOME/nix";

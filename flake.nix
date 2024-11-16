@@ -8,7 +8,6 @@
       url = "github:nix-community/home-manager/release-24.05"; 
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    nixpkgs-mongodb-pin.url = "github:NixOS/nixpkgs/2527da1ef492c495d5391f3bcf9c1dd9f4514e32";
     strain = {
       url = "github:JacoMalan1/strain";
       inputs.nixpkgs.follows = "nixpkgs-stable";

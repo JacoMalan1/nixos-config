@@ -26,6 +26,14 @@ let
       car
       mlbench
       pROC
+      clValid
+      cluster
+      tm
+      word2vec
+      syuzhet
+      SnowballC
+      topicmodels
+      textstem
     ]; 
   };
 in
@@ -116,6 +124,7 @@ in
     vlc
     go
     kdePackages.kdenlive
+    blender
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

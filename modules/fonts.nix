@@ -4,8 +4,10 @@
   in
   {
     fonts.packages = with pkgs.pkgs; [
+      corefonts
+      vistafonts
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       meslo-lgs-nf
       fira-code
