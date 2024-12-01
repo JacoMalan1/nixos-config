@@ -12,9 +12,13 @@
       url = "github:JacoMalan1/strain";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { nixpkgs-stable, home-manager, ... }@inputs: 
+  outputs = { nixpkgs-stable, home-manager, lanzaboote, ... }@inputs: 
   let
     system = "x86_64-linux";
   in
@@ -23,6 +27,7 @@
       hotbox = nixpkgs-stable.lib.nixosSystem {
         specialArgs = { inherit inputs; inherit system; };
         modules = [
+            lanzaboote.nixosModules.lanzaboote
           ./hosts/hotbox
         ];
       };
