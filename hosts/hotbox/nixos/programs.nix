@@ -125,6 +125,8 @@ in
     go
     kdePackages.kdenlive
     blender
+    ghidra-bin
+    brave
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
