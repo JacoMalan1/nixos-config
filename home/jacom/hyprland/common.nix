@@ -49,6 +49,7 @@ in
 
   services.hypridle = {
     enable = true;
+    package = pkgs-unstable.hypridle;
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
@@ -71,6 +72,7 @@ in
 
   services.hyprpaper = {
     enable = true;
+    package = pkgs-unstable.hyprpaper;
     settings = {
       preload = "/home/jacom/nix/home/jacom/wallpaper.png";
       wallpaper = ", /home/jacom/nix/home/jacom/wallpaper.png";
@@ -79,6 +81,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs-unstable.hyprland;
     settings = {
       env = [
         "HYPRCURSOR_THEME,Adwaita"

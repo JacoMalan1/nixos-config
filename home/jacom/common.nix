@@ -29,7 +29,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "MesloLGS NF";
+      name = "JetBrains Mono";
       size = 13.0;
     };
     settings = {

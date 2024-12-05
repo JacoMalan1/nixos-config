@@ -36,12 +36,12 @@
 }
 
 #network,#cpu,#memory,#temperature,#battery.*,#battery {
-  margin-right: 1rem;
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   background-color: @surface0;
+  margin-right: 1rem;
 }
 
 #temperature.critical {
@@ -70,6 +70,7 @@
 
 #battery {
   color: @green;
+  margin-right: 1rem;
 }
 
 #battery.charging {
