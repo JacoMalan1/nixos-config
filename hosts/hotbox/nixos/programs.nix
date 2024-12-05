@@ -108,7 +108,6 @@ in
     xorg.xcursorthemes
     lxappearance
     gimp
-    sshfs
     jdk21
     postman
     anydesk

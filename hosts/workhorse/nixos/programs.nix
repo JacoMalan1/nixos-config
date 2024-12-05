@@ -1,10 +1,10 @@
 { inputs, system, ... }: 
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 in
 {
   environment.systemPackages = with pkgs; [
-    neovim
     zsh
     keepassxc
     zsh-powerlevel10k
@@ -40,6 +40,9 @@ in
     gnome.nautilus
     gnome.gnome-disk-utility
     evince
+
+    nodejs_20
+    yarn
     
     neofetch
     onefetch
@@ -55,5 +58,25 @@ in
     fzf
     ripgrep
     mesa
-  ];
+
+    python3
+    unzip
+    
+    brightnessctl
+    exfat
+    dolphin-emu
+    wiimms-iso-tools
+    ntfs3g
+    thunderbird
+    vlc
+    gparted
+    jdk17
+    steam-run
+    unrar
+    p7zip
+    stremio
+    android-tools
+  ] ++ (with pkgs-unstable; [
+    neovim
+  ]);
 }

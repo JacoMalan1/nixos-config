@@ -42,17 +42,18 @@ in
 
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
   services.xserver.libinput.naturalScrolling = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
   
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = true;
   services.seatd = { 
     enable = true; 
     user = "jacom";
   };
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
+  '';
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -68,6 +69,7 @@ in
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
+  hardware.usb-modeswitch.enable = true;
 
   hardware.opengl = {
     enable = true;
@@ -104,12 +106,6 @@ in
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  programs.hyprland = {
-    package = pkgs-stable.hyprland;
-    portalPackage = pkgs-stable.xdg-desktop-portal-hyprland;
-    
-  };
 
   # Allow unfree packages
   nix.settings = {

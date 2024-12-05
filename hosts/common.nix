@@ -42,6 +42,7 @@
       freecad
       prusa-slicer
       qalculate-gtk
+      sshfs
     ] ++ (with pkgs; [
       clang
     ]);

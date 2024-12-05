@@ -11,5 +11,7 @@
     ../../modules/fonts.nix
     ../../modules/leftwm.nix
     ../../modules/hyprland.nix
+    ../../modules/golang.nix
+    ../../modules/mongodb.nix
   ];
 }
