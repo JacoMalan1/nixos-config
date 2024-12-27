@@ -48,6 +48,8 @@
       hunspell
       hunspellDicts.en_GB-ise
       postman
+      awscli2
+      google-cloud-sdk
     ] ++ (with pkgs; [
       clang
       novelwriter

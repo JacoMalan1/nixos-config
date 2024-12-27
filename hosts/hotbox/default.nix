@@ -14,7 +14,7 @@
     ../../modules/wifi.nix
     ../../modules/leftwm.nix
     ../../modules/qemu.nix
-    # ../../modules/mongodb.nix
+    ../../modules/mongodb.nix
     ../../modules/retro
     ../../modules/hyprland.nix
     ../../modules/obs.nix
