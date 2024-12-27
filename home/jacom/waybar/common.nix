@@ -36,6 +36,7 @@
         };
 
         memory = {
+          interval = 5;
           format = "{}% ";
         };
 
@@ -51,6 +52,13 @@
 
         tray = {
           spacing = 10;
+        };
+
+        battery = {
+          interval = 10;
+          states = {
+            warning = 15;
+          };
         };
       };
     };

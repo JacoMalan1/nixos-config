@@ -138,6 +138,7 @@
       ls = "eza";
       cat = "bat";
       nx = "yarn nx";
+      ns = "nix-shell --command zsh -p";
     };
 
     plugins = [

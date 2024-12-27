@@ -35,13 +35,26 @@
   border-radius: 1rem;
 }
 
-#network,#cpu,#memory,#temperature,#battery.*,#battery {
+#network,#backlight-slider,#cpu,#memory,#temperature,#battery.*,#battery {
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   background-color: @surface0;
   margin-right: 1rem;
+}
+
+#backlight-slider {
+  margin-right: 1rem;
+  min-width: 100px;
+}
+
+#backlight-slider through {
+  background-color: @black;
+}
+
+#backlight-slider highlight {
+  background-color: @white;
 }
 
 #temperature.critical {
@@ -69,8 +82,11 @@
 }
 
 #battery {
-  color: @green;
   margin-right: 1rem;
+}
+
+#battery.discharging {
+  color: @yellow;
 }
 
 #battery.charging {
