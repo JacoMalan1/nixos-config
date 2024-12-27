@@ -95,7 +95,6 @@ in
       ];
       animation = "global, 1, 2, default";
       general = {
-        allow_tearing = true;
         gaps_out = 10;
         layout = "master";
       };
