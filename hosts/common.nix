@@ -1,7 +1,7 @@
 { inputs, system, ... }: 
   let
     pkgs = import inputs.nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-    pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
+    pkgs-stable = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
   in
   {
     time.timeZone = "Africa/Johannesburg";
@@ -38,13 +38,19 @@
       libreoffice-fresh
       yasm
       jq
+      dig
+      whois
       tor-browser
       freecad
       prusa-slicer
       qalculate-gtk
       sshfs
+      hunspell
+      hunspellDicts.en_GB-ise
+      postman
     ] ++ (with pkgs; [
       clang
+      novelwriter
     ]);
 
     environment.sessionVariables = {

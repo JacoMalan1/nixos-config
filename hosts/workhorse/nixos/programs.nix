@@ -76,6 +76,7 @@ in
     p7zip
     stremio
     android-tools
+    zoom-us
   ] ++ (with pkgs-unstable; [
     neovim
   ]);

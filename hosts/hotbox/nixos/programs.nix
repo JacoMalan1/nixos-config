@@ -10,32 +10,6 @@ let
     ];
   };
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-
-  rstudio-override = pkgs-unstable.rstudioWrapper.override { 
-    packages = with pkgs-unstable.rPackages; [ 
-      ggplot2 
-      dplyr 
-      tidyverse
-      maps
-      rnaturalearth
-      rnaturalearthdata
-      gganimate
-      sf
-      gifski
-      caret
-      car
-      mlbench
-      pROC
-      clValid
-      cluster
-      tm
-      word2vec
-      syuzhet
-      SnowballC
-      topicmodels
-      textstem
-    ]; 
-  };
 in
 {
   # System packages
@@ -103,13 +77,11 @@ in
     inetutils
     ripgrep
     fzf
-    dig
     flat-remix-icon-theme
     xorg.xcursorthemes
     lxappearance
     gimp
     jdk21
-    postman
     anydesk
     python3
     kdePackages.kcachegrind
@@ -131,7 +103,5 @@ in
     lazygit
     gcc_multi
     libresplit
-  ]) ++ ([
-    rstudio-override
   ]);
 }

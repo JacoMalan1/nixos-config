@@ -13,5 +13,8 @@
     ../../modules/hyprland.nix
     ../../modules/golang.nix
     ../../modules/mongodb.nix
+    ../../modules/rstudio.nix
+    ../../modules/print.nix
+    ../../modules/docker.nix
   ];
 }

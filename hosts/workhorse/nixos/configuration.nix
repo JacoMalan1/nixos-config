@@ -42,7 +42,7 @@ in
 
 
   # Enable the X11 windowing system.
-  services.xserver.libinput.naturalScrolling = true;
+  services.libinput.touchpad.naturalScrolling = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
   
   # Enable the GNOME Desktop Environment.
