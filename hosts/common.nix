@@ -21,7 +21,7 @@
     programs.dconf.enable = true;
 
     environment.systemPackages = with pkgs-stable; [
-      transmission-gtk
+      transmission_4-gtk
       glib
       glib.dev
       gsettings-desktop-schemas
@@ -34,7 +34,7 @@
       valgrind
       gdb
       lldb
-      gnome.eog
+      eog
       libreoffice-fresh
       yasm
       jq

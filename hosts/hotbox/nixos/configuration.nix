@@ -21,7 +21,7 @@ in
   boot.initrd.systemd.enable = true;
   
   boot.blacklistedKernelModules = [ "k10temp" ];
-  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_hardened;
+  
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
   boot.kernelModules = [ "zenpower" ];
@@ -34,28 +34,6 @@ in
   networking.networkmanager.enable = true;
 
   networking.wireguard.enable = true;
-  specialisation.mullvad.configuration = {
-    networking.wg-quick.interfaces."za-jnb-wg-001" = {
-      privateKey = "2DeV2nQeXkvpMo7ZOdIpWzgkmNZYy5nG8uvK+uNmn2o=";
-      address = [
-        "10.68.13.92/32"
-        "fc00:bbbb:bbbb:bb01::5:d5b/128"
-      ];
-      dns = [
-        "10.64.0.1"
-      ];
-      peers = [
-        {
-          publicKey = "5dOGXJ9JK/Bul0q57jsuvjNnc15gRpSO1rMbxkf4J2M=";
-          allowedIPs = [
-            "0.0.0.0/0"
-            "::0/0"
-          ];
-          endpoint = "154.47.30.130:51820";
-        }
-      ];
-    };
-  };
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
@@ -63,14 +41,6 @@ in
 
   services.acpid.enable = true;
 
-  # Enable the X11 windowing system.
-
-  specialisation."gnome".configuration = {
-    services.xserver.enable = true;
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
-  };
-  
   services.libinput = {
     enable = true;
     mouse = {

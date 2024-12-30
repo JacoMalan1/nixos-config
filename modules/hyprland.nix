@@ -6,7 +6,7 @@ in
 {
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
+    package = pkgs-unstable.hyprland;
     xwayland.enable = true;
   };
 
@@ -31,8 +31,7 @@ in
     waybar
     swww
     rofi-wayland
-    hyprpaper
-  ];
+  ] ++ (with pkgs-unstable; [hyprpaper]);
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";

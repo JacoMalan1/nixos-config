@@ -1,14 +1,6 @@
 { inputs, system, ... }: 
 let
-  pkgs = import inputs.nixpkgs-stable { 
-    inherit system; 
-    config.allowUnfree = true; 
-    overlays = [
-      (final: prev: {
-        strain = inputs.strain.defaultPackage.${system};
-      })
-    ];
-  };
+  pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 in
 {
@@ -51,8 +43,8 @@ in
     grim
     
     # GNOME utilities
-    gnome.nautilus
-    gnome.gnome-disk-utility
+    nautilus
+    gnome-disk-utility
     evince
     
     neofetch
@@ -73,7 +65,6 @@ in
     direnv
     nix-direnv
     mprocs
-    strain
     inetutils
     ripgrep
     fzf

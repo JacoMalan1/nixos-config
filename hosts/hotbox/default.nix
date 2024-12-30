@@ -12,7 +12,6 @@
     ../../modules/dns.nix
     ../../modules/fonts.nix
     ../../modules/wifi.nix
-    ../../modules/leftwm.nix
     ../../modules/qemu.nix
     ../../modules/mongodb.nix
     ../../modules/retro
@@ -22,6 +21,5 @@
     ../../modules/print.nix
     ../../modules/secureboot.nix
     ../../modules/docker.nix
-    ../../modules/rstudio.nix
   ];
 }
