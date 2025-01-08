@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager/release-24.11"; 
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -23,7 +27,7 @@
       hotbox = nixpkgs-stable.lib.nixosSystem {
         specialArgs = { inherit inputs; inherit system; };
         modules = [
-            lanzaboote.nixosModules.lanzaboote
+          lanzaboote.nixosModules.lanzaboote
           ./hosts/hotbox
         ];
       };
@@ -39,7 +43,10 @@
       hotbox-jacom = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; inherit system; };
         pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
-        modules = [ ./home/jacom/hotbox.nix ];
+        modules = [ 
+	  ./home/jacom/hotbox.nix 
+          inputs.nixvim.homeManagerModules.nixvim
+	];
       };
       workhorse-jacom = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; inherit system; };
