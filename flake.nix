@@ -51,7 +51,10 @@
       workhorse-jacom = home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = { inherit inputs; inherit system; };
         pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
-        modules = [ ./home/jacom/workhorse.nix ];
+        modules = [ 
+	  ./home/jacom/workhorse.nix 
+	  inputs.nixvim.homeManagerModules.nixvim 
+	];
       };
     };
   };
