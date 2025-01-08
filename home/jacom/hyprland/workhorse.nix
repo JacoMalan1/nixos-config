@@ -7,6 +7,7 @@ in
   
   programs.hyprlock.package = lib.mkForce pkgs.hyprlock;
   wayland.windowManager.hyprland = {
+    package = lib.mkForce pkgs.hyprland;
     settings = {
       debug = {
         disable_logs = false;
