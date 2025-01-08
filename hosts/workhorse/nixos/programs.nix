@@ -37,8 +37,8 @@ in
     scrot
     
     # GNOME utilities
-    gnome.nautilus
-    gnome.gnome-disk-utility
+    nautilus
+    gnome-disk-utility
     evince
 
     nodejs_20

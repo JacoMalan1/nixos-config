@@ -71,10 +71,9 @@ in
   hardware.bluetooth.powerOnBoot = false;
   hardware.usb-modeswitch.enable = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
   
   security.rtkit.enable = true;
@@ -99,9 +98,6 @@ in
     isNormalUser = true;
     description = "Jaco Malan";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   # Install firefox.
