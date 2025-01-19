@@ -132,6 +132,7 @@
       source ~/.p10k.zsh
       bindkey -M viins 'jj' vi-cmd-mode
       eval "$(direnv hook zsh)"
+      eval "$(zoxide init --cmd cd zsh)"
     '';
 
     shellAliases = {

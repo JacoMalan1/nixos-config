@@ -88,7 +88,7 @@ in
         "HYPRCURSOR_SIZE,24"
       ];
       exec-once = [
-        "waybar"
+        "waybar & disown"
         "easyeffects --gapplication-service"
         "keepassxc & disown"
         "dunst & disown"
