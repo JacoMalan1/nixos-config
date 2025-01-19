@@ -77,5 +77,8 @@ in
     stremio
     android-tools
     zoom-us
+    rpi-imager
+    gcc-arm-embedded
+    hyprpolkitagent
   ];
 }

@@ -15,5 +15,6 @@
     ../../modules/mongodb.nix
     ../../modules/print.nix
     ../../modules/docker.nix
+    ../../modules/secureboot.nix
   ];
 }
