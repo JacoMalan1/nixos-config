@@ -34,6 +34,7 @@
       workhorse = nixpkgs-stable.lib.nixosSystem {
         specialArgs = { inherit inputs; inherit system; };
         modules = [
+          lanzaboote.nixosModules.lanzaboote
           ./hosts/workhorse
         ];
       };
