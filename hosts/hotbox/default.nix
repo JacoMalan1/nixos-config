@@ -21,5 +21,7 @@
     ../../modules/print.nix
     ../../modules/secureboot.nix
     ../../modules/docker.nix
+    ../../modules/rstudio.nix
+    ../../modules/ntpclient.nix
   ];
 }

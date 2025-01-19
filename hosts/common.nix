@@ -50,6 +50,12 @@
       postman
       awscli2
       google-cloud-sdk
+      nmap
+      zoxide
+      element-desktop
+      openscad
+      chromium
+      ventoy
     ] ++ (with pkgs; [
       clang
       novelwriter

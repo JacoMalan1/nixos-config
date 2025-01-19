@@ -10,7 +10,6 @@ in
     librewolf
     rustdesk
     spotify
-    neovim
     zsh
     mesa
     keepassxc
