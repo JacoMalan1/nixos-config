@@ -31,6 +31,7 @@ in
     waybar
     swww
     rofi-wayland
+    wl-clipboard
   ] ++ (with pkgs-unstable; [hyprpaper]);
 
   environment.sessionVariables = {
