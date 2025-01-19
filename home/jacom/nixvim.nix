@@ -32,6 +32,7 @@ programs.nixvim = {
 	mode = [ "n" ];
 	key = "<leader>w";
 	action = "<Cmd>w<CR>";
+	options.desc = "Write buffer";
       }
       {
 	mode = [ "n" ];
@@ -80,13 +81,27 @@ programs.nixvim = {
       }
       {
 	mode = [ "n" ];
+	key = "<leader>lS";
+	action = "<Cmd>AerialToggle<CR>";
+	options.desc = "Symbols Overview";
+      }
+      {
+	mode = [ "n" ];
 	key = "<leader>la";
 	action = "<Cmd>lua vim.lsp.buf.code_action()<CR>";
+	options.desc = "LSP Code Action";
       }
       {
 	mode = [ "n" ];
 	key = "<leader>ld";
 	action = "<Cmd>lua vim.diagnostic.open_float()<CR>";
+	options.desc = "LSP Floating Diagnostics";
+      }
+      {
+	mode = [ "n" ];
+	key = "<leader>lr";
+	action = "<Cmd>lua vim.lsp.buf.rename()<CR>";
+	options.desc = "LSP Rename Symbol";
       }
       {
 	mode = [ "n" ];
@@ -102,12 +117,35 @@ programs.nixvim = {
 	mode = [ "n" ];
 	key = "<leader>c";
 	action = "<Cmd>bp<CR><Cmd>bd#<CR>";
+	options.desc = "Close current buffer";
       }
     ];
 
     plugins = {
+      notify.enable = true;
+      fidget = {
+	enable = true;
+	settings.progress.display.done_ttl = 1;
+      };
+      aerial = {
+	enable = true;
+      };
+      dropbar = {
+	enable = true;
+	settings = {
+	  icons.ui.bar = {
+	    separator = " > ";
+	  };
+	};
+      };
       nvim-autopairs.enable = true;
-      lualine.enable = true;
+      lualine = {
+	enable = true;
+	settings.options = {
+	  disabled_filetypes = [ "NvimTree" ];
+	  globalstatus = true;
+	};
+      };
       luasnip.enable = true;
       none-ls = {
 	enable = true;
@@ -161,7 +199,19 @@ programs.nixvim = {
 	};
       };
       web-devicons.enable = true;
-      bufferline.enable = true;
+      bufferline = {
+	enable = true;
+	settings.options = {
+	  offsets = [
+	    {
+	      filetype = "NvimTree";
+	      text = "File Explorer";
+	      highlight = "Directory";
+	      padding = 1;
+	    }
+	  ];
+	};
+      };
       treesitter = {
         enable = true;
 	settings.indent.enable = true;
