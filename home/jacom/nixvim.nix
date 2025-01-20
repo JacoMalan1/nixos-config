@@ -1,6 +1,27 @@
-{ ... }: {
-programs.nixvim = {
+{ inputs, system, ... }: 
+let
+  pkgs = import inputs.nixpkgs-stable { inherit system; };
+in
+{
+  programs.nixvim = {
     enable = true;
+
+    extraPlugins = [(pkgs.vimUtils.buildVimPlugin {
+      name = "nx.nvim";
+      src = pkgs.fetchFromGitHub {
+	owner = "Equilibris";
+	repo = "nx.nvim";
+	rev = "f8a3a21b3d540889401a40d1f2803083794c0372";
+	hash = "sha256-Yl7tg466650w4CZcuFdnUZhXk6z/uq0AHa64EKeZx/o=";
+      };
+    })];
+
+    extraConfigLuaPost = ''
+      require("nx").setup({
+	nx_cmd_root = "yarn nx",
+	read_init = true,
+      })
+    '';
 
     colorschemes = {
       catppuccin = {
@@ -8,7 +29,7 @@ programs.nixvim = {
 	settings.flavour = "macchiato";
       };
       gruvbox = {
-        enable = true;
+	enable = true;
       };
     };
 
@@ -24,7 +45,7 @@ programs.nixvim = {
 
     keymaps = [
       {
-        mode = [ "i" ];
+	mode = [ "i" ];
 	key = "jj";
 	action = "<Esc>";
       }
@@ -78,6 +99,12 @@ programs.nixvim = {
 	mode = [ "v" ];
 	key = "<leader>/";
 	action = "gc";
+      }
+      {
+	mode = [ "n" ];
+	key = "<leader>nx";
+	action = "<Cmd>Telescope nx actions<CR>";
+	options.desc = "Nx actions";
       }
       {
 	mode = [ "n" ];
@@ -181,6 +208,10 @@ programs.nixvim = {
 	enable = true;
 	autoClose = true;
 	renderer.highlightGit = true;
+	view.width = {
+	  min = 30;
+	  max = -1;
+	};
 	diagnostics = {
 	  enable = true;
 	  showOnDirs = true;
@@ -188,14 +219,19 @@ programs.nixvim = {
       };
       lsp-format.enable = true;
       lsp = {
-        enable = true;
+	enable = true;
 	servers = {
 	  nil_ls.enable = true;
 	  rust_analyzer = {
-            enable = true;
+	    enable = true;
 	    installCargo = false;
 	    installRustc = false;
 	  };
+	  angularls.enable = true;
+	  cssls.enable = true;
+	  eslint.enable = true;
+	  ts_ls.enable = true;
+	  yamlls.enable = true;
 	};
       };
       web-devicons.enable = true;
@@ -213,7 +249,7 @@ programs.nixvim = {
 	};
       };
       treesitter = {
-        enable = true;
+	enable = true;
 	settings.indent.enable = true;
 	settings.highlight.enable = true;
       };
