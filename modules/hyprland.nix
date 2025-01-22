@@ -2,8 +2,7 @@
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-in
-{
+in {
   programs.hyprland = {
     enable = true;
     package = pkgs-unstable.hyprland;
@@ -27,14 +26,9 @@ in
     '';
   };
 
-  environment.systemPackages = with pkgs; [
-    waybar
-    swww
-    rofi-wayland
-    wl-clipboard
-  ] ++ (with pkgs-unstable; [hyprpaper]);
+  environment.systemPackages = with pkgs;
+    [ waybar swww rofi-wayland wl-clipboard ]
+    ++ (with pkgs-unstable; [ hyprpaper ]);
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 }

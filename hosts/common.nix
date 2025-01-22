@@ -1,26 +1,29 @@
-{ inputs, system, ... }: 
-  let
-    pkgs = import inputs.nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
-    pkgs-stable = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
-  in
-  {
-    time.timeZone = "Africa/Johannesburg";
-    i18n.defaultLocale = "en_ZA.UTF-8";
-    
-    programs.zsh.enable = true;
-    users.defaultUserShell = pkgs.pkgs.zsh;
+{ inputs, system, ... }:
+let
+  pkgs = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    config.allowUnfree = true;
+  };
+  pkgs-stable = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+in {
+  time.timeZone = "Africa/Johannesburg";
+  i18n.defaultLocale = "en_ZA.UTF-8";
 
-    programs.nh = {
-      enable = true;
-    };
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.pkgs.zsh;
 
-    programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = [
-    ];
+  programs.nh = { enable = true; };
 
-    programs.dconf.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = [ ];
 
-    environment.systemPackages = with pkgs-stable; [
+  programs.dconf.enable = true;
+
+  environment.systemPackages = with pkgs-stable;
+    [
       transmission_4-gtk
       glib
       glib.dev
@@ -56,17 +59,16 @@
       openscad
       chromium
       ventoy
-    ] ++ (with pkgs; [
-      clang
-      novelwriter
-    ]);
+      libnotify
+      fd
+    ] ++ (with pkgs; [ clang novelwriter ]);
 
-    environment.sessionVariables = {
-      FLAKE = "$HOME/nix";
-      CARGO_TARGET_DIR = "$HOME/.cargo-target";
-    };
+  environment.sessionVariables = {
+    FLAKE = "$HOME/nix";
+    CARGO_TARGET_DIR = "$HOME/.cargo-target";
+  };
 
-    services.gvfs.enable = true;
-    services.smartd.enable = true;
-    services.pcscd.enable = true;
-  }
+  services.gvfs.enable = true;
+  services.smartd.enable = true;
+  services.pcscd.enable = true;
+}

@@ -1,6 +1,1 @@
-{ ... }: {
-  imports = [
-    ./joycond.nix
-    ./retroarch.nix
-  ];
-}
+{ ... }: { imports = [ ./joycond.nix ./retroarch.nix ]; }

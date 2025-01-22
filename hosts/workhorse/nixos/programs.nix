@@ -1,9 +1,14 @@
-{ inputs, system, ... }: 
+{ inputs, system, ... }:
 let
-  pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-in
-{
+  pkgs = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+in {
   environment.systemPackages = with pkgs; [
     zsh
     keepassxc
@@ -35,7 +40,7 @@ in
     macchanger
     kdePackages.breeze
     scrot
-    
+
     # GNOME utilities
     nautilus
     gnome-disk-utility
@@ -43,7 +48,7 @@ in
 
     nodejs_20
     yarn
-    
+
     neofetch
     onefetch
     btop
@@ -61,7 +66,7 @@ in
 
     python3
     unzip
-    
+
     brightnessctl
     exfat
     dolphin-emu

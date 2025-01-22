@@ -1,9 +1,14 @@
-{ inputs, system, ... }: 
+{ inputs, system, ... }:
 let
-  pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-in
-{
+  pkgs = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+in {
   # System packages
   environment.systemPackages = (with pkgs; [
     # Packages from stable 24.05
@@ -40,12 +45,12 @@ in
     macchanger
     kdePackages.breeze
     grim
-    
+
     # GNOME utilities
     nautilus
     gnome-disk-utility
     evince
-    
+
     neofetch
     onefetch
     btop

@@ -3,17 +3,21 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, inputs, system, ... }:
-let 
-  pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-  pkgs-stable = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
-in
+let
+  pkgs = import inputs.nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+  pkgs-stable = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
 
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./fs.nix
-    ];
+in {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./fs.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -36,18 +40,15 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
-  environment.sessionVariables = {
-    FLAKE = "$HOME/nix";
-  };
-
+  environment.sessionVariables = { FLAKE = "$HOME/nix"; };
 
   # Enable the X11 windowing system.
   services.libinput.touchpad.naturalScrolling = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
-  
+
   # Enable the GNOME Desktop Environment.
-  services.seatd = { 
-    enable = true; 
+  services.seatd = {
+    enable = true;
     user = "jacom";
   };
 
@@ -75,11 +76,9 @@ in
     enable = true;
     enable32Bit = true;
   };
-  
+
   security.rtkit.enable = true;
-  security.polkit = {
-    enable = true;
-  };
+  security.polkit = { enable = true; };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -109,10 +108,11 @@ in
   # Allow unfree packages
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    trusted-public-keys =
+      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
   nixpkgs.config.allowUnfree = true;
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

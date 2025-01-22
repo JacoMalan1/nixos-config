@@ -1,11 +1,7 @@
 { lib, inputs, system, ... }:
-let
-  pkgs = import inputs.nixpkgs-unstable { inherit system; };
-in
-{
-  environment.systemPackages = with pkgs; [
-    sbctl
-  ];
+let pkgs = import inputs.nixpkgs-unstable { inherit system; };
+in {
+  environment.systemPackages = with pkgs; [ sbctl ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.lanzaboote = {

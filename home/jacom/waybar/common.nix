@@ -7,25 +7,27 @@
         modules-center = [ "clock" ];
 
         pulseaudio = {
-          format =  "{volume}% {icon} {format_source}";
-          format-bluetooth =  "{volume}% {icon} {format_source}";
-          format-bluetooth-muted =  " {icon} {format_source}";
-          format-muted =  " {format_source}";
-          format-source =  "{volume}% ";
-          format-source-muted =  "";
-          format-icons =  {
-              headphone =  "";
-              hands-free =  "";
-              headset =  "";
-              phone =  "";
-              portable =  "";
-              car =  "";
-              default =  [ "" "" "" ];
+          format = "{volume}% {icon} {format_source}";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = "{volume}% ";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" "" ];
           };
         };
 
         clock = {
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          tooltip-format = ''
+            <big>{:%Y %B}</big>
+            <tt><small>{calendar}</small></tt>'';
           format-alt = "{:%Y-%m-%d}";
         };
 
@@ -50,15 +52,11 @@
           format-alt = "{ifname}: {ipaddr}/{cidr}";
         };
 
-        tray = {
-          spacing = 10;
-        };
+        tray = { spacing = 10; };
 
         battery = {
           interval = 10;
-          states = {
-            warning = 15;
-          };
+          states = { warning = 15; };
         };
       };
     };

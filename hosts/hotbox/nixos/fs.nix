@@ -9,10 +9,10 @@
   boot.initrd.luks.devices = {
     "luks-ba3cf3e3-a001-4e13-9740-8116f72bc66c" = {
       device = "/dev/disk/by-uuid/ba3cf3e3-a001-4e13-9740-8116f72bc66c";
-      crypttabExtraOpts = ["fido2-device=auto"];
+      crypttabExtraOpts = [ "fido2-device=auto" ];
     };
   };
-  
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/bdd1a1f1-a1f4-4067-aab8-e7eff3d5b027";
     fsType = "ext4";

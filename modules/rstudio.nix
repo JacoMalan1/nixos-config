@@ -1,10 +1,10 @@
 { inputs, system, ... }:
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-  rstudio-override = pkgs-unstable.rstudioWrapper.override { 
-    packages = with pkgs-unstable.rPackages; [ 
-      ggplot2 
-      dplyr 
+  rstudio-override = pkgs-unstable.rstudioWrapper.override {
+    packages = with pkgs-unstable.rPackages; [
+      ggplot2
+      dplyr
       tidyverse
       maps
       rnaturalearth
@@ -24,9 +24,6 @@ let
       SnowballC
       topicmodels
       textstem
-    ]; 
+    ];
   };
-in
-{
-  environment.systemPackages = [rstudio-override];
-}
+in { environment.systemPackages = [ rstudio-override ]; }

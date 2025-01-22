@@ -15,15 +15,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    zsh-powerlevel10k
-    meslo-lgs-nf
-  ];
+  home.packages = with pkgs; [ zsh-powerlevel10k meslo-lgs-nf ];
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
   };
 
   programs.kitty = {
@@ -50,7 +45,7 @@
 
   gtk = {
     enable = true;
-    
+
     iconTheme = {
       package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
@@ -60,18 +55,14 @@
       package = pkgs.gnome-themes-extra;
       name = "Adwaita-dark";
     };
-    
+
     gtk2.extraConfig = ''
       gtk-application-prefer-dark-theme = true
     '';
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
+    gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
   };
-  
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -112,9 +103,7 @@
   programs.home-manager.enable = true;
   programs.lazygit = {
     enable = true;
-    settings = {
-      git.autoFetch = false;
-    };
+    settings = { git.autoFetch = false; };
   };
 
   programs.zsh = {
@@ -143,13 +132,11 @@
       ns = "nix-shell --command zsh -p";
     };
 
-    plugins = [
-      {
-        name = "zsh-powerlevel10k";
-        src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-        file = "powerlevel10k.zsh-theme";
-      }
-    ];
+    plugins = [{
+      name = "zsh-powerlevel10k";
+      src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+      file = "powerlevel10k.zsh-theme";
+    }];
   };
 
   services.wlsunset = {

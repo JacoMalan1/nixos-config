@@ -6,18 +6,10 @@
     extraPackages = with pkgs; [ nvidia-vaapi-driver ];
   };
 
-  boot.kernelParams = [
-    "nvidia_drm.modeset=1"
-    "nvidia_drm.fbdev=1"
-  ];
+  boot.kernelParams = [ "nvidia_drm.modeset=1" "nvidia_drm.fbdev=1" ];
 
-  boot.kernelModules = [
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
-    "i2c-nvidia_gpu"
-  ];
+  boot.kernelModules =
+    [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" "i2c-nvidia_gpu" ];
 
   environment.systemPackages = with pkgs; [
     vulkan-headers
@@ -31,7 +23,7 @@
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = false;
-    
+
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       version = "565.57.01";
       sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";

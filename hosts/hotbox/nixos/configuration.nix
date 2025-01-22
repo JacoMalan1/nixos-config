@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, inputs, system, ... }: 
-let 
-  pkgs = import inputs.nixpkgs-stable { inherit system; config.allowUnfree = true; };
-in
-{
-  imports = [
-    ./hardware-configuration.nix
-  ];
+{ config, lib, inputs, system, ... }:
+let
+  pkgs = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
+in {
+  imports = [ ./hardware-configuration.nix ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -19,9 +19,9 @@ in
   boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
-  
+
   boot.blacklistedKernelModules = [ "k10temp" ];
-  
+
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
   boot.kernelModules = [ "zenpower" ];
@@ -43,9 +43,7 @@ in
 
   services.libinput = {
     enable = true;
-    mouse = {
-      accelProfile = "flat";
-    };
+    mouse = { accelProfile = "flat"; };
   };
 
   # Configure keymap in X11
@@ -66,7 +64,7 @@ in
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   security.unprivilegedUsernsClone = true;
-  
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -78,22 +76,15 @@ in
     isNormalUser = true;
     description = "Jaco Malan";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kitty
-      zellij
-    ];
+    packages = with pkgs; [ kitty zellij ];
   };
 
   programs.firefox.enable = true;
 
   # NixOS Dynamically linked binaries fix
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    libspatialite
-    libxml2
-    freetype
-  ];
-  
+  programs.nix-ld.libraries = with pkgs; [ libspatialite libxml2 freetype ];
+
   programs.ssh.startAgent = false;
 
   # Enable the OpenSSH daemon.
@@ -106,9 +97,7 @@ in
     };
   };
 
-  specialisation."nofw".configuration = {
-    networking.firewall.enable = false;
-  };
+  specialisation."nofw".configuration = { networking.firewall.enable = false; };
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
@@ -116,8 +105,8 @@ in
 
   # Open ports in the firewall.
   networking.firewall = {
-    allowedTCPPorts = [ 8384 22000 25565 22 ];
-    allowedUDPPorts = [ 22000 21027 ];
+    allowedTCPPorts = [ 8384 22000 25565 22 27017 ];
+    allowedUDPPorts = [ 22000 21027 27017 ];
   };
 
   # Do not remove

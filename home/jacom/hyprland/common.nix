@@ -1,19 +1,14 @@
-{ inputs, system, ... }: 
-let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-in
-{
+{ inputs, system, ... }:
+let pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+in {
+  services.dunst.enable = true;
   programs.hyprlock = {
     enable = true;
     package = pkgs-unstable.hyprlock;
     settings = {
-      general = {
-        immediate_render = true;
-      };
-    
-      background = {
-        color = "rgba(128, 128, 128, 1.0)";
-      };
+      general = { immediate_render = true; };
+
+      background = { color = "rgba(128, 128, 128, 1.0)"; };
 
       input-field = {
         size = "200, 50";
@@ -83,24 +78,18 @@ in
     enable = true;
     package = pkgs-unstable.hyprland;
     settings = {
-      env = [
-        "HYPRCURSOR_THEME,Adwaita"
-        "HYPRCURSOR_SIZE,24"
-      ];
+      env = [ "HYPRCURSOR_THEME,Adwaita" "HYPRCURSOR_SIZE,24" ];
       exec-once = [
         "waybar & disown"
         "easyeffects --gapplication-service"
         "keepassxc & disown"
-        "dunst & disown"
       ];
       animation = "global, 1, 2, default";
       general = {
         gaps_out = 10;
         layout = "master";
       };
-      master = {
-        mfact = 0.5;
-      };
+      master = { mfact = 0.5; };
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";
       bind = [
         "ALT, b, exec, librewolf"
@@ -146,11 +135,9 @@ in
         ", XF86AudioPrev, exec, playerctl previous"
         ", XF86AudioNext, exec, playerctl next"
       ];
-      bindm = [
-        "SUPER, mouse:272, movewindow"
-        "SUPER, mouse:273, resizewindow"
-      ];
-      
+      bindm =
+        [ "SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow" ];
+
       input.accel_profile = "flat";
 
       windowrulev2 = [
