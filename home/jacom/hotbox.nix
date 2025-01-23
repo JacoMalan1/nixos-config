@@ -1,6 +1,5 @@
 { ... }: {
-  imports =
-    [ ./common.nix ./hyprland/hotbox.nix ./waybar/hotbox.nix ./nixvim.nix ];
+  imports = [ ./common.nix ./hyprland/hotbox.nix ./waybar/hotbox.nix ./nixvim ];
 
   programs.mangohud = {
     enable = true;
