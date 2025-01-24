@@ -71,6 +71,30 @@
       }
       {
         mode = [ "n" ];
+        key = "<leader>gl";
+        action = "<Cmd>Gitsigns blame_line<CR>";
+        options.desc = "Git blame (line)";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>gL";
+        action = "<Cmd>Gitsigns blame<CR>";
+        options.desc = "Git full blame";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>gs";
+        action = "<Cmd>Gitsigns stage_hunk<CR>";
+        options.desc = "Git stage hunk";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>gS";
+        action = "<Cmd>Gitsigns undo_stage_hunk<CR>";
+        options.desc = "Git unstage hunk";
+      }
+      {
+        mode = [ "n" ];
         key = "<leader>gg";
         action = "<Cmd>LazyGit<CR>";
       }
