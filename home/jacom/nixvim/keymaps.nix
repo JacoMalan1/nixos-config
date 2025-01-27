@@ -42,7 +42,7 @@
       {
         mode = [ "n" ];
         key = "<leader>e";
-        action = "<Cmd>NvimTreeToggle<CR>";
+        action = "<Cmd>Neotree toggle<CR>";
       }
       {
         mode = [ "n" ];

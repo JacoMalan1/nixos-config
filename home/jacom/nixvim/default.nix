@@ -1,7 +1,7 @@
 { inputs, system, ... }:
 let pkgs = import inputs.nixpkgs-stable { inherit system; };
 in {
-  imports = [ ./keymaps.nix ./plugins.nix ./dap.nix ];
+  imports = [ ./keymaps.nix ./plugins ./dap.nix ];
 
   programs.nixvim = {
     enable = true;
@@ -22,6 +22,7 @@ in {
         };
       })
       pkgs.vimPlugins.nvim-ts-autotag
+      pkgs.vimPlugins.onedarkpro-nvim
     ];
 
     extraConfigLua = ''
@@ -41,10 +42,16 @@ in {
 
     colorschemes = {
       catppuccin = {
-        enable = false;
+        enable = true;
         settings.flavour = "macchiato";
       };
-      gruvbox = { enable = true; };
+      gruvbox.enable = false;
+      dracula.enable = false;
+      tokyonight.enable = false;
+      onedark = {
+        enable = false;
+        settings.style = "warmer";
+      };
     };
 
     globals.mapleader = " ";

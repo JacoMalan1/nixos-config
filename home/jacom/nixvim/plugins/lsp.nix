@@ -1,0 +1,15 @@
+{ ... }: {
+  programs.nixvim.plugins.lsp = {
+    enable = true;
+    servers = {
+      nixd.enable = true;
+      angularls.enable = true;
+      cssls.enable = true;
+      eslint.enable = true;
+      ts_ls.enable = true;
+      yamlls.enable = true;
+      tailwindcss.enable = true;
+      html.enable = true;
+    };
+  };
+}
