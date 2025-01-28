@@ -93,6 +93,7 @@ in {
     blender
     ghidra-bin
     brave
+    firebase-tools
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

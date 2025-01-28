@@ -1,8 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, lib, inputs, system, ... }:
+{ config, inputs, system, ... }:
 let
   pkgs = import inputs.nixpkgs-stable {
     inherit system;
@@ -97,7 +93,7 @@ in {
     };
   };
 
-  specialisation."nofw".configuration = { networking.firewall.enable = false; };
+  networking.firewall.enable = true;
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
