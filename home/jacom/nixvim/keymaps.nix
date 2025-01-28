@@ -95,6 +95,12 @@
       }
       {
         mode = [ "n" ];
+        key = "<leader>gr";
+        action = "<Cmd>Gitsigns reset_hunk<CR>";
+        options.desc = "Git reset hunk";
+      }
+      {
+        mode = [ "n" ];
         key = "<leader>gg";
         action = "<Cmd>LazyGit<CR>";
       }
