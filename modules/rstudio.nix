@@ -1,8 +1,8 @@
 { inputs, system, ... }:
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-  rstudio-override = pkgs-unstable.rstudioWrapper.override {
-    packages = with pkgs-unstable.rPackages; [
+  pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
+  rstudio-override = pkgs-stable.rstudioWrapper.override {
+    packages = with pkgs-stable.rPackages; [
       ggplot2
       dplyr
       tidyverse
