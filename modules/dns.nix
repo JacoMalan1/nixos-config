@@ -1,7 +1,6 @@
 { lib, ... }: {
-  networking.nameservers = lib.mkDefault [ "194.242.2.2#dns.mullvad.net" ];
-  services.resolved.fallbackDns =
-    lib.mkDefault [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+  networking.nameservers = lib.mkDefault [ "1.1.1.1#one.one.one.one" ];
+  services.resolved.fallbackDns = lib.mkDefault [ "1.0.0.1#one.one.one.one" ];
 
   services.resolved = {
     enable = true;
