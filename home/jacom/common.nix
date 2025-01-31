@@ -143,5 +143,6 @@
     enable = true;
     latitude = -29.0;
     longitude = 24.0;
+    temperature.night = 3400;
   };
 }

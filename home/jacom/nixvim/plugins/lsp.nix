@@ -10,6 +10,7 @@
       yamlls.enable = true;
       tailwindcss.enable = true;
       html.enable = true;
+      pylsp.enable = true;
     };
   };
 }
