@@ -10,7 +10,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -39,7 +39,7 @@
       };
 
       homeConfigurations = {
-        hotbox-jacom = home-manager.lib.homeManagerConfiguration {
+        "jacom@hotbox" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
             inherit inputs;
             inherit system;
@@ -51,7 +51,7 @@
           modules =
             [ ./home/jacom/hotbox.nix inputs.nixvim.homeManagerModules.nixvim ];
         };
-        workhorse-jacom = home-manager.lib.homeManagerConfiguration {
+        "jacom@workhorse" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
             inherit inputs;
             inherit system;
