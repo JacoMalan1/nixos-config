@@ -24,6 +24,8 @@ in {
     };
   };
 
+  virtualisation.spiceUSBRedirection.enable = true;
+
   users.users.jacom.extraGroups = [ "libvirtd" ];
 
   networking.firewall.interfaces.virbr2 = {
@@ -42,5 +44,6 @@ in {
     bridge-utils
     safe-rm
     dnsmasq
+    spice-gtk
   ];
 }

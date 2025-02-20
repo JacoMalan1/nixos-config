@@ -23,5 +23,6 @@
     ../../modules/docker.nix
     ../../modules/rstudio.nix
     ../../modules/ntpclient.nix
+    ../../modules/mariadb.nix
   ];
 }

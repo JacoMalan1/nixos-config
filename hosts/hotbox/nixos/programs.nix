@@ -77,6 +77,7 @@ in {
     lxappearance
     gimp
     jdk21
+    jdk17
     anydesk
     python3
     kdePackages.kcachegrind
@@ -94,10 +95,26 @@ in {
     ghidra-bin
     brave
     firebase-tools
+
+    wineWowPackages.stable
+
+    android-tools
+    zls
+    zig
+    godot_4
+
+    gradle
+    renderdoc
+    libsForQt5.qt5.qtwayland
+
+    stellarium
+    thunderbird
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
     gcc_multi
     libresplit
+    musescore
+    tracy-wayland
   ]);
 }

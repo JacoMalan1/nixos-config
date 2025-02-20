@@ -50,6 +50,8 @@ in {
 
   services.gnome.gnome-keyring.enable = true;
 
+  services.fwupd.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -93,7 +95,7 @@ in {
     };
   };
 
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
