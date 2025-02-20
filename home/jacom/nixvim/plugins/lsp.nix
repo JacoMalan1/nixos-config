@@ -11,6 +11,11 @@
       tailwindcss.enable = true;
       html.enable = true;
       pylsp.enable = true;
+      taplo.enable = true;
+      clangd.enable = true;
+      glsl_analyzer.enable = true;
+      zls.enable = true;
+      cmake.enable = true;
     };
   };
 }

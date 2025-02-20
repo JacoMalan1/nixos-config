@@ -78,7 +78,14 @@ in {
     enable = true;
     package = pkgs-unstable.hyprland;
     settings = {
-      env = [ "HYPRCURSOR_THEME,Adwaita" "HYPRCURSOR_SIZE,24" ];
+      env = [
+        "HYPRCURSOR_THEME,Adwaita"
+        "HYPRCURSOR_SIZE,24"
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "QT_QPA_PLATFORM,wayland"
+      ];
       exec-once = [
         "waybar & disown"
         "easyeffects --gapplication-service"
@@ -122,8 +129,6 @@ in {
         "ALT SHIFT, j, swapnext"
         "ALT SHIFT, k, swapnext, prev"
         "ALT, k, cyclenext, prev"
-        "ALT, h, focusmonitor, DP-3"
-        "ALT, l, focusmonitor, HDMI-A-2"
         "ALT, f, fullscreen"
         "ALT SHIFT, x, exit"
         "ALT SHIFT, f, togglefloating"

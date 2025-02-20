@@ -56,6 +56,8 @@ in {
 
     globals.mapleader = " ";
 
+    files = { "after/ftplugin/java.lua" = { opts = { tabstop = 2; }; }; };
+
     opts = {
       relativenumber = true;
       number = true;

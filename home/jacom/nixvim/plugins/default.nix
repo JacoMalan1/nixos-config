@@ -3,6 +3,10 @@
 
   programs.nixvim = {
     plugins = {
+      nvim-jdtls = {
+        enable = true;
+        data = "/home/jacom/.cache/jdtls/workspace";
+      };
       gitsigns.enable = true;
       rustaceanvim.enable = true;
       lspkind = {
