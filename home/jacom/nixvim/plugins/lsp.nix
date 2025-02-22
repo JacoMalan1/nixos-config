@@ -16,6 +16,10 @@
       glsl_analyzer.enable = true;
       zls.enable = true;
       cmake.enable = true;
+      hls = {
+        enable = true;
+        installGhc = false;
+      };
     };
   };
 }
