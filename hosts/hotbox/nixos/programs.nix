@@ -108,6 +108,7 @@ in {
 
     stellarium
     thunderbird
+    inputs.strain.defaultPackage.${system}
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
