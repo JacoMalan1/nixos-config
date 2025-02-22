@@ -1,11 +1,15 @@
-{ ... }: {
+{ ... }:
+let
+  leftMonitor = "DP-3";
+  rightMonitor = "HDMI-A-1";
+in {
   imports = [ ./common.nix ];
 
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "ALT, w, swapactiveworkspaces, HDMI-A-2 DP-3"
-      "ALT, h, focusmonitor, DP-3"
-      "ALT, l, focusmonitor, HDMI-A-1"
+      "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
+      "ALT, h, focusmonitor, ${leftMonitor}"
+      "ALT, l, focusmonitor, ${rightMonitor}"
     ];
 
     windowrulev2 = [
@@ -14,6 +18,9 @@
       "fullscreen, initialclass:(steam_app_311210)"
     ];
 
-    monitor = [ "HDMI-A-1, 1920x1080, 1920x0, 1" "DP-3, 1920x1080, 0x0, 1" ];
+    monitor = [
+      "${rightMonitor}, 1920x1080, 1920x0, 1"
+      "${leftMonitor}, 1920x1080, 0x0, 1"
+    ];
   };
 }
