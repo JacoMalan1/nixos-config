@@ -12,9 +12,10 @@
     ../../modules/leftwm.nix
     ../../modules/hyprland.nix
     ../../modules/golang.nix
-    ../../modules/mongodb.nix
+    # ../../modules/mongodb.nix
     ../../modules/print.nix
     ../../modules/docker.nix
     ../../modules/secureboot.nix
+    ../../modules/mariadb.nix
   ];
 }

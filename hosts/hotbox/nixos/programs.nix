@@ -57,7 +57,6 @@ in {
 
     lm_sensors
     zenmonitor
-    playerctl
     unzip
 
     nodejs_20

@@ -45,7 +45,6 @@ in {
       whois
       tor-browser
       freecad
-      prusa-slicer
       qalculate-gtk
       sshfs
       hunspell
@@ -61,6 +60,7 @@ in {
       ventoy
       libnotify
       fd
+      playerctl
     ] ++ (with pkgs; [ clang novelwriter ]);
 
   environment.sessionVariables = {
