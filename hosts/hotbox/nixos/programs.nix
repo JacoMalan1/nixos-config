@@ -116,5 +116,6 @@ in {
     libresplit
     musescore
     tracy-wayland
+    jetbrains.rider
   ]);
 }

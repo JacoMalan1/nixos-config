@@ -81,7 +81,7 @@ in {
 
   # NixOS Dynamically linked binaries fix
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ libspatialite libxml2 freetype ];
+  programs.nix-ld.libraries = with pkgs; [ libspatialite libxml2 freetype icu ];
 
   programs.ssh.startAgent = false;
 
@@ -95,7 +95,7 @@ in {
     };
   };
 
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
