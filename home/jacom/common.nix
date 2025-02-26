@@ -15,7 +15,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [ zsh-powerlevel10k meslo-lgs-nf ];
+  home.packages = with pkgs; [ zsh-powerlevel10k meslo-lgs-nf gcr seahorse ];
 
   dconf.settings = {
     "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
@@ -119,6 +119,7 @@
       export PATH=$PATH:$HOME/go/bin
       export PATH=$PATH:$HOME/.npm-global/bin
       export PATH=$PATH:$HOME/bin
+      export PATH=$PATH:$HOME/.local/bin
       source ~/.p10k.zsh
       bindkey -M viins 'jj' vi-cmd-mode
       eval "$(direnv hook zsh)"
@@ -145,4 +146,6 @@
     longitude = 24.0;
     temperature.night = 3400;
   };
+
+  services.gnome-keyring.enable = true;
 }

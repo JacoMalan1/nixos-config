@@ -3,6 +3,13 @@
 
   programs.nixvim = {
     plugins = {
+      comment = {
+        enable = true;
+        settings = {
+          opleader.line = "<leader>/";
+          toggler.line = "<leader>/";
+        };
+      };
       nvim-jdtls = {
         enable = true;
         data = "/home/jacom/.cache/jdtls/workspace";

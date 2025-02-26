@@ -106,16 +106,6 @@
       }
       {
         mode = [ "n" ];
-        key = "<leader>/";
-        action = "gcc";
-      }
-      {
-        mode = [ "v" ];
-        key = "<leader>/";
-        action = "gc";
-      }
-      {
-        mode = [ "n" ];
         key = "<leader>nx";
         action = "<Cmd>Telescope nx actions<CR>";
         options.desc = "Nx actions";

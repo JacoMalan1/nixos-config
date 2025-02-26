@@ -27,8 +27,8 @@ in {
 
     extraConfigLua = ''
       require("nx").setup({
-      	nx_cmd_root = "yarn nx",
-      	read_init = true,
+        nx_cmd_root = "yarn nx",
+        read_init = true,
       })
 
       require("nvim-ts-autotag").setup({
@@ -37,6 +37,12 @@ in {
           enable_rename = true,
           enable_close_on_slash = false,
         }
+      })
+
+      vim.api.nvim_create_autocmd("TextYankPost", {
+        callback = function()
+          vim.highlight.on_yank()
+        end,
       })
     '';
 
@@ -56,7 +62,10 @@ in {
 
     globals.mapleader = " ";
 
-    files = { "after/ftplugin/java.lua" = { opts = { tabstop = 2; }; }; };
+    files = {
+      "after/ftplugin/java.lua" = { opts = { tabstop = 2; }; };
+      "after/ftplugin/typescriptreact.lua" = { opts = { tabstop = 2; }; };
+    };
 
     opts = {
       relativenumber = true;
