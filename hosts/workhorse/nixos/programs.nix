@@ -90,5 +90,6 @@ in {
       dbeaver-bin
       icu
       dotnet-sdk
+      maven
     ] ++ (with pkgs-unstable; [ jetbrains.rider ]);
 }

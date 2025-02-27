@@ -17,5 +17,6 @@
     ../../modules/docker.nix
     ../../modules/secureboot.nix
     ../../modules/mariadb.nix
+    ../../modules/pritunl.nix
   ];
 }
