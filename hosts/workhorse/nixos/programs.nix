@@ -89,5 +89,6 @@ in {
       vscode-fhs
       dbeaver-bin
       icu
+      dotnet-sdk
     ] ++ (with pkgs-unstable; [ jetbrains.rider ]);
 }
