@@ -3,6 +3,10 @@
 
   programs.nixvim = {
     plugins = {
+      # java = {
+      #   enable = true;
+      #   package = pkgs.vimPlugins.nvim-java;
+      # };
       comment = {
         enable = true;
         settings = {

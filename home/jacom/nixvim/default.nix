@@ -21,6 +21,15 @@ in {
           hash = "sha256-Yl7tg466650w4CZcuFdnUZhXk6z/uq0AHa64EKeZx/o=";
         };
       })
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "spring-boot.nvim";
+        src = pkgs.fetchFromGitHub {
+          owner = "JavaHello";
+          repo = "spring-boot.nvim";
+          rev = "fc474dfd4bbe78188fdd5b2984e7013e124c46fe";
+          hash = "sha256-JYI/7VSafU4YD9VkZ7swgrJqRZbS56VSGNuUNIG6bZs=";
+        };
+      })
       pkgs.vimPlugins.nvim-ts-autotag
       pkgs.vimPlugins.onedarkpro-nvim
     ];
@@ -38,6 +47,8 @@ in {
           enable_close_on_slash = false,
         }
       })
+
+      require("spring_boot").setup()
 
       vim.api.nvim_create_autocmd("TextYankPost", {
         callback = function()
