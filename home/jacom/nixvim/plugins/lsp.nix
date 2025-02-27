@@ -20,6 +20,7 @@
         enable = true;
         installGhc = false;
       };
+      csharp_ls.enable = true;
     };
   };
 }
