@@ -109,6 +109,7 @@ in {
     stellarium
     thunderbird
     inputs.strain.defaultPackage.${system}
+    wireshark-qt
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

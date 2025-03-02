@@ -73,7 +73,7 @@ in {
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark" ];
     packages = with pkgs; [ kitty zellij ];
   };
 
@@ -85,6 +85,8 @@ in {
 
   programs.ssh.startAgent = false;
 
+  programs.wireshark.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
@@ -95,7 +97,7 @@ in {
     };
   };
 
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
