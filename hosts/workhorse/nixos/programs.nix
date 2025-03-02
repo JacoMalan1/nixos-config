@@ -88,7 +88,6 @@ in {
       vscode-fhs
       dbeaver-bin
       icu
-      dotnet-sdk
       maven
       pwvucontrol
       drawio

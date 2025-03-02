@@ -44,7 +44,6 @@ in {
       dig
       whois
       tor-browser
-      freecad
       qalculate-gtk
       sshfs
       hunspell
@@ -61,7 +60,9 @@ in {
       libnotify
       fd
       playerctl
-    ] ++ (with pkgs; [ clang novelwriter ]);
+      dotnet-sdk
+      prusa-slicer
+    ] ++ (with pkgs; [ clang novelwriter freecad ]);
 
   environment.sessionVariables = {
     FLAKE = "$HOME/nix";
