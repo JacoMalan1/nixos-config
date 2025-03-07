@@ -33,6 +33,13 @@
           };
           modules = [ lanzaboote.nixosModules.lanzaboote ./hosts/hotbox ];
         };
+        django = nixpkgs-stable.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          modules = [ lanzaboote.nixosModules.lanzaboote ./hosts/django ];
+        };
         workhorse = nixpkgs-stable.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
@@ -54,6 +61,18 @@
           };
           modules =
             [ ./home/jacom/hotbox.nix inputs.nixvim.homeManagerModules.nixvim ];
+        };
+        "jacom@django" = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit system;
+          };
+          pkgs = import inputs.nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          modules =
+            [ ./home/jacom/django.nix inputs.nixvim.homeManagerModules.nixvim ];
         };
         "jacom@workhorse" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
