@@ -76,7 +76,6 @@ in {
       thunderbird
       vlc
       gparted
-      jdk17
       steam-run
       unrar
       p7zip
@@ -91,5 +90,7 @@ in {
       icu
       dotnet-sdk
       maven
+      pwvucontrol
+      drawio
     ] ++ (with pkgs-unstable; [ jetbrains.rider ]);
 }
