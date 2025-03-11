@@ -61,7 +61,6 @@ in {
       fd
       playerctl
       dotnet-sdk
-      prusa-slicer
     ] ++ (with pkgs; [ clang novelwriter freecad ]);
 
   environment.sessionVariables = {

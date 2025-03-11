@@ -19,5 +19,6 @@
     ../../modules/pritunl.nix
     ../../modules/wireshark.nix
     ../../modules/jdk17.nix
+    ../../modules/secureboot.nix
   ];
 }

@@ -47,7 +47,6 @@ in {
       gnome-disk-utility
       evince
 
-      nodejs_20
       yarn
 
       neofetch
@@ -92,5 +91,5 @@ in {
       maven
       pwvucontrol
       drawio
-    ] ++ (with pkgs-unstable; [ jetbrains.rider ]);
+    ] ++ (with pkgs-unstable; [ jetbrains.idea-community nodejs_20 ]);
 }
