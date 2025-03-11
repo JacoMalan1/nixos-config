@@ -1,5 +1,5 @@
 { inputs, system, ... }:
-let pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+let pkgs-unstable = import inputs.nixpkgs-stable { inherit system; };
 in {
   services.dunst.enable = true;
   programs.hyprlock = {
