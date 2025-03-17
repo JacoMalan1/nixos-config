@@ -21,6 +21,10 @@ in {
         "${rightMonitor}, 1920x1080, 1920x0, 1"
         "${leftMonitor}, 2880x1620@120.00, 0x0, 1.5"
       ];
+      windowrulev2 = [
+        "minsize 1 1, class:^(spotify)$"
+        "stayfocused, class:DBeaver, floating:1"
+      ];
     };
   };
 }

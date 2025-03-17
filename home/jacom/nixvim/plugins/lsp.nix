@@ -21,6 +21,7 @@
         installGhc = false;
       };
       csharp_ls.enable = true;
+      volar.enable = true;
     };
   };
 }
