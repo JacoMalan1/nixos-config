@@ -91,5 +91,6 @@ in {
       maven
       pwvucontrol
       drawio
-    ] ++ (with pkgs-unstable; [ jetbrains.idea-community nodejs_20 ]);
+      spotifywm
+    ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 ]);
 }
