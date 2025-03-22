@@ -6,6 +6,7 @@ in {
   imports = [ ./common.nix ];
 
   wayland.windowManager.hyprland.settings = {
+    env = [ "ELECTRON_OZONE_PLATFORM_HINT,auto" "LIBVA_DRIVER_NAME,nvidia" ];
     bind = [
       "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
       "ALT, h, focusmonitor, ${leftMonitor}"
@@ -16,6 +17,7 @@ in {
       "workspace 1, initialclass:(steam_app_311210)"
       "tile, initialclass:(steam_app_311210)"
       "fullscreen, initialclass:(steam_app_311210)"
+      "float, initialTitle:(pisim)"
     ];
 
     monitor = [

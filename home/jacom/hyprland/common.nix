@@ -81,9 +81,6 @@ in {
       env = [
         "HYPRCURSOR_THEME,Adwaita"
         "HYPRCURSOR_SIZE,24"
-        "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        "LIBVA_DRIVER_NAME,nvidia"
         "QT_QPA_PLATFORM,wayland"
       ];
       exec-once = [

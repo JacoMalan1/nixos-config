@@ -3,6 +3,7 @@
 
   programs.nixvim = {
     plugins = {
+      tailwind-tools.enable = true;
       # java = {
       #   enable = true;
       #   package = pkgs.vimPlugins.nvim-java;
@@ -24,10 +25,13 @@
         enable = true;
         cmp.enable = true;
       };
-      notify.enable = true;
+      notify = {
+        enable = true;
+        settings.level = "warn";
+      };
       fidget = {
         enable = true;
-        settings.progress.display.done_ttl = 1;
+        settings = { progress.display.done_ttl = 1; };
       };
       aerial = { enable = true; };
       dropbar = {

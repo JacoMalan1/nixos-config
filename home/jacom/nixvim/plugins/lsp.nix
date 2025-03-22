@@ -22,6 +22,7 @@
       };
       csharp_ls.enable = true;
       volar.enable = true;
+      svelte.enable = true;
     };
   };
 }
