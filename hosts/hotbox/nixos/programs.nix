@@ -110,6 +110,7 @@ in {
     thunderbird
     inputs.strain.defaultPackage.${system}
     wireshark-qt
+    dbeaver-bin
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

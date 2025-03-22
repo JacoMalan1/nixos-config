@@ -61,7 +61,8 @@ in {
       fd
       playerctl
       dotnet-sdk
-    ] ++ (with pkgs; [ clang novelwriter freecad ]);
+      freecad
+    ] ++ (with pkgs; [ clang novelwriter prusa-slicer ]);
 
   environment.sessionVariables = {
     FLAKE = "$HOME/nix";
