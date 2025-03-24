@@ -111,6 +111,7 @@ in {
     inputs.strain.defaultPackage.${system}
     wireshark-qt
     dbeaver-bin
+    freecad
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
@@ -119,5 +120,6 @@ in {
     musescore
     tracy-wayland
     jetbrains.rider
+    prusa-slicer
   ]);
 }

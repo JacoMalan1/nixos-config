@@ -131,8 +131,8 @@ in {
 
   # Open ports in the firewall.
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8081 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 8081 22000 ];
+  networking.firewall.allowedUDPPorts = [ 22000 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
