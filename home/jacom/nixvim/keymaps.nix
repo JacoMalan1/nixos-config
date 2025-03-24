@@ -136,6 +136,12 @@
       }
       {
         mode = [ "n" ];
+        key = "<leader>lg";
+        action = "<Cmd>lua vim.lsp.buf.definition()<CR>";
+        options.desc = "LSP Go to Definition";
+      }
+      {
+        mode = [ "n" ];
         key = "]b";
         action = "<Cmd>bnext<CR>";
       }

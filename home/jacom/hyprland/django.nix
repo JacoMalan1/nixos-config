@@ -24,6 +24,7 @@ in {
       windowrulev2 = [
         "minsize 1 1, class:^(spotify)$"
         "stayfocused, class:DBeaver, floating:1"
+        "stayfocused, class:jetbrains-idea-ce, floating:1"
       ];
     };
   };
