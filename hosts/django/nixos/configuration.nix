@@ -124,6 +124,14 @@ in {
     enableSSHSupport = true;
   };
 
+  specialisation.gnome.configuration = {
+    services.xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

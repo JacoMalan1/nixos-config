@@ -20,5 +20,6 @@
     ../../modules/wireshark.nix
     ../../modules/jdk17.nix
     ../../modules/secureboot.nix
+    ../../modules/postgres.nix
   ];
 }
