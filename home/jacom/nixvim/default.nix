@@ -6,10 +6,10 @@ in {
   programs.nixvim = {
     enable = true;
 
-    autoCmd = [{
-      command = "lua vim.lsp.buf.format()";
-      event = "BufWritePre";
-    }];
+    # autoCmd = [{
+    #   command = "lua vim.lsp.buf.format()";
+    #   event = "BufWritePre";
+    # }];
 
     extraPlugins =
       [ pkgs.vimPlugins.nvim-ts-autotag pkgs.vimPlugins.onedarkpro-nvim ];
@@ -32,10 +32,10 @@ in {
 
     colorschemes = {
       catppuccin = {
-        enable = true;
+        enable = false;
         settings.flavour = "macchiato";
       };
-      gruvbox.enable = false;
+      gruvbox.enable = true;
       dracula.enable = false;
       tokyonight.enable = false;
       onedark = {

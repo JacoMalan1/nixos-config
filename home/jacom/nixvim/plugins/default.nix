@@ -3,6 +3,11 @@
 
   programs.nixvim = {
     plugins = {
+      startup = {
+	enable = true;
+	theme = "dashboard";
+      };
+      persistence.enable = true;
       tailwind-tools.enable = true;
       # java = {
       #   enable = true;

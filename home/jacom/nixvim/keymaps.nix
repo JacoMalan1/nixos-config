@@ -34,6 +34,42 @@
         action = "<Esc>";
       }
       {
+	mode = [ "n" ];
+	key = "<leader>qs";
+	action = "<Cmd>lua require('persistence').load()<CR>";
+	options.desc = "Load session for directory";
+      }
+      {
+	mode = [ "n" ];
+	key = "<leader>qS";
+	action = "<Cmd>lua require('persistence').select()<CR>";
+	options.desc = "Select a session to load";
+      }
+      {
+	mode = [ "n" ];
+	key = "<leader>ql";
+	action = "<Cmd>lua require('persistence').load({ last = true })<CR>";
+	options.desc = "Load last session";
+      }
+      {
+	mode = [ "n" ];
+	key = "<leader>qd";
+	action = "<Cmd>lua require('persistence').stop()<CR>";
+	options.desc = "Stop persistence";
+      }
+      {
+	mode = [ "n" ];
+	key = "<C-Right>";
+	action = "<Cmd>vertical resize +5<CR>";
+	options.desc = "Increase window width";
+      }
+      {
+	mode = [ "n" ];
+	key = "<C-Left>";
+	action = "<Cmd>vertical resize -5<CR>";
+	options.desc = "Decrease window width";
+      }
+      {
         mode = [ "n" ];
         key = "<leader>w";
         action = "<Cmd>w<CR>";

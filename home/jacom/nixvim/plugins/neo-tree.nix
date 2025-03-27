@@ -1,10 +1,24 @@
 { ... }: {
   programs.nixvim.plugins.neo-tree = {
     enable = true;
+    autoCleanAfterSessionRestore = true;
     closeIfLastWindow = true;
-    window.autoExpandWidth = true;
+    window = {
+      mappings = {
+	"]b" = "next_source";
+	"[b" = "prev_source";
+      };
+    };
+    filesystem.followCurrentFile.enabled = true;
+    sourceSelector.winbar = true;
     defaultComponentConfigs = {
       modified.symbol = "";
+      diagnostics.symbols = {
+	error = "";
+	hint = "";
+	info = "";
+	warn = "";
+      };
       gitStatus.symbols = {
         added = "+";
         modified = "M";
