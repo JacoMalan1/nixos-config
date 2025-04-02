@@ -69,8 +69,8 @@ in {
     enable = true;
     package = pkgs-unstable.hyprpaper;
     settings = {
-      preload = "/home/jacom/nix/home/jacom/wallpaper.png";
-      wallpaper = ", /home/jacom/nix/home/jacom/wallpaper.png";
+      preload = "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
+      wallpaper = ", /home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
     };
   };
 
@@ -90,8 +90,14 @@ in {
       ];
       animation = "global, 1, 2, default";
       general = {
+	border_size = 1;
         gaps_out = 10;
+	"col.active_border" = "0xff98971a";
         layout = "master";
+      };
+      decoration = {
+	inactive_opacity = 0.8;
+	rounding = 10;
       };
       master = { mfact = 0.5; };
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";

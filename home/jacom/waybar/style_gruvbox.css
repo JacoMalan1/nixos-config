@@ -1,0 +1,133 @@
+@import "gruvbox.css";
+
+* {
+  font-family: FantasqueSansMono Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @fg0;
+  margin: 5px 5px;
+}
+
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @bg1;
+  margin-left: 1rem;
+}
+
+#workspaces button {
+  color: @fg0;
+  border-radius: 1rem;
+  padding: 0.4rem;
+}
+
+#workspaces button.active {
+  color: @green_l;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @green_d;
+  border-radius: 1rem;
+}
+
+#network,#backlight-slider,#cpu,#memory,#temperature,#battery.*,#battery {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background-color: @bg1;
+  margin-right: 1rem;
+}
+
+#backlight-slider {
+  margin-right: 1rem;
+  min-width: 100px;
+}
+
+#backlight-slider through {
+  background-color: @bg0_h;
+}
+
+#backlight-slider highlight {
+  background-color: @white;
+}
+
+#temperature.critical {
+  color: @red_l;
+}
+
+#custom-music,
+#tray,
+#backlight,
+#clock,
+#battery,
+#battery.*,
+#pulseaudio,
+#custom-lock,
+#custom-power {
+  background-color: @bg1;
+  padding: 0.5rem 1rem;
+  margin: 5px 0;
+}
+
+#clock {
+  color: @blue_l;
+  border-radius: 1rem;
+  margin-right: 0;
+}
+
+#battery {
+  margin-right: 1rem;
+}
+
+#battery.discharging {
+  color: @yellow_l;
+}
+
+#battery.charging {
+  color: @green_l;
+}
+
+#battery.warning:not(.charging) {
+  color: @red_l;
+}
+
+#backlight {
+  color: @yellow_l;
+}
+
+#backlight {
+  border-radius: 0;
+}
+
+#pulseaudio {
+  color: @red_l;
+  border-radius: 1rem;
+  margin-right: 1rem;
+}
+
+#custom-music {
+  color: @red_l;
+  border-radius: 1rem;
+}
+
+#custom-lock {
+  border-radius: 1rem 0px 0px 1rem;
+  color: @fg0;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @red_l;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 1rem;
+}

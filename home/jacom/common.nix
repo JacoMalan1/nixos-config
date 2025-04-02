@@ -67,8 +67,9 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/leftwm/config.ron".source = ./leftwm.ron;
-    ".config/waybar/style.css".source = ./waybar/style.css;
+    ".config/waybar/style.css".source = ./waybar/style_gruvbox.css;
     ".config/waybar/macchiato.css".source = ./waybar/macchiato.css;
+    ".config/waybar/gruvbox.css".source = ./waybar/gruvbox.css;
   };
 
   # Home Manager can also manage your environment variables through
