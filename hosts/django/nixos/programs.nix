@@ -93,5 +93,6 @@ in {
       drawio
       spotifywm
       slurp
+      teams-for-linux
     ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 ]);
 }
