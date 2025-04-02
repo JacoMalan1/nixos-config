@@ -1,7 +1,27 @@
 { inputs, system, ... }:
 let pkgs-unstable = import inputs.nixpkgs-stable { inherit system; };
 in {
-  services.dunst.enable = true;
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+	background = "#3c3836";
+	offset = "20x50";
+      };
+      urgency_low = {
+	frame_color = "#458588";
+	foreground = "#458588";
+      };
+      urgency_normal = {
+	frame_color = "#98971a";
+	foreground = "#98971a";
+      };
+      urgency_critical = {
+	frame_color = "#cc241d";
+	foreground = "#cc241d";
+      };
+    };
+  };
   programs.hyprlock = {
     enable = true;
     package = pkgs-unstable.hyprlock;
@@ -96,7 +116,6 @@ in {
         layout = "master";
       };
       decoration = {
-	inactive_opacity = 0.8;
 	rounding = 10;
       };
       master = { mfact = 0.5; };
