@@ -1,5 +1,5 @@
 { ... }: {
-  imports = [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ];
+  imports = [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ./rofi ];
 
   xdg.desktopEntries = {
     spotify = {
@@ -22,6 +22,15 @@
       startupNotify = true;
       mimeType = [ "application/sql" ];
       exec = "env GDK_BACKEND=x11 dbeaver";
+    };
+    signal-desktop = {
+      name = "Signal";
+      exec = "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
+      comment = "Private messaging from your desktop";
+      terminal = false;
+      icon = "signal-desktop";
+      mimeType = [ "x-scheme-handler/sgnl" "x-scheme-handler/signalcaptcha" ];
+      categories = [ "Network" "InstantMessaging" "Chat" ];
     };
   };
 }

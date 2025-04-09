@@ -1,0 +1,10 @@
+
+//@theme "/home/jacom/.local/share/rofi/themes/rounded-nord-dark.rasi"
+
+//@theme "/nix/store/mcbwsc6hcd5g7fcqzklxwf5m7bn5bk6a-rofi-1.7.5+wayland3/share/rofi/themes/gruvbox-dark.rasi"
+
+//@theme "/nix/store/mcbwsc6hcd5g7fcqzklxwf5m7bn5bk6a-rofi-1.7.5+wayland3/share/rofi/themes/gruvbox-dark-hard.rasi"
+
+//@theme "/home/jacom/.local/share/rofi/themes/rounded-nord-dark.rasi"
+
+@theme "/home/jacom/.local/share/rofi/themes/rounded-gruvbox.rasi"

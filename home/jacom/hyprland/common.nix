@@ -156,6 +156,14 @@ in {
         "ALT SHIFT, f, togglefloating"
         "ALT, c, togglespecialworkspace, calculator"
         "ALT, c, exec, pgrep qalculate-gtk || qalculate-gtk &"
+	"ALT, v, togglespecialworkspace, obsidian"
+	"ALT, v, exec, pgrep -a electron | grep obsidian || obsidian &"
+	"ALT, t, togglespecialworkspace, thunderbird"
+	"ALT, t, exec, pgrep thunderbird || thunderbird &"
+	"ALT, s, togglespecialworkspace, spotify"
+	"ALT, s, exec, pgrep .spotify-wrappe || spotify &"
+	"SUPER, k, togglespecialworkspace, keepassxc"
+	"SUPER, k, exec, keepassxc"
       ];
       bindl = [
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -172,6 +180,11 @@ in {
         "float, class:(Tor Browser)"
         "float, class:(qalculate-gtk)"
         "workspace special:calculator, class:qalculate-gtk"
+	"workspace special:obsidian, class:obsidian"
+	"workspace special:thunderbird, class:thunderbird"
+	"workspace special:spotify, class:Spotify"
+	"float, class:(org\\.keepassxc\\.KeePassXC)"
+	"workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
       ];
     };
   };
