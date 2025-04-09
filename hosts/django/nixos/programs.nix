@@ -94,5 +94,6 @@ in {
       spotifywm
       slurp
       teams-for-linux
+      obsidian
     ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 ]);
 }
