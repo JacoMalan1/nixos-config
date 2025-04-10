@@ -25,5 +25,6 @@
     ../../modules/ntpclient.nix
     ../../modules/mariadb.nix
     ../../modules/pritunl.nix
+    ../../modules/postgres.nix
   ];
 }
