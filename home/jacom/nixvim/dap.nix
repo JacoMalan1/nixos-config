@@ -46,7 +46,7 @@ in {
       }
       {
         mode = [ "n" ];
-        key = "<F9>";
+        key = "<F11>";
         action = "<Cmd>DapStepOut<CR>";
         options.desc = "Step out (F11)";
       }

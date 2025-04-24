@@ -162,6 +162,8 @@ in {
 	"ALT, t, exec, pgrep thunderbird || thunderbird &"
 	"ALT, s, togglespecialworkspace, spotify"
 	"ALT, s, exec, pgrep .spotify-wrappe || spotify &"
+	"ALT, a, togglespecialworkspace, yubioath"
+	"ALT, a, exec, pgrep .yubioath-flutt || yubioath-flutter &"
 	"SUPER, k, togglespecialworkspace, keepassxc"
 	"SUPER, k, exec, keepassxc"
       ];
@@ -183,6 +185,8 @@ in {
 	"workspace special:obsidian, class:obsidian"
 	"workspace special:thunderbird, class:thunderbird"
 	"workspace special:spotify, class:Spotify"
+	"workspace special:yubioath, class:yubioath-flutter"
+	"float, class:yubioath-flutter"
 	"float, class:(org\\.keepassxc\\.KeePassXC)"
 	"workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
       ];
