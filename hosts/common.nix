@@ -61,6 +61,7 @@ in {
       fd
       playerctl
       dotnet-sdk
+      wireguard-tools
     ] ++ (with pkgs; [ clang novelwriter ]);
 
   environment.sessionVariables = {

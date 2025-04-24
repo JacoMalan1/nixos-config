@@ -95,5 +95,8 @@ in {
       slurp
       teams-for-linux
       obsidian
+      yubikey-manager-qt
+      yubikey-personalization-gui
+      yubioath-flutter
     ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 ]);
 }

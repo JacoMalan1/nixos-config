@@ -4,7 +4,6 @@
     ./nixos/programs.nix
     ../common.nix
 
-    ../../modules/dns.nix
     ../../modules/yubikey.nix
     ../../modules/wifi.nix
     ../../modules/syncthing.nix
@@ -21,6 +20,6 @@
     ../../modules/jdk17.nix
     ../../modules/secureboot.nix
     ../../modules/postgres.nix
-    ../../modules/rstudio.nix
+    # ../../modules/rstudio.nix
   ];
 }

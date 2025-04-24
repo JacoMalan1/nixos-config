@@ -7,5 +7,4 @@
     domains = [ "~." ];
     dnsovertls = "true";
   };
-
 }
