@@ -1,5 +1,5 @@
 { inputs, system, ... }:
-let pkgs = import inputs.nixpkgs-stable { inherit system; };
+let pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
   imports = [ ./keymaps.nix ./plugins ./dap.nix ];
 

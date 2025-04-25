@@ -125,6 +125,12 @@
       bindkey -M viins 'jj' vi-cmd-mode
       eval "$(direnv hook zsh)"
       eval "$(zoxide init --cmd cd zsh)"
+
+      if [ $TTY = '/dev/tty1' ]; then Hyprland; fi
+
+      if [ -d $HOME/bin ]; then
+	export PATH=$PATH:$HOME/bin
+      fi
     '';
 
     shellAliases = {

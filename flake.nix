@@ -10,7 +10,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
