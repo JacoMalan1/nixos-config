@@ -121,6 +121,7 @@
       export PATH=$PATH:$HOME/.npm-global/bin
       export PATH=$PATH:$HOME/bin
       export PATH=$PATH:$HOME/.local/bin
+      export PATH=$PATH:$HOME/.yarn/bin
       source ~/.p10k.zsh
       bindkey -M viins 'jj' vi-cmd-mode
       eval "$(direnv hook zsh)"
