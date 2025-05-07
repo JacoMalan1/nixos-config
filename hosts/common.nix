@@ -48,7 +48,6 @@ in {
       sshfs
       hunspell
       hunspellDicts.en_GB-ise
-      postman
       awscli2
       google-cloud-sdk
       nmap
@@ -62,7 +61,9 @@ in {
       playerctl
       dotnet-sdk
       wireguard-tools
-    ] ++ (with pkgs; [ clang novelwriter ]);
+      kleopatra
+      figma-linux
+    ] ++ (with pkgs; [ clang novelwriter postman ]);
 
   environment.sessionVariables = {
     FLAKE = "$HOME/nix";

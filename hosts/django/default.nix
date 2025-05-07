@@ -21,5 +21,6 @@
     ../../modules/secureboot.nix
     ../../modules/postgres.nix
     # ../../modules/rstudio.nix
+    ../../modules/flatpak.nix
   ];
 }

@@ -98,5 +98,6 @@ in {
       yubikey-manager-qt
       yubikey-personalization-gui
       yubioath-flutter
+      android-studio
     ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 ]);
 }
