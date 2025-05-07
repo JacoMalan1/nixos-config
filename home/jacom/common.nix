@@ -89,7 +89,6 @@
   #  /etc/profiles/per-user/jacom/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
   };
 
   home.pointerCursor = {
@@ -132,6 +131,8 @@
       if [ -d $HOME/bin ]; then
 	export PATH=$PATH:$HOME/bin
       fi
+
+      export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share
     '';
 
     shellAliases = {

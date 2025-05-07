@@ -192,6 +192,12 @@
         action = "<Cmd>bp<CR><Cmd>bd#<CR>";
         options.desc = "Close current buffer";
       }
+      {
+	mode = [ "n" ];
+	key = "<leader>bf";
+	action = "<Cmd>lua vim.lsp.buf.format()<CR>";
+	options.desc = "Format buffer";
+      }
     ];
   };
 }
