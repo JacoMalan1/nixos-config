@@ -13,7 +13,7 @@ in {
     description = "NoteBook FanControl service";
     serviceConfig.Type = "simple";
     path = [pkgs.kmod];
-    script = "${pkgs.nbfc-linux}/${command}"
+    script = "${pkgs.nbfc-linux}/${command}";
     wantedBy = ["multi-user.target"];
   };
 }

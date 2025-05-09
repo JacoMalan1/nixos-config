@@ -1,18 +1,17 @@
 { inputs, system, ... }:
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in {
   programs.hyprland = {
     enable = true;
-    package = pkgs-unstable.hyprland;
-    portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
   };
 
   programs.hyprlock = {
     enable = true;
-    package = pkgs-unstable.hyprlock;
+    package = pkgs.hyprlock;
   };
 
   security.pam.services.hyprlock = {
@@ -28,8 +27,7 @@ in {
   };
 
   environment.systemPackages = with pkgs;
-    [ waybar swww rofi-wayland wl-clipboard ]
-    ++ (with pkgs-unstable; [ hyprpaper ]);
+    [ waybar swww rofi-wayland wl-clipboard hyprpaper hypridle hyprpaper ];
 
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 }

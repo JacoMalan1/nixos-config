@@ -99,5 +99,6 @@ in {
       yubikey-personalization-gui
       yubioath-flutter
       android-studio
+      lm_sensors
     ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 ]);
 }
