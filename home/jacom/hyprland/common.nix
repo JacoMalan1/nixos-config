@@ -1,6 +1,11 @@
 { inputs, system, ... }:
-let pkgs-unstable = import inputs.nixpkgs-stable { inherit system; };
+let pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   services.dunst = {
     enable = true;
     settings = {
@@ -24,7 +29,7 @@ in {
   };
   programs.hyprlock = {
     enable = true;
-    package = pkgs-unstable.hyprlock;
+    package = pkgs.hyprlock;
     settings = {
       general = { immediate_render = true; };
 
@@ -64,7 +69,7 @@ in {
 
   services.hypridle = {
     enable = true;
-    package = pkgs-unstable.hypridle;
+    package = pkgs.hypridle;
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
@@ -87,7 +92,7 @@ in {
 
   services.hyprpaper = {
     enable = true;
-    package = pkgs-unstable.hyprpaper;
+    package = pkgs.hyprpaper;
     settings = {
       preload = "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
       wallpaper = ", /home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
@@ -96,7 +101,8 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs-unstable.hyprland;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     settings = {
       env = [
         "HYPRCURSOR_THEME,Adwaita"
@@ -121,7 +127,7 @@ in {
       master = { mfact = 0.5; };
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";
       bind = [
-        "ALT, b, exec, librewolf"
+        "ALT, b, exec, brave"
         "ALT, p, exec, rofi -show drun -show-icons"
         "ALT SHIFT, p, exec, rofi -show run"
         "CTRL ALT, l, exec, hyprlock --immediate"

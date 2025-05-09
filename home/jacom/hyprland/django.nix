@@ -6,9 +6,15 @@ let
 in {
   imports = [ ./common.nix ];
 
+  xdg.portal.extraPortals = lib.mkForce [ pkgs.xdg-desktop-portal-gtk ];
+
   programs.hyprlock.package = lib.mkForce pkgs.hyprlock;
+  services.hypridle.package = lib.mkForce pkgs.hypridle;
+  services.hyprpaper.package = lib.mkForce pkgs.hyprpaper;
+
   wayland.windowManager.hyprland = {
     package = lib.mkForce pkgs.hyprland;
+    portalPackage = lib.mkForce pkgs.xdg-desktop-portal-hyprland;
     settings = {
       debug = { disable_logs = false; };
       input.touchpad.natural_scroll = true;
@@ -23,8 +29,6 @@ in {
       ];
       windowrulev2 = [
         "minsize 1 1, class:^(spotify)$"
-        "stayfocused, class:DBeaver, floating:1"
-        "stayfocused, class:jetbrains-idea-ce, floating:1"
       ];
     };
   };
