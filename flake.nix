@@ -5,8 +5,8 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -55,7 +55,7 @@
             inherit inputs;
             inherit system;
           };
-          pkgs = import inputs.nixpkgs-stable {
+          pkgs = import inputs.nixpkgs-unstable {
             inherit system;
             config.allowUnfree = true;
           };
@@ -67,7 +67,7 @@
             inherit inputs;
             inherit system;
           };
-          pkgs = import inputs.nixpkgs-stable {
+          pkgs = import inputs.nixpkgs-unstable {
             inherit system;
             config.allowUnfree = true;
           };
@@ -79,7 +79,7 @@
             inherit inputs;
             inherit system;
           };
-          pkgs = import inputs.nixpkgs-stable {
+          pkgs = import inputs.nixpkgs-unstable {
             inherit system;
             config.allowUnfree = true;
           };
