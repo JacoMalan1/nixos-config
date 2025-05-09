@@ -81,7 +81,21 @@ in {
 
   # NixOS Dynamically linked binaries fix
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ libspatialite libxml2 freetype icu ];
+  programs.nix-ld.libraries = with pkgs; [
+    libspatialite
+    libxml2
+    freetype
+    icu
+    nss
+  ];
+
+  specialisation.gnome.configuration = {
+    services.xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
+  };
 
   programs.ssh.startAgent = false;
 

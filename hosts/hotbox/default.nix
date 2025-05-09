@@ -26,5 +26,6 @@
     ../../modules/mariadb.nix
     ../../modules/pritunl.nix
     ../../modules/postgres.nix
+    ../../modules/android-studio.nix
   ];
 }
