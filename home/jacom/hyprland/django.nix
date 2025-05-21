@@ -6,15 +6,15 @@ let
 in {
   imports = [ ./common.nix ];
 
-  xdg.portal.extraPortals = lib.mkForce [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.enable = lib.mkForce false;
 
   programs.hyprlock.package = lib.mkForce pkgs.hyprlock;
   services.hypridle.package = lib.mkForce pkgs.hypridle;
   services.hyprpaper.package = lib.mkForce pkgs.hyprpaper;
 
   wayland.windowManager.hyprland = {
-    package = lib.mkForce pkgs.hyprland;
-    portalPackage = lib.mkForce pkgs.xdg-desktop-portal-hyprland;
+    package = lib.mkForce null;
+    portalPackage = lib.mkForce null;
     settings = {
       debug = { disable_logs = false; };
       input.touchpad.natural_scroll = true;

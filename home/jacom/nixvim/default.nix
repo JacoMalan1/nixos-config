@@ -58,6 +58,7 @@ in {
       wrap = false;
       shiftwidth = 2;
       signcolumn = "yes:1";
+      showmode = false;
     };
   };
 }
