@@ -174,6 +174,7 @@ in {
 	"ALT, a, exec, pgrep .yubioath-flutt || yubioath-flutter &"
 	"SUPER, k, togglespecialworkspace, keepassxc"
 	"SUPER, k, exec, keepassxc"
+	"ALT SHIFT, c, exec, copyq toggle"
       ];
       bindl = [
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -198,6 +199,8 @@ in {
 	"float, class:yubioath-flutter"
 	"float, class:(org\\.keepassxc\\.KeePassXC)"
 	"workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
+	"float, class:copyq"
+	"size 40% 40%, class:copyq"
       ];
     };
   };

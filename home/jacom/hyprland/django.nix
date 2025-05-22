@@ -8,6 +8,8 @@ in {
 
   xdg.portal.enable = lib.mkForce false;
 
+  home.packages = with pkgs; [ hyprshot copyq ];
+
   programs.hyprlock.package = lib.mkForce pkgs.hyprlock;
   services.hypridle.package = lib.mkForce pkgs.hypridle;
   services.hyprpaper.package = lib.mkForce pkgs.hyprpaper;
@@ -16,12 +18,16 @@ in {
     package = lib.mkForce null;
     portalPackage = lib.mkForce null;
     settings = {
+      exec-once = [
+	"copyq --start-server"
+      ];
       debug = { disable_logs = false; };
       input.touchpad.natural_scroll = true;
       bind = [
         "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
         "ALT, h, focusmonitor, ${leftMonitor}"
         "ALT, l, focusmonitor, ${rightMonitor}"
+	"SUPER, s, exec, hyprshot -o ~/Pictures -m region"
       ];
       monitor = [
         "${rightMonitor}, 1920x1080, 1920x0, 1"

@@ -16,10 +16,6 @@
       glsl_analyzer.enable = true;
       zls.enable = true;
       cmake.enable = true;
-      hls = {
-        enable = true;
-        installGhc = false;
-      };
       csharp_ls.enable = true;
       volar.enable = true;
       svelte.enable = true;
