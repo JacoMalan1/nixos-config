@@ -169,7 +169,7 @@ in {
 	"ALT SHIFT, t, togglespecialworkspace, teams"
 	"ALT SHIFT, t, exec, pgrep -a electron | grep teams-for-linux || teams-for-linux &"
 	"ALT, s, togglespecialworkspace, spotify"
-	"ALT, s, exec, pgrep .spotify-wrappe || spotify &"
+	"ALT, s, exec, pgrep .spotify-wrappe || spotify --enable-features=UseOzonePlatform --ozone-platform=x11 &"
 	"ALT, a, togglespecialworkspace, yubioath"
 	"ALT, a, exec, pgrep .yubioath-flutt || yubioath-flutter &"
 	"SUPER, k, togglespecialworkspace, keepassxc"

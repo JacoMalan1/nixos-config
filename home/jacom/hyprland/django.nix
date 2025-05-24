@@ -28,6 +28,7 @@ in {
         "ALT, h, focusmonitor, ${leftMonitor}"
         "ALT, l, focusmonitor, ${rightMonitor}"
 	"SUPER, s, exec, hyprshot -o ~/Pictures -m region"
+	"SUPER SHIFT, s, exec, hyprshot -o ~/Pictures -m window"
       ];
       monitor = [
         "${rightMonitor}, 1920x1080, 1920x0, 1"
