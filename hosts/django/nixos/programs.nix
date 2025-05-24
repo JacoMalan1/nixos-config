@@ -25,7 +25,6 @@ in {
       usbutils
       networkmanagerapplet
       signal-desktop
-      spotify
       lazygit
       gcc_multi
       rustup
@@ -91,7 +90,6 @@ in {
       maven
       pwvucontrol
       drawio
-      spotifywm
       slurp
       teams-for-linux
       obsidian
@@ -100,5 +98,5 @@ in {
       yubioath-flutter
       android-studio
       lm_sensors
-    ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 ]);
+    ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 spotify ]);
 }
