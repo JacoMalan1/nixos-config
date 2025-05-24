@@ -2,17 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, inputs, system, ... }:
+{ lib, config, inputs, system, ... }:
 let
   pkgs = import inputs.nixpkgs-unstable {
     inherit system;
     config.allowUnfree = true;
   };
-  pkgs-stable = import inputs.nixpkgs-stable {
-    inherit system;
-    config.allowUnfree = true;
-  };
-
 in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -152,4 +147,7 @@ in {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+
+  services.postgresql.settings.port = lib.mkForce 5433;
 }

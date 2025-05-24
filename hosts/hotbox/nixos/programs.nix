@@ -112,6 +112,7 @@ in {
     wireshark-qt
     dbeaver-bin
     freecad
+    drawio
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
