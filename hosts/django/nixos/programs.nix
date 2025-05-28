@@ -86,17 +86,16 @@ in {
       vscode-fhs
       dbeaver-bin
       icu
-      dotnet-sdk
       maven
       pwvucontrol
       drawio
       slurp
       teams-for-linux
       obsidian
-      yubikey-manager-qt
       yubikey-personalization-gui
       yubioath-flutter
       android-studio
       lm_sensors
+      dotnet-sdk_8
     ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 spotify ]);
 }

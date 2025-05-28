@@ -55,13 +55,11 @@ in {
       element-desktop
       openscad
       chromium
-      ventoy
       libnotify
       fd
       playerctl
-      dotnet-sdk
       wireguard-tools
-      kleopatra
+      kdePackages.kleopatra
       figma-linux
     ] ++ (with pkgs; [ clang novelwriter postman ]);
 

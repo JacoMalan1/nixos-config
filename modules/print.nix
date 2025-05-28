@@ -19,7 +19,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     system-config-printer
-    skanlite
+    kdePackages.skanlite
     simple-scan
   ];
 

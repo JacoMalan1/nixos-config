@@ -41,6 +41,11 @@ in {
   services.libinput.touchpad.naturalScrolling = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
+  services.resolved = {
+    enable = true;
+    domains = [ "~." ];
+  };
+
   # Enable the GNOME Desktop Environment.
   services.seatd = {
     enable = true;
@@ -63,7 +68,7 @@ in {
   services.fwupd.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
   hardware.usb-modeswitch.enable = true;
