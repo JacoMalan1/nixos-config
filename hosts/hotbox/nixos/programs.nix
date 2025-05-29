@@ -14,7 +14,6 @@ in {
     # Packages from stable 24.05
     librewolf
     rustdesk
-    spotify
     zsh
     mesa
     keepassxc
@@ -122,5 +121,7 @@ in {
     tracy-wayland
     jetbrains.rider
     prusa-slicer
+    spotify
+    monero-gui
   ]);
 }
