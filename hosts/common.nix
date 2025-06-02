@@ -65,6 +65,7 @@ in {
 
   environment.sessionVariables = {
     FLAKE = "$HOME/nix";
+    NH_FLAKE = "$HOME/nix";
     CARGO_TARGET_DIR = "$HOME/.cargo-target";
   };
 

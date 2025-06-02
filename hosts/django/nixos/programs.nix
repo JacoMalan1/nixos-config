@@ -97,5 +97,10 @@ in {
       android-studio
       lm_sensors
       dotnet-sdk_8
-    ] ++ (with pkgs-unstable; [ jetbrains.idea-community-bin nodejs_20 spotify ]);
+    ] ++ (with pkgs-unstable; [
+      jetbrains.idea-community-bin
+      nodejs_20
+      spotify
+      monero-gui
+    ]);
 }
