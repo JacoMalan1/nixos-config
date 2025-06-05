@@ -6,10 +6,10 @@ in {
   programs.nixvim = {
     enable = true;
 
-    autoCmd = [{
-      command = "lua vim.lsp.buf.format()";
-      event = "BufWritePre";
-    }];
+    # autoCmd = [{
+    #   command = "lua vim.lsp.buf.format()";
+    #   event = "BufWritePre";
+    # }];
 
     extraPlugins =
       [ pkgs.vimPlugins.nvim-ts-autotag pkgs.vimPlugins.onedarkpro-nvim ];

@@ -10,20 +10,20 @@ in {
     enable = true;
     settings = {
       global = {
-	background = "#3c3836";
-	offset = "20x50";
+        background = "#3c3836";
+        offset = "20x50";
       };
       urgency_low = {
-	frame_color = "#458588";
-	foreground = "#458588";
+        frame_color = "#458588";
+        foreground = "#458588";
       };
       urgency_normal = {
-	frame_color = "#98971a";
-	foreground = "#98971a";
+        frame_color = "#98971a";
+        foreground = "#98971a";
       };
       urgency_critical = {
-	frame_color = "#cc241d";
-	foreground = "#cc241d";
+        frame_color = "#cc241d";
+        foreground = "#cc241d";
       };
     };
   };
@@ -117,14 +117,12 @@ in {
       ];
       animation = "global, 1, 2, default";
       general = {
-	border_size = 1;
+        border_size = 1;
         gaps_out = 10;
-	"col.active_border" = "0xff98971a";
+        "col.active_border" = "0xff98971a";
         layout = "master";
       };
-      decoration = {
-	rounding = 10;
-      };
+      decoration = { rounding = 10; };
       master = { mfact = 0.5; };
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";
       bind = [
@@ -163,19 +161,19 @@ in {
         "ALT SHIFT, f, togglefloating"
         "ALT, c, togglespecialworkspace, calculator"
         "ALT, c, exec, pgrep qalculate-gtk || qalculate-gtk &"
-	"ALT, v, togglespecialworkspace, obsidian"
-	"ALT, v, exec, pgrep -a electron | grep obsidian || obsidian &"
-	"ALT, t, togglespecialworkspace, thunderbird"
-	"ALT, t, exec, pgrep thunderbird || thunderbird &"
-	"ALT SHIFT, t, togglespecialworkspace, teams"
-	"ALT SHIFT, t, exec, pgrep -a electron | grep teams-for-linux || teams-for-linux &"
-	"ALT, s, togglespecialworkspace, spotify"
-	"ALT, s, exec, pgrep .spotify-wrappe || spotify --enable-features=UseOzonePlatform --ozone-platform=x11 &"
-	"ALT, a, togglespecialworkspace, yubioath"
-	"ALT, a, exec, pgrep .yubioath-flutt || yubioath-flutter &"
-	"SUPER, k, togglespecialworkspace, keepassxc"
-	"SUPER, k, exec, keepassxc"
-	"ALT SHIFT, c, exec, copyq toggle"
+        "ALT, v, togglespecialworkspace, obsidian"
+        "ALT, v, exec, pgrep -a electron | grep obsidian || obsidian &"
+        "ALT, t, togglespecialworkspace, thunderbird"
+        "ALT, t, exec, pgrep thunderbird || thunderbird &"
+        "ALT SHIFT, t, togglespecialworkspace, teams"
+        "ALT SHIFT, t, exec, pgrep -a electron | grep teams-for-linux || teams-for-linux &"
+        "ALT, s, togglespecialworkspace, spotify"
+        "ALT, s, exec, pgrep .spotify-wrappe || spotify --enable-features=UseOzonePlatform --ozone-platform=x11 &"
+        "ALT, a, togglespecialworkspace, yubioath"
+        "ALT, a, exec, pgrep .yubioath-flutt || yubioath-flutter &"
+        "SUPER, k, togglespecialworkspace, keepassxc"
+        "SUPER, k, exec, keepassxc"
+        "ALT SHIFT, c, exec, copyq toggle"
       ];
       bindl = [
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -192,16 +190,16 @@ in {
         "float, class:(Tor Browser)"
         "float, class:(qalculate-gtk)"
         "workspace special:calculator, class:qalculate-gtk"
-	"workspace special:obsidian, class:obsidian"
-	"workspace special:thunderbird, class:thunderbird"
-	"workspace special:spotify, class:Spotify"
-	"workspace special:yubioath, class:yubioath-flutter"
-	"workspace special:teams, class:teams-for-linux"
-	"float, class:yubioath-flutter"
-	"float, class:(org\\.keepassxc\\.KeePassXC)"
-	"workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
-	"float, class:copyq"
-	"size 40% 40%, class:copyq"
+        "workspace special:obsidian, class:obsidian"
+        "workspace special:thunderbird, class:thunderbird"
+        "workspace special:spotify, class:Spotify"
+        "workspace special:yubioath, class:yubioath-flutter"
+        "workspace special:teams, class:teams-for-linux"
+        "float, class:yubioath-flutter"
+        "float, class:(org\\.keepassxc\\.KeePassXC)"
+        "workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
+        "float, class:com\\.github\\.hluk\\.copyq"
+        "size 40% 40%, class:com\\.github\\.hluk\\.copyq"
       ];
     };
   };
