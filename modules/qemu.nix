@@ -6,7 +6,7 @@ let
   };
 in {
   virtualisation.libvirtd = {
-    allowedBridges = [ "virbr0" "virbr1" "virbr2" ];
+    allowedBridges = [ "virbr0" "virbr1" "virbr2" "vnet2" "vnet3" "vnet6" ];
     enable = true;
     qemu = {
       package = pkgs.qemu_full;
@@ -28,16 +28,8 @@ in {
 
   users.users.jacom.extraGroups = [ "libvirtd" ];
 
-  networking.firewall.interfaces.virbr2 = {
-    allowedTCPPortRanges = [{
-      from = 0;
-      to = 65535;
-    }];
-    allowedUDPPortRanges = [{
-      from = 0;
-      to = 65535;
-    }];
-  };
+  networking.firewall.trustedInterfaces =
+    [ "virbr1" "virbr2" "vnet2" "vnet3" "vnet6" ];
 
   environment.systemPackages = with pkgs; [
     virt-manager
