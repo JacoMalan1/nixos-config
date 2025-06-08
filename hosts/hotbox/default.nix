@@ -17,7 +17,7 @@
     ../../modules/retro
     ../../modules/hyprland.nix
     ../../modules/obs.nix
-    ../../modules/jupyter.nix
+    # ../../modules/jupyter.nix
     ../../modules/print.nix
     ../../modules/secureboot.nix
     ../../modules/docker.nix
@@ -27,5 +27,6 @@
     ../../modules/pritunl.nix
     ../../modules/postgres.nix
     ../../modules/android-studio.nix
+    ../../modules/monero-node.nix
   ];
 }

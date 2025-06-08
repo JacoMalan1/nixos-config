@@ -111,19 +111,7 @@ in {
     };
   };
 
-  services.monero = {
-    enable = true;
-    dataDir = "/home/monero/.monerod";
-    extraConfig = ''
-      prune-blockchain=1
-      sync-pruned-blocks=1
-      rpc-restricted-bind-ip=0.0.0.0
-      rpc-restricted-bind-port=18089
-      rpc-ssl=autodetect
-    '';
-  };
-
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
@@ -131,7 +119,7 @@ in {
 
   # Open ports in the firewall.
   networking.firewall = {
-    allowedTCPPorts = [ 8384 22000 25565 22 27017 18081 18089 ];
+    allowedTCPPorts = [ 8384 22000 25565 22 27017 ];
     allowedUDPPorts = [ 22000 21027 27017 51821 ];
   };
 

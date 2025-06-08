@@ -107,7 +107,6 @@ in {
 
     stellarium
     thunderbird
-    inputs.strain.defaultPackage.${system}
     wireshark-qt
     dbeaver-bin
     freecad
@@ -123,5 +122,6 @@ in {
     prusa-slicer
     spotify
     monero-gui
+    monero-cli
   ]);
 }
