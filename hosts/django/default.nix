@@ -21,5 +21,7 @@
     ../../modules/postgres.nix
     # ../../modules/rstudio.nix
     ../../modules/flatpak.nix
+    ../../modules/qemu.nix
+    ../../modules/jupyter.nix
   ];
 }
