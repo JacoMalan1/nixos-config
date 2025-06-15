@@ -31,6 +31,8 @@
       enable_audio_bell = false;
       shell = "zellij";
       background_opacity = "0.7";
+      cursor_trail = 32;
+      cursor_trail_decay = "0.1 0.2";
     };
   };
 
