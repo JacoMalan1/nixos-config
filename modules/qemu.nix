@@ -6,7 +6,6 @@ let
   };
 in {
   virtualisation.libvirtd = {
-    allowedBridges = [ "virbr0" "virbr1" "virbr2" "vnet2" "vnet3" "vnet6" ];
     enable = true;
     qemu = {
       package = pkgs.qemu_full;
@@ -27,9 +26,6 @@ in {
   virtualisation.spiceUSBRedirection.enable = true;
 
   users.users.jacom.extraGroups = [ "libvirtd" ];
-
-  networking.firewall.trustedInterfaces =
-    [ "virbr1" "virbr2" "vnet2" "vnet3" "vnet6" ];
 
   environment.systemPackages = with pkgs; [
     virt-manager

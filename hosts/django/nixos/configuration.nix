@@ -139,9 +139,12 @@ in {
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22000 ];
-  networking.firewall.allowedUDPPorts = [ 22000 ];
+  networking.firewall = {
+    enable = true;
+    checkReversePath = "loose";
+    allowedTCPPorts = [ 22000 ];
+    allowedUDPPorts = [ 22000 ];
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
