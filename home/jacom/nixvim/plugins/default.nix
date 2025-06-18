@@ -1,5 +1,5 @@
 { ... }: {
-  imports = [ ./neo-tree.nix ./cmp.nix ./lsp.nix ];
+  imports = [ ./neo-tree.nix ./cmp.nix ./lsp.nix ./jdtls.nix ./none-ls.nix ];
 
   programs.nixvim = {
     plugins = {
@@ -15,27 +15,6 @@
         settings = {
           opleader.line = "<leader>/";
           toggler.line = "<leader>/";
-        };
-      };
-      jdtls = {
-        enable = true;
-        settings = {
-          cmd = [ "jdtls" ];
-          root_dir = {
-            __raw =
-              "  vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1])\n";
-          };
-          init_options.settings.java.imports.gradle = {
-            enabled = true;
-            wrapper = {
-              enabled = true;
-              checksums = [{
-                sha256 =
-                  "81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f";
-                allowed = true;
-              }];
-            };
-          };
         };
       };
       gitsigns.enable = true;
@@ -66,35 +45,9 @@
         };
       };
       luasnip.enable = true;
-      none-ls = {
-        enable = true;
-        enableLspFormat = false;
-        sources = {
-          formatting = {
-            nixfmt.enable = true;
-            prettierd = {
-              enable = true;
-              disableTsServerFormatter = true;
-            };
-          };
-        };
-      };
       lazygit.enable = true;
       telescope.enable = true;
       which-key.enable = true;
-      nvim-tree = {
-        enable = false;
-        autoClose = true;
-        renderer.highlightGit = true;
-        view.width = {
-          min = 30;
-          max = -1;
-        };
-        diagnostics = {
-          enable = true;
-          showOnDirs = true;
-        };
-      };
       web-devicons.enable = true;
       bufferline = {
         enable = true;

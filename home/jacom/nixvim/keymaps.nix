@@ -1,5 +1,7 @@
 { ... }: {
   programs.nixvim = {
+    globals.mapleader = " ";
+
     files = {
       "after/ftplugin/rust.lua" = {
         keymaps = [

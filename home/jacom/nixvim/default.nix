@@ -1,7 +1,7 @@
 { inputs, system, ... }:
 let pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
-  imports = [ ./keymaps.nix ./plugins ./dap.nix ];
+  imports = [ ./keymaps.nix ./plugins ./dap.nix ./ftplugin.nix ];
 
   programs.nixvim = {
     enable = true;
@@ -42,14 +42,6 @@ in {
         enable = false;
         settings.style = "warmer";
       };
-    };
-
-    globals.mapleader = " ";
-
-    files = {
-      "after/ftplugin/java.lua" = { opts = { tabstop = 2; }; };
-      "after/ftplugin/typescriptreact.lua" = { opts = { tabstop = 2; }; };
-      "after/ftplugin/cs.lua" = { opts = { tabstop = 4; }; };
     };
 
     opts = {
