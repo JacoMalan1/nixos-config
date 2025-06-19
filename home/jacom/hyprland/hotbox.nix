@@ -9,6 +9,7 @@ in {
   home.packages = with pkgs; [ hyprshot copyq ];
 
   wayland.windowManager.hyprland.settings = {
+    general.allow_tearing = true;
     exec-once = [ "copyq --start-server" ];
     env = [ "ELECTRON_OZONE_PLATFORM_HINT,auto" "LIBVA_DRIVER_NAME,nvidia" ];
     bind = [
@@ -24,6 +25,7 @@ in {
       "tile, initialclass:(steam_app_311210)"
       "fullscreen, initialclass:(steam_app_311210)"
       "float, initialTitle:(pisim)"
+      # "immediate, class:^Minecraft. 1.21.5$"
     ];
 
     monitor = [
