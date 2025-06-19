@@ -59,7 +59,7 @@ in {
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
   services.blueman.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   security.unprivilegedUsernsClone = true;
 
@@ -119,6 +119,10 @@ in {
 
   # Open ports in the firewall.
   networking.firewall = {
+    logRefusedPackets = true;
+    logRefusedConnections = true;
+    logReversePathDrops = true;
+    checkReversePath = "loose";
     allowedTCPPorts = [ 8384 22000 25565 22 27017 ];
     allowedUDPPorts = [ 22000 21027 27017 51821 ];
   };

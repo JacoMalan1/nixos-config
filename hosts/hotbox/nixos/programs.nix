@@ -118,7 +118,7 @@ in {
     libresplit
     musescore
     tracy-wayland
-    jetbrains.rider
+    # jetbrains.rider
     prusa-slicer
     spotify
     monero-gui

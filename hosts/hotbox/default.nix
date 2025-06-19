@@ -28,5 +28,6 @@
     ../../modules/postgres.nix
     ../../modules/android-studio.nix
     ../../modules/monero-node.nix
+    ../../modules/i2pd.nix
   ];
 }
