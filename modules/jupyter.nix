@@ -5,5 +5,6 @@ in {
     python3
     python312Packages.ipython
     python312Packages.jupyter
+    jupyter
   ];
 }

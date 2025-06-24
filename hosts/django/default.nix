@@ -23,5 +23,6 @@
     ../../modules/flatpak.nix
     ../../modules/qemu.nix
     ../../modules/jupyter.nix
+    # ../../modules/i2pd.nix
   ];
 }

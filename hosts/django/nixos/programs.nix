@@ -23,7 +23,6 @@ in {
       discord
       pciutils
       usbutils
-      networkmanagerapplet
       signal-desktop
       lazygit
       gcc_multi
@@ -97,6 +96,7 @@ in {
       android-studio
       lm_sensors
       dotnet-sdk_8
+      inkscape
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
       nodejs_20
