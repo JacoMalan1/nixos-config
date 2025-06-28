@@ -24,6 +24,7 @@ in {
 
   environment.systemPackages = with pkgs-stable;
     [
+      inputs.agenix.packages.${system}.default
       transmission_4-gtk
       glib
       glib.dev

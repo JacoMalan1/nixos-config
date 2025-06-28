@@ -9,7 +9,7 @@
     ../../modules/steam.nix
     ../../modules/syncthing.nix
     ../../modules/yubikey.nix
-    ../../modules/dns.nix
+    # ../../modules/dns.nix
     ../../modules/fonts.nix
     ../../modules/wifi.nix
     ../../modules/qemu.nix

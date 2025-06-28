@@ -20,9 +20,13 @@
       url = "github:JacoMalan1/strain/0.1.3";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
-  outputs = { nixpkgs-stable, home-manager, lanzaboote, ... }@inputs:
+  outputs = { nixpkgs-stable, home-manager, lanzaboote, agenix, ... }@inputs:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
@@ -31,7 +35,11 @@
             inherit inputs;
             inherit system;
           };
-          modules = [ lanzaboote.nixosModules.lanzaboote ./hosts/hotbox ];
+          modules = [
+            lanzaboote.nixosModules.lanzaboote
+            ./hosts/hotbox
+            agenix.nixosModules.default
+          ];
         };
         django = nixpkgs-stable.lib.nixosSystem {
           specialArgs = {

@@ -123,10 +123,17 @@ in {
     logRefusedConnections = true;
     logReversePathDrops = true;
     checkReversePath = "loose";
-    allowedTCPPorts = [ 8384 22000 25565 22 27017 ];
+    allowedTCPPorts = [ 8384 22000 25565 22 27017 18089 18081 18084 ];
     allowedUDPPorts = [ 22000 21027 27017 51821 ];
   };
 
   # Do not remove
   system.stateVersion = "24.05";
+
+  services.tor = {
+    enable = pkgs.lib.mkForce true;
+    client.enable = pkgs.lib.mkForce true;
+  };
+
+  services.resolved.enable = true;
 }

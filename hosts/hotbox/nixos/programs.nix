@@ -111,6 +111,7 @@ in {
     dbeaver-bin
     freecad
     drawio
+    xmrig
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
