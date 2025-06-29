@@ -29,7 +29,6 @@ in {
     usb-modeswitch
     usbutils
     networkmanagerapplet
-    signal-desktop
     rustup
     easyeffects
     psmisc
@@ -124,5 +123,6 @@ in {
     spotify
     monero-gui
     monero-cli
+    signal-desktop
   ]);
 }
