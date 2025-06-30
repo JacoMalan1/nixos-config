@@ -1,5 +1,11 @@
 { ... }: {
-  imports = [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ./rofi ];
+  imports = [
+    ./common.nix
+    ./hyprland/django.nix
+    ./waybar/django.nix
+    ./nixvim/common.nix
+    ./rofi
+  ];
 
   xdg.desktopEntries = {
     spotify = {
@@ -25,7 +31,8 @@
     };
     signal-desktop = {
       name = "Signal";
-      exec = "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
+      exec =
+        "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
       comment = "Private messaging from your desktop";
       terminal = false;
       icon = "signal-desktop";

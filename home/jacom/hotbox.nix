@@ -1,5 +1,12 @@
 { ... }: {
-  imports = [ ./common.nix ./hyprland/hotbox.nix ./waybar/hotbox.nix ./nixvim ./rofi ];
+  imports = [
+    ./common.nix
+    ./hyprland/hotbox.nix
+    ./waybar/hotbox.nix
+    ./nixvim/common.nix
+    ./nixvim/hotbox.nix
+    ./rofi
+  ];
 
   xdg.desktopEntries = {
     spotify = {
