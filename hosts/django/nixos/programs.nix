@@ -23,7 +23,6 @@ in {
       discord
       pciutils
       usbutils
-      signal-desktop
       lazygit
       gcc_multi
       rustup
@@ -78,7 +77,6 @@ in {
       p7zip
       stremio
       android-tools
-      zoom-us
       rpi-imager
       gcc-arm-embedded
       hyprpolkitagent
@@ -97,10 +95,14 @@ in {
       lm_sensors
       dotnet-sdk_8
       inkscape
+      gnome-icon-theme
+      hicolor-icon-theme
+      wireguard-ui
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
       nodejs_20
       spotify
       monero-gui
+      signal-desktop
     ]);
 }

@@ -52,9 +52,17 @@ in {
     user = "jacom";
   };
 
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
-  '';
+  services.udev = {
+    extraRules = ''
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
+    '';
+    packages = [ pkgs.gnome-settings-daemon pkgs.gcr ];
+  };
+
+  services.tor = {
+    enable = true;
+    client.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -125,12 +133,8 @@ in {
     enableSSHSupport = true;
   };
 
-  specialisation.gnome.configuration = {
-    services.xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-    };
+  services.xserver = {
+    desktopManager.gnome.enable = true;
   };
 
   # List services that you want to enable:

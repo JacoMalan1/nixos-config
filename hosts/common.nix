@@ -53,7 +53,6 @@ in {
       google-cloud-sdk
       nmap
       zoxide
-      element-desktop
       openscad
       chromium
       libnotify
@@ -62,6 +61,7 @@ in {
       wireguard-tools
       kdePackages.kleopatra
       figma-linux
+      networkmanagerapplet
     ] ++ (with pkgs; [ clang novelwriter postman ]);
 
   environment.sessionVariables = {
