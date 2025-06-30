@@ -114,6 +114,7 @@ in {
         "waybar & disown"
         "easyeffects --gapplication-service"
         "keepassxc & disown"
+	"nm-applet --indicator & disown"
       ];
       animation = "global, 1, 2, default";
       general = {

@@ -15,7 +15,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [ zsh-powerlevel10k meslo-lgs-nf gcr seahorse networkmanagerapplet ];
+  home.packages = with pkgs; [ zsh-powerlevel10k meslo-lgs-nf gcr seahorse networkmanagerapplet gnome-icon-theme hicolor-icon-theme ];
 
   dconf.settings = {
     "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
@@ -135,8 +135,6 @@
       if [ -d $HOME/bin ]; then
 	export PATH=$PATH:$HOME/bin
       fi
-
-      export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:${pkgs.networkmanagerapplet}/share
     '';
 
     shellAliases = {
@@ -162,5 +160,8 @@
 
   services.gnome-keyring.enable = true;
   services.blueman-applet.enable = true;
-  services.network-manager-applet.enable = true;
+
+  xdg.systemDirs.data = [
+    "${pkgs.networkmanagerapplet}/share"
+  ];
 }
