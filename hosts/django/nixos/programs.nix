@@ -98,6 +98,7 @@ in {
       gnome-icon-theme
       hicolor-icon-theme
       wireguard-ui
+      xmrig
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
       nodejs_20

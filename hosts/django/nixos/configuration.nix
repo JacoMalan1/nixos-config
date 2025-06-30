@@ -22,6 +22,7 @@ in {
   boot.blacklistedKernelModules = [ "k10temp" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   boot.kernelModules = [ "zenpower" "amdgpu" ];
+  hardware.cpu.x86.msr.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -133,9 +134,7 @@ in {
     enableSSHSupport = true;
   };
 
-  services.xserver = {
-    desktopManager.gnome.enable = true;
-  };
+  services.xserver = { desktopManager.gnome.enable = true; };
 
   # List services that you want to enable:
 
@@ -160,6 +159,14 @@ in {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-
   services.postgresql.settings.port = lib.mkForce 5433;
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      X11Forwarding = true;
+    };
+  };
 }

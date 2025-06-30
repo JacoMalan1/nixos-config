@@ -46,7 +46,11 @@
             inherit inputs;
             inherit system;
           };
-          modules = [ lanzaboote.nixosModules.lanzaboote ./hosts/django ];
+          modules = [
+            lanzaboote.nixosModules.lanzaboote
+            ./hosts/django
+            agenix.nixosModules.default
+          ];
         };
         workhorse = nixpkgs-stable.lib.nixosSystem {
           specialArgs = {
