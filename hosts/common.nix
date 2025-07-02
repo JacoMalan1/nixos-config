@@ -62,7 +62,7 @@ in {
       kdePackages.kleopatra
       figma-linux
       networkmanagerapplet
-    ] ++ (with pkgs; [ clang novelwriter postman ]);
+    ] ++ (with pkgs; [ clang novelwriter postman element-desktop ]);
 
   environment.sessionVariables = {
     FLAKE = "$HOME/nix";
