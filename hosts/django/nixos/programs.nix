@@ -104,6 +104,7 @@ in {
       nodejs_20
       spotify
       monero-gui
+      monero-cli
       signal-desktop
     ]);
 }
