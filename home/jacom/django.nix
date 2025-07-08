@@ -3,9 +3,11 @@
     ./common.nix
     ./hyprland/django.nix
     ./waybar/django.nix
-    ./nixvim/common.nix
+    ./nixvim
     ./rofi
   ];
+
+  nixvim.enable = true;
 
   xdg.desktopEntries = {
     spotify = {

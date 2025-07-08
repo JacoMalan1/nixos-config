@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     strain = {
-      url = "github:JacoMalan1/strain/0.1.3";
+      url = "github:JacoMalan1/strain/0.1.4";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     agenix = {
