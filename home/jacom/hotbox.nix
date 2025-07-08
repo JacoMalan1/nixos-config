@@ -3,10 +3,11 @@
     ./common.nix
     ./hyprland/hotbox.nix
     ./waybar/hotbox.nix
-    ./nixvim/common.nix
-    ./nixvim/hotbox.nix
+    ./nixvim
     ./rofi
   ];
+
+  nixvim.enable = true;
 
   xdg.desktopEntries = {
     spotify = {
