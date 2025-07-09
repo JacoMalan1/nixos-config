@@ -1,11 +1,6 @@
 { ... }: {
-  imports = [
-    ./common.nix
-    ./hyprland/django.nix
-    ./waybar/django.nix
-    ./nixvim
-    ./rofi
-  ];
+  imports =
+    [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ./rofi ];
 
   nixvim.enable = true;
 

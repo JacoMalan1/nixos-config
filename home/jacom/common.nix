@@ -1,6 +1,5 @@
-{ inputs, system, ... }: 
-let
-  pkgs = import inputs.nixpkgs-unstable { inherit system; };
+{ inputs, system, ... }:
+let pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -18,7 +17,15 @@ in {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [ zsh-powerlevel10k meslo-lgs-nf gcr seahorse networkmanagerapplet gnome-icon-theme hicolor-icon-theme ];
+  home.packages = with pkgs; [
+    zsh-powerlevel10k
+    meslo-lgs-nf
+    gcr
+    seahorse
+    networkmanagerapplet
+    gnome-icon-theme
+    hicolor-icon-theme
+  ];
 
   dconf.settings = {
     "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
@@ -64,9 +71,7 @@ in {
     gtk2.extraConfig = ''
       gtk-application-prefer-dark-theme = true
     '';
-    gtk3.extraConfig = { 
-      gtk-application-prefer-dark-theme = true; 
-    };
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
     gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
   };
 
@@ -95,8 +100,7 @@ in {
   #
   #  /etc/profiles/per-user/jacom/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-  };
+  home.sessionVariables = { };
 
   home.pointerCursor = {
     package = pkgs.adwaita-icon-theme;
@@ -122,22 +126,22 @@ in {
     defaultKeymap = "viins";
 
     initContent = ''
-      export PATH=$PATH:$HOME/.cargo/bin
-      export PATH=$PATH:$HOME/go/bin
-      export PATH=$PATH:$HOME/.npm-global/bin
-      export PATH=$PATH:$HOME/bin
-      export PATH=$PATH:$HOME/.local/bin
-      export PATH=$PATH:$HOME/.yarn/bin
-      source ~/.p10k.zsh
-      bindkey -M viins 'jj' vi-cmd-mode
-      eval "$(direnv hook zsh)"
-      eval "$(zoxide init --cmd cd zsh)"
+            export PATH=$PATH:$HOME/.cargo/bin
+            export PATH=$PATH:$HOME/go/bin
+            export PATH=$PATH:$HOME/.npm-global/bin
+            export PATH=$PATH:$HOME/bin
+            export PATH=$PATH:$HOME/.local/bin
+            export PATH=$PATH:$HOME/.yarn/bin
+            source ~/.p10k.zsh
+            bindkey -M viins 'jj' vi-cmd-mode
+            eval "$(direnv hook zsh)"
+            eval "$(zoxide init --cmd cd zsh)"
 
-      if [ $TTY = '/dev/tty1' ]; then Hyprland; fi
+            if [ $TTY = '/dev/tty1' ]; then Hyprland; fi
 
-      if [ -d $HOME/bin ]; then
-	export PATH=$PATH:$HOME/bin
-      fi
+            if [ -d $HOME/bin ]; then
+      	export PATH=$PATH:$HOME/bin
+            fi
     '';
 
     shellAliases = {
@@ -164,7 +168,5 @@ in {
   services.gnome-keyring.enable = true;
   services.blueman-applet.enable = true;
 
-  xdg.systemDirs.data = [
-    "${pkgs.networkmanagerapplet}/share"
-  ];
+  xdg.systemDirs.data = [ "${pkgs.networkmanagerapplet}/share" ];
 }

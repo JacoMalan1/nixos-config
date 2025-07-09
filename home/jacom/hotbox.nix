@@ -1,11 +1,6 @@
 { ... }: {
-  imports = [
-    ./common.nix
-    ./hyprland/hotbox.nix
-    ./waybar/hotbox.nix
-    ./nixvim
-    ./rofi
-  ];
+  imports =
+    [ ./common.nix ./hyprland/hotbox.nix ./waybar/hotbox.nix ./nixvim ./rofi ];
 
   nixvim.enable = true;
 

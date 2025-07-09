@@ -18,27 +18,23 @@ in {
     package = lib.mkForce null;
     portalPackage = lib.mkForce null;
     settings = {
-      exec-once = [
-	"copyq --start-server"
-      ];
+      exec-once = [ "copyq --start-server" ];
       debug = { disable_logs = false; };
       input.touchpad.natural_scroll = true;
       bind = [
         "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
         "ALT, h, focusmonitor, ${leftMonitor}"
         "ALT, l, focusmonitor, ${rightMonitor}"
-	"SUPER, s, exec, hyprshot -o ~/Pictures -m region"
-	"SUPER SHIFT, s, exec, hyprshot -o ~/Pictures -m window"
-	", mouse:276, workspace, +1"
-	", mouse:275, workspace, -1"
+        "SUPER, s, exec, hyprshot -o ~/Pictures -m region"
+        "SUPER SHIFT, s, exec, hyprshot -o ~/Pictures -m window"
+        ", mouse:276, workspace, +1"
+        ", mouse:275, workspace, -1"
       ];
       monitor = [
         "${rightMonitor}, 1920x1080, 1920x0, 1"
         "${leftMonitor}, 2880x1620@120.00, 0x0, 1.5"
       ];
-      windowrulev2 = [
-        "minsize 1 1, class:^(spotify)$"
-      ];
+      windowrulev2 = [ "minsize 1 1, class:^(spotify)$" ];
     };
   };
 }

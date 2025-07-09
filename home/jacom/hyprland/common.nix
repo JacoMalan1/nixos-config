@@ -151,7 +151,7 @@ in {
         "ALT, 7, focusworkspaceoncurrentmonitor, 7"
         "ALT, 8, focusworkspaceoncurrentmonitor, 8"
         "ALT, 9, focusworkspaceoncurrentmonitor, 9"
-	"ALT, e, focusworkspaceoncurrentmonitor, empty"
+        "ALT, e, focusworkspaceoncurrentmonitor, empty"
         "ALT SHIFT, q, killactive"
         "ALT, j, cyclenext"
         "ALT SHIFT, j, swapnext"
