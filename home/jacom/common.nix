@@ -1,6 +1,8 @@
 { inputs, system, ... }:
 let pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
+  imports = [ ./tmux.nix ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jacom";
@@ -39,7 +41,7 @@ in {
     };
     settings = {
       enable_audio_bell = false;
-      shell = "zellij";
+      shell = "tmux";
       background_opacity = "0.7";
       # cursor_trail = 32;
       # cursor_trail_decay = "0.1 0.2";
@@ -169,4 +171,5 @@ in {
   services.blueman-applet.enable = true;
 
   xdg.systemDirs.data = [ "${pkgs.networkmanagerapplet}/share" ];
+  services.network-manager-applet.enable = true;
 }

@@ -3,6 +3,7 @@
     [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ./rofi ];
 
   nixvim.enable = true;
+  custom.tmux.enable = true;
 
   xdg.desktopEntries = {
     spotify = {
