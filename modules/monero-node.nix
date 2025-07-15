@@ -15,7 +15,7 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 18080 18081 18089 18084 ];
+  networking.firewall.allowedTCPPorts = [ 18080 18081 18089 18084 3333 ];
 
   # Enable Model-Specific Registers for XMRig
   hardware.cpu.x86.msr.enable = true;

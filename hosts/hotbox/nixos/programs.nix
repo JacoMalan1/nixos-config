@@ -30,7 +30,6 @@ in {
     usbutils
     networkmanagerapplet
     rustup
-    easyeffects
     psmisc
     xorg.xkill
     lshw
@@ -111,6 +110,7 @@ in {
     freecad
     drawio
     xmrig
+    pavucontrol
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
@@ -124,5 +124,6 @@ in {
     monero-gui
     monero-cli
     signal-desktop
+    easyeffects
   ]);
 }

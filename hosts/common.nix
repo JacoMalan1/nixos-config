@@ -24,8 +24,7 @@ in {
 
   environment.systemPackages = with pkgs-stable;
     [
-      inputs.agenix.packages.${system}.default
-      transmission_4-gtk
+      inputs.agenix.packages.${system}.default transmission_4-gtk
       glib
       glib.dev
       gsettings-desktop-schemas
@@ -63,6 +62,7 @@ in {
       figma-linux
       networkmanagerapplet
       tmux
+      github-cli
     ] ++ (with pkgs; [ clang novelwriter postman element-desktop ]);
 
   environment.sessionVariables = {

@@ -89,13 +89,13 @@ in {
     nss
   ];
 
-  specialisation.gnome.configuration = {
-    services.xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-    };
-  };
+  # specialisation.gnome.configuration = {
+  #   services.xserver = {
+  #     enable = true;
+  #     displayManager.gdm.enable = true;
+  #     desktopManager.gnome.enable = true;
+  #   };
+  # };
 
   programs.ssh.startAgent = false;
 
@@ -123,7 +123,7 @@ in {
     logRefusedConnections = true;
     logReversePathDrops = true;
     checkReversePath = "loose";
-    allowedTCPPorts = [ 8384 22000 25565 22 27017 18089 18081 18084 ];
+    allowedTCPPorts = [ 8384 22000 25565 22 27017 18089 18081 18084 4200 ];
     allowedUDPPorts = [ 22000 21027 27017 51821 ];
   };
 
@@ -136,4 +136,5 @@ in {
   };
 
   services.resolved.enable = true;
+  services.flatpak.enable = true;
 }
