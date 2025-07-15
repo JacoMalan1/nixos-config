@@ -62,6 +62,7 @@ in {
       kdePackages.kleopatra
       figma-linux
       networkmanagerapplet
+      tmux
     ] ++ (with pkgs; [ clang novelwriter postman element-desktop ]);
 
   environment.sessionVariables = {
