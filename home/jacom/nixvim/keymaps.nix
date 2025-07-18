@@ -167,6 +167,18 @@
         options.desc = "LSP Floating Diagnostics";
       }
       {
+	mode = [ "n" ];
+	key = "<leader>lD";
+	action = "<Cmd>Trouble diagnostics toggle<CR>";
+	options.desc = "List problems";
+      }
+      {
+	mode = [ "n" ];
+	key = "<leader>lT";
+	action = "<Cmd>Trouble todo toggle<CR>";
+	options.desc = "List TODOs";
+      }
+      {
         mode = [ "n" ];
         key = "<leader>lr";
         action = "<Cmd>lua vim.lsp.buf.rename()<CR>";

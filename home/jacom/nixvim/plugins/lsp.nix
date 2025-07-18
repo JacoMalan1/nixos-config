@@ -24,7 +24,7 @@ in {
 	package = tailwindcss-language-server;
       };
       html.enable = true;
-      pylsp.enable = true;
+      pyright.enable = true;
       taplo.enable = true;
       clangd.enable = true;
       glsl_analyzer.enable = true;

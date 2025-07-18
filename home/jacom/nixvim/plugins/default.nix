@@ -1,5 +1,12 @@
 { ... }: {
-  imports = [ ./neo-tree.nix ./cmp.nix ./lsp.nix ./jdtls.nix ./none-ls.nix ];
+  imports = [
+    ./neo-tree.nix
+    ./cmp.nix
+    ./lsp.nix
+    ./jdtls.nix
+    ./none-ls.nix
+    ./toggleterm.nix
+  ];
 
   programs.nixvim = {
     plugins = {
@@ -66,6 +73,9 @@
         settings.highlight.enable = true;
       };
       neoscroll.enable = true;
+      toggleterm.enable = true;
+      todo-comments.enable = true;
+      trouble.enable = true;
     };
   };
 }

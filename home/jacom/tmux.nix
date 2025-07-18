@@ -9,6 +9,7 @@ in {
       enable = true;
       package = pkgs.tmux;
       keyMode = "vi";
+      mouse = true;
       plugins = with pkgs; [
         {
           plugin = tmuxPlugins.gruvbox;

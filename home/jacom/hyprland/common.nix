@@ -129,7 +129,7 @@ in {
         "ALT, b, exec, brave"
         "ALT, p, exec, rofi -show drun -show-icons"
         "ALT SHIFT, p, exec, rofi -show run"
-        "CTRL ALT, l, exec, hyprlock --immediate"
+        "SUPER, l, exec, hyprlock --immediate"
         "ALT SHIFT, Return, exec, kitty"
         "ALT SHIFT, 1, movetoworkspacesilent, 1"
         "ALT SHIFT, 2, movetoworkspacesilent, 2"
