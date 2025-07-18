@@ -3,6 +3,7 @@
     [ ./common.nix ./hyprland/hotbox.nix ./waybar/hotbox.nix ./nixvim ./rofi ];
 
   nixvim.enable = true;
+  custom.tmux.enable = true;
 
   xdg.desktopEntries = {
     spotify = {
