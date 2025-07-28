@@ -102,7 +102,6 @@ in {
       inputs.strain.defaultPackage.${system}
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
-      idea-override
       nodejs_20
       spotify
       monero-gui
