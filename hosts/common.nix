@@ -63,6 +63,7 @@ in {
       networkmanagerapplet
       tmux
       github-cli
+      pavucontrol
     ] ++ (with pkgs; [ clang novelwriter postman element-desktop ]);
 
   environment.sessionVariables = {
