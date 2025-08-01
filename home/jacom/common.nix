@@ -128,22 +128,23 @@ in {
     defaultKeymap = "viins";
 
     initContent = ''
-            export PATH=$PATH:$HOME/.cargo/bin
-            export PATH=$PATH:$HOME/go/bin
-            export PATH=$PATH:$HOME/.npm-global/bin
-            export PATH=$PATH:$HOME/bin
-            export PATH=$PATH:$HOME/.local/bin
-            export PATH=$PATH:$HOME/.yarn/bin
-            source ~/.p10k.zsh
-            bindkey -M viins 'jj' vi-cmd-mode
-            eval "$(direnv hook zsh)"
-            eval "$(zoxide init --cmd cd zsh)"
+      export PATH=$PATH:$HOME/.cargo/bin
+      export PATH=$PATH:$HOME/go/bin
+      export PATH=$PATH:$HOME/.npm-global/bin
+      export PATH=$PATH:$HOME/bin
+      export PATH=$PATH:$HOME/.local/bin
+      export PATH=$PATH:$HOME/.yarn/bin
+      export EDITOR=nvim
+      source ~/.p10k.zsh
+      bindkey -M viins 'jj' vi-cmd-mode
+      eval "$(direnv hook zsh)"
+      eval "$(zoxide init --cmd cd zsh)"
 
-            if [ $TTY = '/dev/tty1' ]; then Hyprland; fi
+      if [ $TTY = '/dev/tty1' ]; then Hyprland; fi
 
-            if [ -d $HOME/bin ]; then
+      if [ -d $HOME/bin ]; then
       	export PATH=$PATH:$HOME/bin
-            fi
+      fi
     '';
 
     shellAliases = {
