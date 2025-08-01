@@ -100,6 +100,7 @@ in {
       wireguard-ui
       xmrig
       inputs.strain.defaultPackage.${system}
+      wpsoffice
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
       nodejs_20

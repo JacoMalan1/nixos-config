@@ -25,5 +25,6 @@
     ../../modules/jupyter.nix
     # ../../modules/i2pd.nix
     ../../modules/mullvad.nix
+    ../../modules/protonmail.nix
   ];
 }

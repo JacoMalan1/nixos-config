@@ -5,7 +5,7 @@ let
     config.allowUnfree = true;
   };
 in {
-  fonts.packages = with pkgs.pkgs; [
+  fonts.packages = with pkgs; [
     corefonts
     vistafonts
     noto-fonts
