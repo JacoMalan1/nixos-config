@@ -24,11 +24,11 @@ in {
   };
 
   virtualisation.spiceUSBRedirection.enable = true;
+  programs.virt-manager.enable = true;
 
-  users.users.jacom.extraGroups = [ "libvirtd" ];
+  users.groups.libvirtd.members = [ "jacom" ];
 
   environment.systemPackages = with pkgs; [
-    virt-manager
     bridge-utils
     safe-rm
     dnsmasq
