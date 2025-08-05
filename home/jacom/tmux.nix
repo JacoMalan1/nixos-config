@@ -10,6 +10,11 @@ in {
       package = pkgs.tmux;
       keyMode = "vi";
       mouse = true;
+      extraConfig = ''
+        bind  c  new-window      -c "#{pane_current_path}"
+        bind  %  split-window -h -c "#{pane_current_path}"
+        bind '"' split-window -v -c "#{pane_current_path}"
+      '';
       plugins = with pkgs; [
         {
           plugin = tmuxPlugins.gruvbox;
