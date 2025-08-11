@@ -60,11 +60,6 @@ in {
     packages = [ pkgs.gnome-settings-daemon pkgs.gcr ];
   };
 
-  services.tor = {
-    enable = true;
-    client.enable = true;
-  };
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "za";
@@ -81,6 +76,7 @@ in {
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
   hardware.usb-modeswitch.enable = true;
+  hardware.ledger.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -106,10 +102,11 @@ in {
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.groups.plugdev = { };
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
   };
 
   programs.nix-ld.enable = true;
@@ -145,7 +142,7 @@ in {
   networking.firewall = {
     enable = true;
     checkReversePath = "loose";
-    allowedTCPPorts = [ 22000 ];
+    allowedTCPPorts = [ 22 22000 ];
     allowedUDPPorts = [ 22000 ];
   };
   # Or disable the firewall altogether.

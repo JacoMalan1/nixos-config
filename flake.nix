@@ -83,8 +83,11 @@
             inherit system;
             config.allowUnfree = true;
           };
-          modules =
-            [ ./home/jacom/django.nix inputs.nixvim.homeManagerModules.nixvim ];
+          modules = [ 
+	    ./home/jacom/django.nix 
+	    inputs.nixvim.homeManagerModules.nixvim
+            agenix.homeManagerModules.default
+	  ];
         };
         "jacom@workhorse" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {

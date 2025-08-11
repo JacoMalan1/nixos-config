@@ -109,5 +109,6 @@ in {
       monero-cli
       signal-desktop
       eigenwallet
+      ledger-live-desktop
     ]);
 }

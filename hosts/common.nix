@@ -43,7 +43,7 @@ in {
       jq
       dig
       whois
-      tor-browser
+      tor-browser-bundle-bin
       qalculate-gtk
       sshfs
       hunspell
