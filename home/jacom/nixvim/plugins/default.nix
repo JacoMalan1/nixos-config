@@ -6,6 +6,7 @@
     ./jdtls.nix
     ./none-ls.nix
     ./toggleterm.nix
+    ./copilot.nix
   ];
 
   programs.nixvim = {

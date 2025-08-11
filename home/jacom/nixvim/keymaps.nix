@@ -83,22 +83,22 @@
         action = "<Cmd>Neotree toggle<CR>";
       }
       {
-        mode = [ "n" ];
+        mode = [ "n" "v" ];
         key = "<C-h>";
         action = "<C-w>h";
       }
       {
-        mode = [ "n" ];
+        mode = [ "n" "v" ];
         key = "<C-l>";
         action = "<C-w>l";
       }
       {
-        mode = [ "n" ];
+        mode = [ "n" "v" ];
         key = "<C-j>";
         action = "<C-w>j";
       }
       {
-        mode = [ "n" ];
+        mode = [ "n" "v" ];
         key = "<C-k>";
         action = "<C-w>k";
       }
@@ -211,6 +211,12 @@
 	key = "<leader>bf";
 	action = "<Cmd>lua vim.lsp.buf.format()<CR>";
 	options.desc = "Format buffer";
+      }
+      {
+	mode = [ "n" ];
+	key = "<leader>tc";
+	action = "<Cmd>CopilotChatToggle<CR>";
+	options.desc = "Toggle Copilot Chat Window";
       }
     ];
   };

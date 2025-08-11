@@ -50,6 +50,7 @@ in {
         shiftwidth = 2;
         signcolumn = "yes:1";
         showmode = false;
+	cmdheight = 0;
       };
     };
 
