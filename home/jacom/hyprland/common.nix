@@ -104,7 +104,7 @@ in {
     package = pkgs.hyprland;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     settings = {
-      ecosystem.enforce_permissions = true;
+      ecosystem.enforce_permissions = false;
       env = [
         "HYPRCURSOR_THEME,Adwaita"
         "HYPRCURSOR_SIZE,24"

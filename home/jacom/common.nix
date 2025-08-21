@@ -27,6 +27,7 @@ in {
     networkmanagerapplet
     gnome-icon-theme
     hicolor-icon-theme
+    fzf
   ];
 
   dconf.settings = {
@@ -139,6 +140,7 @@ in {
       bindkey -M viins 'jj' vi-cmd-mode
       eval "$(direnv hook zsh)"
       eval "$(zoxide init --cmd cd zsh)"
+      eval "$(fzf --zsh)"
 
       if [ $TTY = '/dev/tty1' ]; then Hyprland; fi
 

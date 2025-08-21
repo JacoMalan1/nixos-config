@@ -11,7 +11,12 @@
 
   programs.nixvim = {
     plugins = {
-      colorizer.enable = true;
+      ccc = {
+	enable = true;
+	settings.highlighter = {
+	  auto_enable = true;
+	};
+      };
       persistence.enable = true;
       tailwind-tools.enable = true;
       # java = {
