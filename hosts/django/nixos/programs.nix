@@ -75,7 +75,6 @@ in {
       steam-run
       unrar
       p7zip
-      stremio
       android-tools
       rpi-imager
       gcc-arm-embedded
@@ -100,7 +99,6 @@ in {
       wireguard-ui
       xmrig
       inputs.strain.defaultPackage.${system}
-      wpsoffice
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
       nodejs_20

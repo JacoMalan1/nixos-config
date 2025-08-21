@@ -64,6 +64,7 @@ in {
       tmux
       github-cli
       pavucontrol
+      kdePackages.kleopatra
     ] ++ (with pkgs; [ clang novelwriter postman element-desktop ]);
 
   environment.sessionVariables = {

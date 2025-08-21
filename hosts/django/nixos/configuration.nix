@@ -106,7 +106,7 @@ in {
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
-    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "kvm" ];
   };
 
   programs.nix-ld.enable = true;
