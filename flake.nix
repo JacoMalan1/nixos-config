@@ -72,7 +72,7 @@
             config.allowUnfree = true;
           };
           modules =
-            [ ./home/jacom/hotbox.nix inputs.nixvim.homeManagerModules.nixvim ];
+            [ ./home/jacom/hotbox.nix inputs.nixvim.homeModules.nixvim ];
         };
         "jacom@django" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
@@ -85,7 +85,7 @@
           };
           modules = [ 
 	    ./home/jacom/django.nix 
-	    inputs.nixvim.homeManagerModules.nixvim
+	    inputs.nixvim.homeModules.nixvim
             agenix.homeManagerModules.default
 	  ];
         };
@@ -100,7 +100,7 @@
           };
           modules = [
             ./home/jacom/workhorse.nix
-            inputs.nixvim.homeManagerModules.nixvim
+            inputs.nixvim.homeModules.nixvim
           ];
         };
       };
