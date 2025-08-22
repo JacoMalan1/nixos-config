@@ -27,6 +27,16 @@
       mimeType = [ "application/sql" ];
       exec = "env GDK_BACKEND=x11 dbeaver";
     };
+    ledger-live-desktop = {
+      name = "Ledger Live";
+      exec = "ledger-live-desktop --enable-features=UseOzonePlatform --ozone-platform=x11 --no-sandbox %U";
+      terminal = false;
+      icon = "ledger-live-desktop";
+      settings = { StartupWMClass = "Ledger Live"; };
+      comment = "Ledger Live - Desktop";
+      mimeType = [ "x-scheme-handler/ledgerlive" ];
+      categories = [ "Finance" ];
+    };
   };
 
   programs.mangohud = {
