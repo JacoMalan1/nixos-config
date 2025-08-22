@@ -26,12 +26,6 @@ in {
       group = "monero";
     };
     groups.monero = { };
-
-    users.p2pool = {
-      isSystemUser = true;
-      group = "p2pool";
-    };
-    groups.p2pool = { };
   };
 
   environment.systemPackages = with pkgs; [ monero-cli p2pool screen ];
@@ -40,54 +34,6 @@ in {
       file = ../secrets/hotbox-monerod-conf.age;
       owner = "monero";
       group = "monero";
-    };
-    monero-mining-address = {
-      file = ../secrets/monero-mining-address.age;
-      owner = "p2pool";
-      group = "p2pool";
-    };
-  };
-
-  systemd.services.p2pool =
-    let mining-address = config.age.secrets.monero-mining-address.path;
-    in {
-      description = "P2Pool Node";
-      after =
-        [ "network.target" "monerod.service" "systemd-modules-load.service" ];
-      wants =
-        [ "network.target" "monerod.service" "systemd-modules-load.service" ];
-      script =
-        "${pkgs.p2pool}/bin/p2pool --loglevel 2 --mini --wallet $(cat ${mining-address})";
-      requires = [ "p2pool.socket" ];
-
-      serviceConfig = {
-        Type = "exec";
-        Restart = "always";
-        User = "p2pool";
-        Group = "p2pool";
-
-        TimeoutStop = 60;
-
-        StandardInput = "socket";
-        StandardOutput = "journal";
-        StandardError = "journal";
-        WorkingDirectory = "/var/lib/p2pool";
-
-        Sockets = [ "p2pool.socket" ];
-      };
-
-      wantedBy = [ "multi-user.target" ];
-    };
-
-  systemd.sockets.p2pool = {
-    description = "P2Pool Command Socket";
-    socketConfig = {
-      SocketUser = "p2pool";
-      SocketGroup = "p2pool";
-      ListenFIFO = "/run/p2pool/p2pool.control";
-      RemoveOnStop = true;
-      DirectoryMode = "0755";
-      SocketMode = "0666";
     };
   };
 

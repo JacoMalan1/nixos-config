@@ -13,7 +13,7 @@
     ../../modules/fonts.nix
     ../../modules/wifi.nix
     ../../modules/qemu.nix
-    ../../modules/mongodb.nix
+    # ../../modules/mongodb.nix
     ../../modules/retro
     ../../modules/hyprland.nix
     ../../modules/obs.nix
@@ -28,5 +28,6 @@
     ../../modules/postgres.nix
     ../../modules/android-studio.nix
     ../../modules/monero-node.nix
+    ../../modules/p2pool.nix
   ];
 }

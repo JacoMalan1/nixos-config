@@ -125,5 +125,6 @@ in {
     monero-cli
     signal-desktop
     easyeffects
+    ledger-live-desktop
   ]);
 }

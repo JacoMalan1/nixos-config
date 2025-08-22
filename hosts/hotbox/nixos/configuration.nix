@@ -34,6 +34,7 @@ in {
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
   hardware.usb-modeswitch.enable = true;
+  hardware.ledger.enable = true;
 
   services.acpid.enable = true;
 
@@ -70,10 +71,12 @@ in {
     pulse.enable = true;
   };
 
+  users.groups.plugdev = { };
+
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
-    extraGroups = [ "networkmanager" "wheel" "wireshark" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark" "plugdev" ];
     packages = with pkgs; [ kitty zellij ];
   };
 
@@ -137,4 +140,17 @@ in {
 
   services.resolved.enable = true;
   services.flatpak.enable = true;
+
+  age.secrets.monero-mining-address = {
+    file = ../../../secrets/monero-mining-address.age;
+    owner = "p2pool";
+    group = "p2pool";
+  };
+
+  services.p2pool = {
+    enable = true;
+    walletAddress = "$WALLET_ADDRESS";
+    environmentFile = config.age.secrets.monero-mining-address.path;
+    sidechain = "mini";
+  };
 }

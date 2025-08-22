@@ -1,4 +1,7 @@
-{ pkgs, lib, config, ... }: {
+{ inputs, system, lib, config, ... }:
+let
+  pkgs = import inputs.nixpkgs-stable { inherit system; };
+in {
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.graphics = {
     enable = true;
@@ -25,8 +28,8 @@
     nvidiaSettings = false;
 
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "570.153.02";
-      sha256_64bit = "sha256-FIiG5PaVdvqPpnFA5uXdblH5Cy7HSmXxp6czTfpd4bY=";
+      version = "575.64.05";
+      sha256_64bit = "sha256-hfK1D5EiYcGRegss9+H5dDr/0Aj9wPIJ9NVWP3dNUC0=";
       sha256_aarch64 = lib.fakeSha256;
       openSha256 = lib.fakeSha256;
       settingsSha256 = lib.fakeSha256;
