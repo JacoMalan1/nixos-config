@@ -150,9 +150,9 @@ in {
     '';
 
     shellAliases = {
-      ls = "eza";
-      cat = "bat";
-      nx = "yarn nx";
+      ls = "${pkgs.eza}/bin/eza";
+      cat = "${pkgs.bat}/bin/bat";
+      nx = "${pkgs.yarn}/bin/yarn nx";
       ns = "nix-shell --command zsh -p";
     };
 

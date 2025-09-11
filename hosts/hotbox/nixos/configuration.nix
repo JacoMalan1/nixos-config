@@ -7,6 +7,8 @@ let
 in {
   imports = [ ./hardware-configuration.nix ];
 
+  custom.commonConfiguration.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
