@@ -18,6 +18,7 @@ in {
     ./hardware-configuration.nix
     ./fs.nix
   ];
+  custom.commonConfiguration.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

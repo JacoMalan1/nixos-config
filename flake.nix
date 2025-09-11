@@ -24,16 +24,20 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { nixpkgs-stable, home-manager, lanzaboote, agenix, ... }@inputs:
+  outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
         hotbox = nixpkgs-stable.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            inherit system;
+	    inherit system;
           };
           modules = [
             lanzaboote.nixosModules.lanzaboote
@@ -59,6 +63,30 @@
           };
           modules = [ lanzaboote.nixosModules.lanzaboote ./hosts/workhorse ];
         };
+	nixos-wsl = nixpkgs-unstable.lib.nixosSystem { # WSL Configuration
+	  inherit system;
+	  specialArgs = {
+	    inherit inputs;
+	    inherit system;
+	  };
+
+	  modules = [
+	    inputs.nixos-wsl.nixosModules.default
+	    inputs.home-manager.nixosModules.home-manager
+	    ./hosts/nixos-wsl
+	    {
+	      home-manager.useGlobalPkgs = true;
+	      home-manager.useUserPackages = true;
+	      home-manager.extraSpecialArgs = { inherit inputs; inherit system; };
+	      home-manager.users.jacom = { ... }: {
+		imports = [ 
+		  inputs.nixvim.homeModules.nixvim
+		  ./home/jacom/nixos-wsl.nix 
+		];
+	      };
+	    }
+	  ];
+	};
       };
 
       homeConfigurations = {
