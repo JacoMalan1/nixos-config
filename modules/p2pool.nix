@@ -102,6 +102,18 @@ in
         '';
       };
 
+      mergeMining = {
+	enable = lib.mkEnableOption "Enable merge mining";
+	walletAddress = lib.mkOption {
+	  type = lib.types.str;
+	  default = "";
+	};
+	nodeAddress = lib.mkOption {
+	  type = lib.types.str;
+	  default = "";
+	};
+      };
+
       extraArgs = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ];
@@ -188,6 +200,7 @@ in
       + "${lib.optionalString (cfg.sidechain == "nano") " \\\n --nano"}"
       + "${lib.optionalString cfg.socks5.enable " \\\n--socks5 ${cfg.socks5.ip}:${toString cfg.socks5.port}"}"
       + "${lib.optionalString (cfg.walletAddress != "") " \\\n--wallet ${cfg.walletAddress}"}"
+      + "${lib.optionalString cfg.mergeMining.enable " \\\n--merge-mine ${cfg.mergeMining.nodeAddress} ${cfg.mergeMining.walletAddress}"}"
       + lib.optionalString (cfg.extraArgs != [ ]) (lib.strings.concatStringsSep " \\\n" cfg.extraArgs);
 
       serviceConfig = {
@@ -225,10 +238,6 @@ in
           "AF_INET6"
           "AF_NETLINK"
           "AF_UNIX"
-        ];
-        SocketBindDeny = [
-          "ipv4:udp"
-          "ipv6:udp"
         ];
         CapabilityBoundingSet = [
           "~CAP_BLOCK_SUSPEND"

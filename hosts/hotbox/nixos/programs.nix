@@ -111,6 +111,8 @@ in {
     drawio
     xmrig
     pavucontrol
+    wpsoffice
+    inputs.tari-suite.packages.${system}.default
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
