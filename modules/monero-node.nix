@@ -7,10 +7,11 @@ in {
     enable = true;
     client.enable = true;
     enableGeoIP = false;
+    settings.ControlPort = [ { port = 9051; } ];
     relay.onionServices = {
       monero = {
         version = 3;
-        map = [ { port = 18089; } { port = 18084; } ];
+        map = [ { port = 18089; } { port = 18084; } { port = 18080; } ];
       };
     };
   };

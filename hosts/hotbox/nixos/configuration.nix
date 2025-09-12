@@ -128,8 +128,8 @@ in {
     logRefusedConnections = true;
     logReversePathDrops = true;
     checkReversePath = "loose";
-    allowedTCPPorts = [ 8384 22000 25565 22 27017 18089 18081 18084 4200 ];
-    allowedUDPPorts = [ 22000 21027 27017 51821 ];
+    allowedTCPPorts = [ 8384 22000 25565 22 27017 18089 18081 18084 4200 18189 18141 ];
+    allowedUDPPorts = [ 22000 21027 27017 51821 18189 18141 ];
   };
 
   # Do not remove
@@ -154,5 +154,10 @@ in {
     walletAddress = "$WALLET_ADDRESS";
     environmentFile = config.age.secrets.monero-mining-address.path;
     sidechain = "mini";
+    mergeMining = {
+      enable = true;
+      walletAddress = "$TARI_WALLET_ADDRESS";
+      nodeAddress = "tari://127.0.0.1:18102";
+    };
   };
 }
