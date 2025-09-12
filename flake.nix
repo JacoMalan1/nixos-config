@@ -28,6 +28,10 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    tari-suite = {
+      url = "/home/jacom/Code/Nix/minotari";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:
