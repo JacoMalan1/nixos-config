@@ -12,6 +12,9 @@ in {
   };
   wsl.wslConf.network.hostname = "nixos-wsl";
 
+  users.groups.plugdev = { };
+  users.users.jacom.extraGroups = [ "plugdev" ];
+
   programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gtk2;
 
   systemd.services.load-kernel-modules = {
@@ -29,6 +32,7 @@ in {
 
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="users", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0407"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="2c97", TAG+="uaccess", TAG+="udev-acl" GROUP="plugdev" MODE="0660"
   '';
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -53,7 +57,21 @@ in {
     usbutils
     git
     monero-cli
+    rustup
+    inputs.netextender.packages.${system}.default
   ];
+
+  systemd.services.netextender = {
+    description = "SonicWall NetExtender service";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Restart = "on-failure";
+      ExecStart = "${inputs.netextender.packages.${system}.default}/usr/bin/NEService";
+      KillMode = "process";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
