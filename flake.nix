@@ -32,10 +32,6 @@
       url = "/home/jacom/Code/Nix/minotari";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    netextender = {
-      url = "/home/jacom/Code/Nix/netextender";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:

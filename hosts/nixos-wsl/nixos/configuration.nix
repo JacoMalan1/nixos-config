@@ -58,20 +58,7 @@ in {
     git
     monero-cli
     rustup
-    inputs.netextender.packages.${system}.default
   ];
-
-  systemd.services.netextender = {
-    description = "SonicWall NetExtender service";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Restart = "on-failure";
-      ExecStart = "${inputs.netextender.packages.${system}.default}/usr/bin/NEService";
-      KillMode = "process";
-    };
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

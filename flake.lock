@@ -288,23 +288,6 @@
         "type": "github"
       }
     },
-    "netextender": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1757682456,
-        "narHash": "sha256-JxkdiU1dVhEdQ+oRlqg6gSiTXh2uaL61HUhTn/+KnLU=",
-        "path": "/home/jacom/Code/Nix/netextender",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/jacom/Code/Nix/netextender",
-        "type": "path"
-      }
-    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -469,7 +452,6 @@
         "agenix": "agenix",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
-        "netextender": "netextender",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
