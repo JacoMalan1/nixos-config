@@ -10,6 +10,12 @@ in {
   home.username = "jacom";
   home.homeDirectory = "/home/jacom";
 
+  home.packages = with pkgs; [
+    direnv
+    zoxide
+    fzf
+  ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
