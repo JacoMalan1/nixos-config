@@ -128,5 +128,6 @@ in {
     signal-desktop
     easyeffects
     ledger-live-desktop
+    solana-cli
   ]);
 }
