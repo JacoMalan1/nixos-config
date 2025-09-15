@@ -4,6 +4,7 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
 in {
   imports = [ ./hardware-configuration.nix ];
 
@@ -154,6 +155,7 @@ in {
     walletAddress = "$WALLET_ADDRESS";
     environmentFile = config.age.secrets.monero-mining-address.path;
     sidechain = "mini";
+    package = pkgs-unstable.p2pool;
     mergeMining = {
       enable = true;
       walletAddress = "$TARI_WALLET_ADDRESS";
