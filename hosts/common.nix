@@ -19,6 +19,7 @@ let
     openscad
     chromium
     yubikey-manager
+    figma-linux
   ];
   unstableGuiApps = with pkgs; [ novelwriter postman element-desktop ];
 in {
@@ -82,11 +83,10 @@ in {
         fd
         playerctl
         wireguard-tools
-        figma-linux
         tmux
         github-cli
 	gnupg
-      ] ++ (with pkgs; [ clang ])
+      ] ++ (with pkgs; [ clang net-tools ])
       ++ (lib.optionals cfg.guiPresent (stableGuiApps ++ unstableGuiApps));
 
     environment.sessionVariables = {
