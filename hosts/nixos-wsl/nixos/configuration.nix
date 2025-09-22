@@ -58,6 +58,7 @@ in {
     git
     monero-cli
     rustup
+    monero-gui
   ];
 
   # This value determines the NixOS release from which the default
