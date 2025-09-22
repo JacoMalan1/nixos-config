@@ -86,6 +86,8 @@ in {
         tmux
         github-cli
 	gnupg
+	mtr
+	traceroute
       ] ++ (with pkgs; [ clang net-tools ])
       ++ (lib.optionals cfg.guiPresent (stableGuiApps ++ unstableGuiApps));
 
