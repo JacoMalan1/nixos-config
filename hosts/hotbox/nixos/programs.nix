@@ -113,6 +113,11 @@ in {
     pavucontrol
     wpsoffice
     inputs.tari-suite.packages.${system}.default
+
+    wineWowPackages.staging
+    winetricks
+    bitwig-studio
+    obsidian
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
