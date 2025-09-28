@@ -2,7 +2,10 @@
 let
   pkgs = import inputs.nixpkgs-stable {
     inherit system;
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [ "dotnet-sdk-6.0.428" ];
+    };
   };
   pkgs-unstable = import inputs.nixpkgs-unstable {
     inherit system;
@@ -118,6 +121,8 @@ in {
     winetricks
     bitwig-studio
     obsidian
+    dotnet-sdk_6
+    teams-for-linux
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
@@ -134,5 +139,6 @@ in {
     easyeffects
     ledger-live-desktop
     solana-cli
+    jetbrains.rider
   ]);
 }
