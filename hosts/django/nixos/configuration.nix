@@ -8,6 +8,10 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  pkgs-stable = import inputs.nixpkgs-stable {
+    inherit system;
+    config.allowUnfree = true;
+  };
 in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -20,6 +24,8 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.systemd.enable = true;
+
+  boot.kernelPackages = pkgs-stable.linuxPackages_zen;
 
   boot.blacklistedKernelModules = [ "k10temp" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
@@ -166,6 +172,18 @@ in {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
       X11Forwarding = true;
+    };
+  };
+
+  systemd.services.netextender = {
+    description = "SonicWall NetExtender service";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Restart = "on-failure";
+      ExecStart = "${inputs.netextender.packages.${system}.default}/bin/NEService";
+      KillMode = "process";
     };
   };
 }

@@ -2,7 +2,10 @@
 let
   pkgs = import inputs.nixpkgs-stable {
     inherit system;
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [ "dotnet-sdk-6.0.428" ];
+    };
   };
 
   pkgs-unstable = import inputs.nixpkgs-unstable {
@@ -93,6 +96,7 @@ in {
       android-studio
       lm_sensors
       dotnet-sdk_8
+      dotnet-sdk_6
       inkscape
       gnome-icon-theme
       hicolor-icon-theme
@@ -108,5 +112,7 @@ in {
       signal-desktop
       eigenwallet
       ledger-live-desktop
+      inputs.netextender.packages.${system}.default
+      jetbrains.rider
     ]);
 }
