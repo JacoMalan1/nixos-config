@@ -26,7 +26,6 @@
     ../../modules/mariadb.nix
     ../../modules/pritunl.nix
     ../../modules/postgres.nix
-    ../../modules/android-studio.nix
     ../../modules/monero-node.nix
     ../../modules/p2pool.nix
   ];
