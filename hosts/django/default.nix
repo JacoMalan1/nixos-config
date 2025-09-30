@@ -26,5 +26,6 @@
     # ../../modules/i2pd.nix
     ../../modules/mullvad.nix
     ../../modules/protonmail.nix
+    ../../modules/netextender.nix
   ];
 }

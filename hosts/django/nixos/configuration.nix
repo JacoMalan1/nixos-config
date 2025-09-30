@@ -186,4 +186,6 @@ in {
       KillMode = "process";
     };
   };
+
+  programs.netextender.enable = true;
 }
