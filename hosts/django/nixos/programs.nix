@@ -102,7 +102,6 @@ in {
       hicolor-icon-theme
       wireguard-ui
       xmrig
-      inputs.strain.defaultPackage.${system}
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
       nodejs_20
