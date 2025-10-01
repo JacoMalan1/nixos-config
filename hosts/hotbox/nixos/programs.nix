@@ -11,6 +11,7 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  dotnet-combined = (with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_6_0 ]);
 in {
   # System packages
   environment.systemPackages = (with pkgs; [
@@ -84,7 +85,6 @@ in {
     gv
     graphviz
     apitrace
-    wine64
 
     sage
     vlc
@@ -107,7 +107,6 @@ in {
     libsForQt5.qt5.qtwayland
 
     stellarium
-    thunderbird
     wireshark-qt
     dbeaver-bin
     freecad
@@ -117,12 +116,14 @@ in {
     wpsoffice
     inputs.tari-suite.packages.${system}.default
 
-    wineWowPackages.staging
+    wineWowPackages.waylandFull
     winetricks
     bitwig-studio
     obsidian
-    dotnet-sdk_6
+    dotnet-combined
     teams-for-linux
+    yubioath-flutter
+    remmina
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
@@ -140,5 +141,6 @@ in {
     ledger-live-desktop
     solana-cli
     jetbrains.rider
+    thunderbird
   ]);
 }

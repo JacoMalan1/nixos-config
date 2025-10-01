@@ -295,14 +295,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1759091562,
-        "narHash": "sha256-Hoa4xQXPf2vAdb2wkQ1yNUyCR21IWAxLUlWRmqaLTks=",
-        "path": "/home/jacom/Code/Nix/netextender",
-        "type": "path"
+        "lastModified": 1757694318,
+        "narHash": "sha256-ppE5WhzyigoBDhZv6kFg3NZ8zOR9WqWdgAcrx2Aj3nk=",
+        "owner": "JacoMalan1",
+        "repo": "nixos-netextender",
+        "rev": "9ea22865fe014da57b719ed58a043e0a98ae06aa",
+        "type": "github"
       },
       "original": {
-        "path": "/home/jacom/Code/Nix/netextender",
-        "type": "path"
+        "owner": "JacoMalan1",
+        "repo": "nixos-netextender",
+        "type": "github"
       }
     },
     "nixos-wsl": {

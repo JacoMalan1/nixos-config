@@ -162,4 +162,6 @@ in {
       nodeAddress = "tari://127.0.0.1:18102";
     };
   };
+
+  programs.netextender.enable = true;
 }
