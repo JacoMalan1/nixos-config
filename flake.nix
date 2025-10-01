@@ -36,10 +36,6 @@
       url = "github:JacoMalan1/nixos-netextender";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    netextender = {
-      url = "/home/jacom/Code/Nix/netextender";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
   };
 
   outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:
