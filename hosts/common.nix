@@ -88,6 +88,7 @@ in {
 	gnupg
 	mtr
 	traceroute
+	zip
       ] ++ (with pkgs; [ clang net-tools ])
       ++ (lib.optionals cfg.guiPresent (stableGuiApps ++ unstableGuiApps));
 

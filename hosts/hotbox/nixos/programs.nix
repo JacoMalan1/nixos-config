@@ -11,7 +11,19 @@ let
     inherit system;
     config.allowUnfree = true;
   };
-  dotnet-combined = (with pkgs.dotnetCorePackages; combinePackages [ sdk_8_0 sdk_6_0 ]);
+  dotnet-combined = (with pkgs.dotnetCorePackages;
+    combinePackages [ sdk_6_0 dotnet_8.sdk dotnet_9.sdk ]).overrideAttrs
+    (finalAttrs: previousAttrs:
+      {
+	postBuild = (previousAttrs.postBuild or '''') + ''
+	  for i in $out/sdk/*
+	  do
+	    i=$(basename $i)
+	    mkdir -p $out/metadata/workloads/''${i/-*}
+	    touch $out/metadata/workloads/''${i/-*}/userlocal
+	  done
+	'';
+      });
 in {
   # System packages
   environment.systemPackages = (with pkgs; [
@@ -27,7 +39,7 @@ in {
     eza
     bat
     dust
-    discord
+    vesktop
     prismlauncher
     pciutils
     usb-modeswitch
