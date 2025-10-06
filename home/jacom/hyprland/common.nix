@@ -175,6 +175,8 @@ in {
         "SUPER, k, togglespecialworkspace, keepassxc"
         "SUPER, k, exec, keepassxc"
         "ALT SHIFT, c, exec, copyq toggle"
+        "ALT SHIFT, v, togglespecialworkspace, netextender"
+        "SHIFT, F1, pass, initialClass:^(vesktop)$"
       ];
       bindl = [
         ", XF86AudioPlay, exec, playerctl play-pause"
@@ -196,8 +198,11 @@ in {
         "workspace special:spotify, class:Spotify"
         "workspace special:yubioath, class:yubioath-flutter"
         "workspace special:teams, class:teams-for-linux"
+        "workspace special:netextender, class:NetExtender"
         "float, class:yubioath-flutter"
         "float, class:(org\\.keepassxc\\.KeePassXC)"
+        "float, class:NetExtender"
+        "size: 50% 50%, class:NetExtender"
         "workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
         "float, class:com\\.github\\.hluk\\.copyq"
         "size 40% 40%, class:com\\.github\\.hluk\\.copyq"
