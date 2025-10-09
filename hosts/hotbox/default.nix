@@ -29,5 +29,6 @@
     ../../modules/monero-node.nix
     ../../modules/p2pool.nix
     ../../modules/netextender.nix
+    ../../modules/protonmail.nix
   ];
 }

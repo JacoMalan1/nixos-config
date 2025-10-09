@@ -39,14 +39,19 @@ in {
   };
 
   systemd.services.monerod =
-    let conf-file = config.age.secrets.hotbox-monerod-conf.path;
+    let 
+      conf-file = config.age.secrets.hotbox-monerod-conf.path;
+      node-ban-list = pkgs.fetchurl {
+	url = "https://raw.githubusercontent.com/Boog900/monero-ban-list/refs/heads/main/ban_list.txt";
+	hash = "sha256-xsu85NX3ogizaZBfv1LsFsiJuBSAYaYakI38K3iJwu4=";
+      };
     in {
       description = "Monero Daemon";
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
       serviceConfig = {
         ExecStart =
-          "${pkgs.monero-cli}/bin/monerod --config-file ${conf-file} --add-priority-node=nodes.hashvault.pro:18080 --add-priority-node=p2pmd.xmrvsbeast.com:18080 --non-interactive";
+          "${pkgs.monero-cli}/bin/monerod --config-file ${conf-file} --add-priority-node=nodes.hashvault.pro:18080 --add-priority-node=p2pmd.xmrvsbeast.com:18080 --non-interactive --ban-list ${node-ban-list}";
         ExecStartPost = "/run/current-system/sw/bin/sleep 0.1";
 	Environment = [ "DNS_PUBLIC=tcp://1.1.1.1" ];
 
