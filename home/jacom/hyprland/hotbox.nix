@@ -1,7 +1,7 @@
 { inputs, system, ... }:
 let
-  leftMonitor = "DP-3";
-  rightMonitor = "HDMI-A-1";
+  rightMonitor = "DP-3";
+  leftMonitor = "HDMI-A-1";
   pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
   imports = [ ./common.nix ];
@@ -29,7 +29,7 @@ in {
     ];
 
     monitor = [
-      "${rightMonitor}, 1920x1080, 1920x0, 1"
+      "${rightMonitor}, 1920x1080@120, 1920x0, 1"
       "${leftMonitor}, 1920x1080, 0x0, 1"
     ];
   };

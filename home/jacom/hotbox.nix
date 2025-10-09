@@ -1,4 +1,4 @@
-{ ... }: {
+{ lib, ... }: {
   imports =
     [ ./common.nix ./hyprland/hotbox.nix ./waybar/hotbox.nix ./nixvim ./rofi ];
 
@@ -43,4 +43,6 @@
     enable = true;
     settings = { position = "top-right"; };
   };
+
+  services.wlsunset.enable = lib.mkForce false;
 }
