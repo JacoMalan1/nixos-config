@@ -39,7 +39,7 @@ in {
     eza
     bat
     dust
-    vesktop
+    discord
     prismlauncher
     pciutils
     usb-modeswitch
