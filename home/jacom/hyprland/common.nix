@@ -176,7 +176,6 @@ in {
         "SUPER, k, exec, keepassxc"
         "ALT SHIFT, c, exec, copyq toggle"
         "ALT SHIFT, v, togglespecialworkspace, netextender"
-        "SHIFT, F1, pass, initialClass:^(vesktop)$"
       ];
       bindl = [
         ", XF86AudioPlay, exec, playerctl play-pause"
