@@ -10,6 +10,7 @@ in {
       "2-6"
     ];
   };
+  wsl.useWindowsDriver = true;
   wsl.wslConf.network.hostname = "nixos-wsl";
 
   users.groups.plugdev = { };
@@ -42,7 +43,6 @@ in {
   environment.sessionVariables = {
     FLAKE = "$HOME/nix";
     NH_FLAKE = "$HOME/nix";
-    CARGO_TARGET_DIR = "$HOME/.cargo-target";
   };
 
   custom.commonConfiguration = {
