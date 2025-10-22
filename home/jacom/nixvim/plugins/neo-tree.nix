@@ -2,17 +2,17 @@
   programs.nixvim.plugins.neo-tree = {
     enable = true;
     settings = {
-      autoCleanAfterSessionRestore = true;
-      closeIfLastWindow = true;
+      auto_clean_after_session_restore = true;
+      close_if_last_window = true;
       window = {
       mappings = {
 	  "]b" = "next_source";
 	  "[b" = "prev_source";
 	};
       };
-      filesystem.followCurrentFile.enabled = true;
-      sourceSelector.winbar = true;
-      defaultComponentConfigs = {
+      filesystem.follow_current_file.enabled = true;
+      source_selector.winbar = true;
+      default_component_configs = {
 	modified.symbol = "";
 	diagnostics.symbols = {
 	  error = "";
@@ -20,7 +20,7 @@
 	  info = "";
 	  warn = "";
 	};
-	gitStatus.symbols = {
+	git_status.symbols = {
 	  added = "+";
 	  modified = "M";
 	  unstaged = "*";

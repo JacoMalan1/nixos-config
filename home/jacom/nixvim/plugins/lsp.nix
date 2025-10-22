@@ -31,7 +31,7 @@ in {
       zls.enable = true;
       cmake.enable = true;
       csharp_ls.enable = true;
-      volar.enable = true;
+      vue_ls.enable = true;
       svelte.enable = true;
     };
   };

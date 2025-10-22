@@ -31,8 +31,6 @@ in {
     enable = true;
     package = pkgs.hyprlock;
     settings = {
-      general = { immediate_render = true; };
-
       background = { color = "rgba(128, 128, 128, 1.0)"; };
 
       input-field = {
@@ -129,7 +127,7 @@ in {
         "ALT, b, exec, brave"
         "ALT, p, exec, rofi -show drun -show-icons"
         "ALT SHIFT, p, exec, rofi -show run"
-        "SUPER, l, exec, hyprlock --immediate"
+        "SUPER, l, exec, loginctl lock-session"
         "ALT SHIFT, Return, exec, kitty"
         "ALT SHIFT, 1, movetoworkspacesilent, 1"
         "ALT SHIFT, 2, movetoworkspacesilent, 2"
