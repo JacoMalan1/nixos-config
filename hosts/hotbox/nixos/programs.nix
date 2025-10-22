@@ -136,6 +136,7 @@ in {
     teams-for-linux
     yubioath-flutter
     remmina
+    jetbrains.rider
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
@@ -152,7 +153,6 @@ in {
     easyeffects
     ledger-live-desktop
     solana-cli
-    jetbrains.rider
     thunderbird
   ]);
 }

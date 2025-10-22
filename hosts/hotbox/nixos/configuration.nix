@@ -23,6 +23,7 @@ in {
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelModules = [ "zenpower" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
