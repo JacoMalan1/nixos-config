@@ -142,7 +142,6 @@ in {
     lazygit
     gcc_multi
     libresplit
-    musescore
     tracy-wayland
     # jetbrains.rider
     prusa-slicer
@@ -154,5 +153,6 @@ in {
     ledger-live-desktop
     solana-cli
     thunderbird
+    lutris
   ]);
 }
