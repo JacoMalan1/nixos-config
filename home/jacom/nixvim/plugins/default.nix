@@ -18,7 +18,7 @@
 	};
       };
       persistence.enable = true;
-      tailwind-tools.enable = true;
+      # tailwind-tools.enable = true;
       # java = {
       #   enable = true;
       #   package = pkgs.vimPlugins.nvim-java;

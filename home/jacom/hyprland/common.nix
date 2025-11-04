@@ -124,7 +124,7 @@ in {
       master = { mfact = 0.5; };
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";
       bind = [
-        "ALT, b, exec, brave"
+        "ALT, b, exec, brave --ozone-platform=wayland --disable-features=WaylandWpColorManagerV1"
         "ALT, p, exec, rofi -show drun -show-icons"
         "ALT SHIFT, p, exec, rofi -show run"
         "SUPER, l, exec, loginctl lock-session"

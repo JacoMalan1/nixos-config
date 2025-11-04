@@ -7,10 +7,10 @@ let
 in {
   fonts.packages = with pkgs; [
     corefonts
-    vistafonts
+    vista-fonts
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     meslo-lgs-nf
     fira-code
     fira-code-symbols
