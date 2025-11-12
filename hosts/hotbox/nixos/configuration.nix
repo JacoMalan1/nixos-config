@@ -61,8 +61,20 @@ in {
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+    input = {
+      General = {
+	ClassicBondedOnly = false;
+      };
+    };
+    settings = {
+      General = {
+	ControllerMode = "bredr";
+      };
+    };
+  };
   services.blueman.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -156,7 +168,7 @@ in {
     walletAddress = "$WALLET_ADDRESS";
     environmentFile = config.age.secrets.monero-mining-address.path;
     sidechain = "mini";
-    package = pkgs-unstable.p2pool;
+    package = pkgs.p2pool;
     mergeMining = {
       enable = true;
       walletAddress = "$TARI_WALLET_ADDRESS";
