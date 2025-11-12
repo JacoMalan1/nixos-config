@@ -186,7 +186,7 @@ in {
 
       input.accel_profile = "flat";
 
-      windowrulev2 = [
+      windowrule = [
         "float, class:(Tor Browser)"
         "float, class:(qalculate-gtk)"
         "workspace special:calculator, class:qalculate-gtk"
@@ -199,7 +199,7 @@ in {
         "float, class:yubioath-flutter"
         "float, class:(org\\.keepassxc\\.KeePassXC)"
         "float, class:NetExtender"
-        "size: 50% 50%, class:NetExtender"
+        "size 50% 50%, class:NetExtender"
         "workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
         "float, class:com\\.github\\.hluk\\.copyq"
         "size 40% 40%, class:com\\.github\\.hluk\\.copyq"

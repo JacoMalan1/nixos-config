@@ -20,10 +20,10 @@ in {
       "SUPER SHIFT, s, exec, hyprshot -o ~/Pictures -m window"
     ];
 
-    windowrulev2 = [
-      "workspace 1, initialclass:(steam_app_311210)"
-      "tile, initialclass:(steam_app_311210)"
-      "fullscreen, initialclass:(steam_app_311210)"
+    windowrule = [
+      "workspace 1, initialClass:(steam_app_311210)"
+      "tile, initialClass:(steam_app_311210)"
+      "fullscreen, initialClass:(steam_app_311210)"
       "float, initialTitle:(pisim)"
       # "immediate, class:^Minecraft. 1.21.5$"
     ];
