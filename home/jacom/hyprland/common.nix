@@ -27,6 +27,9 @@ in {
       };
     };
   };
+
+  services.hyprpolkitagent.enable = true;
+
   programs.hyprlock = {
     enable = true;
     package = pkgs.hyprlock;
