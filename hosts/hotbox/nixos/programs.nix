@@ -12,7 +12,7 @@ let
     config.allowUnfree = true;
   };
   dotnet-combined = (with pkgs.dotnetCorePackages;
-    combinePackages [ sdk_6_0 dotnet_8.sdk dotnet_9.sdk ]).overrideAttrs
+    combinePackages [ sdk_6_0 dotnet_8.sdk dotnet_9.sdk dotnet_10.sdk ]).overrideAttrs
     (finalAttrs: previousAttrs:
       {
 	postBuild = (previousAttrs.postBuild or '''') + ''
@@ -136,23 +136,22 @@ in {
     teams-for-linux
     yubioath-flutter
     remmina
-    jetbrains.rider
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
     gcc_multi
     libresplit
     tracy-wayland
-    # jetbrains.rider
+    jetbrains.rider
     prusa-slicer
-    spotify
     monero-gui
     monero-cli
     signal-desktop
     easyeffects
     ledger-live-desktop
-    solana-cli
     thunderbird
     lutris
+    renderdoc
+    inputs.spotify.packages.${system}.default
   ]);
 }

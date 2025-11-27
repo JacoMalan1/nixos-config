@@ -277,6 +277,8 @@ in
       };
     };
 
+    systemd.extraConfig = "DefaultLimitNOFILE=2048";
+
     assertions = lib.singleton {
       assertion = cfg.walletAddress != "";
       message = ''

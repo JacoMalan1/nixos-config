@@ -1,5 +1,8 @@
 { ... }: {
-  security.pam.u2f.settings.cue = true;
+  security.pam.u2f.settings = {
+    pinverification = 1;
+    cue = true;
+  };
 
   security.pam.services = {
     login.u2fAuth = true;
