@@ -36,6 +36,10 @@
       url = "github:JacoMalan1/nixos-netextender";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    spotify = {
+      url = "/home/jacom/Code/Nix/spotify";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:
