@@ -28,10 +28,6 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    tari-suite = {
-      url = "github:JacoMalan1/nixos-tari-suite";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
     netextender = {
       url = "github:JacoMalan1/nixos-netextender";
       inputs.nixpkgs.follows = "nixpkgs-stable";

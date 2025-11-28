@@ -478,8 +478,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "spotify": "spotify",
-        "strain": "strain",
-        "tari-suite": "tari-suite"
+        "strain": "strain"
       }
     },
     "rust-overlay": {
@@ -618,26 +617,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tari-suite": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-stable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762757545,
-        "narHash": "sha256-ZQX56pV7Xp4XlE00Fwxk/AG6/R1neKCKQP++sdZ6agQ=",
-        "owner": "JacoMalan1",
-        "repo": "nixos-tari-suite",
-        "rev": "bd1a5f5ebd2920a03d94cfbd061567915d35bacb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "JacoMalan1",
-        "repo": "nixos-tari-suite",
         "type": "github"
       }
     }

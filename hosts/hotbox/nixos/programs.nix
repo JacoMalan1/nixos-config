@@ -126,8 +126,6 @@ in {
     xmrig
     pavucontrol
     wpsoffice
-    inputs.tari-suite.packages.${system}.default
-
     wineWowPackages.waylandFull
     winetricks
     bitwig-studio
