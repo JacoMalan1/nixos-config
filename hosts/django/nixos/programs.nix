@@ -91,7 +91,6 @@ in {
       slurp
       teams-for-linux
       obsidian
-      yubikey-personalization-gui
       yubioath-flutter
       android-studio
       lm_sensors
