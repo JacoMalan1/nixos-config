@@ -33,7 +33,7 @@ in {
       psmisc
       xorg.xkill
       lshw
-      glxinfo
+      mesa-demos
       cmake
       gnumake
       pam_u2f

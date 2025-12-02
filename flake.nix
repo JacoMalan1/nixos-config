@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -13,8 +13,9 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
     strain = {
       url = "github:JacoMalan1/strain/0.1.4";
@@ -32,9 +33,9 @@
       url = "github:JacoMalan1/nixos-netextender";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    spotify = {
-      url = "/home/jacom/Code/Nix/spotify";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
 

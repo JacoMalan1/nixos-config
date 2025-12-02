@@ -277,7 +277,9 @@ in
       };
     };
 
-    systemd.extraConfig = "DefaultLimitNOFILE=2048";
+    systemd.settings.Manager = {
+      DefaultLimitNOFILE = 2048;
+    };
 
     assertions = lib.singleton {
       assertion = cfg.walletAddress != "";

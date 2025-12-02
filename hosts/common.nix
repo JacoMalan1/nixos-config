@@ -71,7 +71,7 @@ in {
         jq
         dig
         whois
-        tor-browser-bundle-bin
+	tor-browser
         sshfs
         hunspell
         hunspellDicts.en_GB-ise

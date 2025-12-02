@@ -49,7 +49,7 @@ in {
     psmisc
     xorg.xkill
     lshw
-    glxinfo
+    mesa-demos
     cmake
     gnumake
     pam_u2f
@@ -150,6 +150,6 @@ in {
     thunderbird
     lutris
     renderdoc
-    inputs.spotify.packages.${system}.default
+    spotify
   ]);
 }

@@ -6,5 +6,5 @@ in {
     package = pkgs.mariadb;
   };
 
-  environment.systemPackages = with pkgs; [ mariadb-client ];
+  environment.systemPackages = with pkgs; [ mariadb.client ];
 }

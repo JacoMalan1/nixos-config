@@ -10,7 +10,7 @@ let
   };
 in {
   environment.systemPackages = with pkgs-stable; [
-    retroarchFull
+    retroarch-full
     retroarch-joypad-autoconfig
     retroarch-assets
   ];

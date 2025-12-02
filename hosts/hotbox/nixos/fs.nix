@@ -11,10 +11,18 @@
       device = "/dev/disk/by-uuid/ba3cf3e3-a001-4e13-9740-8116f72bc66c";
       crypttabExtraOpts = [ "fido2-device=auto" ];
     };
+    "cryptstore" = {
+      device = "/dev/disk/by-uuid/d64c7fc9-c1b4-42ee-8bd8-73df1473e28e";
+      keyFile = "/root/keyfile";
+    };
   };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/bdd1a1f1-a1f4-4067-aab8-e7eff3d5b027";
+    fsType = "ext4";
+  };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-label/nix";
     fsType = "ext4";
   };
   fileSystems."/home".device = "/dev/mapper/crypthome";

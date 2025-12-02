@@ -12,9 +12,9 @@
     # ../../modules/dns.nix
     ../../modules/fonts.nix
     ../../modules/wifi.nix
-    ../../modules/qemu.nix
+    # ../../modules/qemu.nix
     # ../../modules/mongodb.nix
-    ../../modules/retro
+    #../../modules/retro
     ../../modules/hyprland.nix
     ../../modules/obs.nix
     # ../../modules/jupyter.nix

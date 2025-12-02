@@ -27,7 +27,7 @@ in {
   };
 
   environment.systemPackages = with pkgs;
-    [ waybar swww rofi-wayland wl-clipboard hyprpaper hypridle hyprpaper ];
+    [ waybar swww rofi wl-clipboard hyprpaper hypridle hyprpaper ];
 
   environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 }
