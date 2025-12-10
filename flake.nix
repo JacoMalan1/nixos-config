@@ -37,6 +37,10 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    citrix = {
+      url = "/home/jacom/Code/Nix/citrix_workspace";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:

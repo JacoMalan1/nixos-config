@@ -4,7 +4,7 @@ let
     inherit system;
     config = {
       allowUnfree = true;
-      permittedInsecurePackages = [ "dotnet-sdk-6.0.428" ];
+      permittedInsecurePackages = [ "dotnet-sdk-6.0.428" "libsoup-2.74.3" ];
     };
   };
   pkgs-unstable = import inputs.nixpkgs-unstable {
@@ -134,6 +134,8 @@ in {
     teams-for-linux
     yubioath-flutter
     remmina
+    gparted
+    # inputs.citrix.packages.${system}.default
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

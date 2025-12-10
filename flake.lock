@@ -23,6 +23,23 @@
         "type": "github"
       }
     },
+    "citrix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764851302,
+        "narHash": "sha256-LNhdlegr9H1nl4sGvEoAlqFJouyMoX7C86BOuAvoUoA=",
+        "path": "/home/jacom/Code/Nix/citrix_workspace",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jacom/Code/Nix/citrix_workspace",
+        "type": "path"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1754269165,
@@ -428,6 +445,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "citrix": "citrix",
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
         "netextender": "netextender",
