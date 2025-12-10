@@ -113,7 +113,7 @@ in {
       ];
       exec-once = [
         "waybar & disown"
-        "easyeffects --gapplication-service"
+        "easyeffects --service-mode -w & disown"
         "keepassxc & disown"
       ];
       animation = "global, 1, 2, default";
