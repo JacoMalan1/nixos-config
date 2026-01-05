@@ -1,12 +1,13 @@
 { ... }: {
   imports = [
     ./neo-tree.nix
-    ./cmp.nix
+    # ./cmp.nix
     ./lsp.nix
     ./jdtls.nix
     ./none-ls.nix
     ./toggleterm.nix
     ./copilot.nix
+    ./blink.nix
   ];
 
   programs.nixvim = {
@@ -32,10 +33,7 @@
       };
       gitsigns.enable = true;
       rustaceanvim.enable = true;
-      lspkind = {
-        enable = true;
-        cmp.enable = true;
-      };
+      
       notify = {
         enable = true;
         settings.level = "warn";
