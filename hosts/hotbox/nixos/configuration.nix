@@ -1,4 +1,4 @@
-{ config, inputs, system, ... }:
+{ config, inputs, system, lib, ... }:
 let
   pkgs = import inputs.nixpkgs-stable {
     inherit system;
@@ -174,6 +174,10 @@ in {
       walletAddress = "$TARI_WALLET_ADDRESS";
       nodeAddress = "tari://127.0.0.1:18102";
     };
+  };
+
+  systemd.settings.Manager = {
+    DefaultLimitNOFILE = lib.mkForce 1048576;
   };
 
   programs.netextender.enable = true;
