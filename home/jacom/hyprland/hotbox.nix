@@ -21,10 +21,10 @@ in {
     ];
 
     windowrule = [
-      "workspace 1, initialClass:(steam_app_311210)"
-      "tile, initialClass:(steam_app_311210)"
-      "fullscreen, initialClass:(steam_app_311210)"
-      "float, initialTitle:(pisim)"
+      "workspace 1, match:initial_class (steam_app_311210)"
+      "tile on, match:initial_class (steam_app_311210)"
+      "fullscreen on, match:initial_class (steam_app_311210)"
+      "float on, match:initial_title (pisim)"
       # "immediate, class:^Minecraft. 1.21.5$"
     ];
 

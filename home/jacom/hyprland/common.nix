@@ -190,22 +190,22 @@ in {
       input.accel_profile = "flat";
 
       windowrule = [
-        "float, class:(Tor Browser)"
-        "float, class:(qalculate-gtk)"
-        "workspace special:calculator, class:qalculate-gtk"
-        "workspace special:obsidian, class:obsidian"
-        "workspace special:thunderbird, class:thunderbird"
-        "workspace special:spotify, class:Spotify"
-        "workspace special:yubioath, class:yubioath-flutter"
-        "workspace special:teams, class:teams-for-linux"
-        "workspace special:netextender, class:NetExtender"
-        "float, class:yubioath-flutter"
-        "float, class:(org\\.keepassxc\\.KeePassXC)"
-        "float, class:NetExtender"
-        "size 50% 50%, class:NetExtender"
-        "workspace special:keepassxc, class:org\\.keepassxc\\.KeePassXC"
-        "float, class:com\\.github\\.hluk\\.copyq"
-        "size 40% 40%, class:com\\.github\\.hluk\\.copyq"
+        "float on, match:class (Tor Browser)"
+        "float on, match:class (qalculate-gtk)"
+        "workspace special:calculator, match:class qalculate-gtk"
+        "workspace special:obsidian, match:class obsidian"
+        "workspace special:thunderbird, match:class thunderbird"
+        "workspace special:spotify, match:class Spotify"
+        "workspace special:yubioath, match:class yubioath-flutter"
+        "workspace special:teams, match:class teams-for-linux"
+        "workspace special:netextender, match:class NetExtender"
+        "float on, match:class yubioath-flutter"
+        "float on, match:class (org\\.keepassxc\\.KeePassXC)"
+        "float on, match:class NetExtender"
+        "size 50% 50%, match:class NetExtender"
+        "workspace special:keepassxc, match:class org\\.keepassxc\\.KeePassXC"
+        "float on, match:class com\\.github\\.hluk\\.copyq"
+        "size 40% 40%, match:class com\\.github\\.hluk\\.copyq"
       ];
     };
   };
