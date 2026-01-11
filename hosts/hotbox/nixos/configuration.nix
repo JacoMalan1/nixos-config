@@ -92,10 +92,11 @@ in {
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
-    extraGroups = [ "networkmanager" "wheel" "wireshark" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "wireshark" "plugdev" "adbusers" ];
     packages = with pkgs; [ kitty zellij ];
   };
 
+  programs.adb.enable = true;
   programs.firefox.enable = true;
 
   # NixOS Dynamically linked binaries fix
@@ -132,9 +133,11 @@ in {
 
   networking.firewall.enable = true;
 
-  services.udev.extraRules = ''
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
-  '';
+  services.udev = {
+    extraRules = ''
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
+    '';
+  };
 
   # Open ports in the firewall.
   networking.firewall = {
