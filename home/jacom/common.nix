@@ -142,7 +142,7 @@ in {
       eval "$(zoxide init --cmd cd zsh)"
       eval "$(fzf --zsh)"
 
-      if [ $TTY = '/dev/tty1' ]; then Hyprland; fi
+      if [ $TTY = '/dev/tty1' ]; then start-hyprland; fi
 
       if [ -d $HOME/bin ]; then
       	export PATH=$PATH:$HOME/bin
