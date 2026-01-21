@@ -153,5 +153,6 @@ in {
     lutris
     renderdoc
     spotify
+    android-studio
   ]);
 }
