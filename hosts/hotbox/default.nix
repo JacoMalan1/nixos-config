@@ -16,12 +16,12 @@
     # ../../modules/mongodb.nix
     #../../modules/retro
     ../../modules/hyprland.nix
-    ../../modules/obs.nix
+    # ../../modules/obs.nix
     # ../../modules/jupyter.nix
     ../../modules/print.nix
     ../../modules/secureboot.nix
     ../../modules/docker.nix
-    ../../modules/rstudio.nix
+    # ../../modules/rstudio.nix
     ../../modules/ntpclient.nix
     ../../modules/mariadb.nix
     ../../modules/postgres.nix

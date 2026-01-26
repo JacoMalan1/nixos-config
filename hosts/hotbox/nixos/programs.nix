@@ -29,7 +29,6 @@ in {
   environment.systemPackages = (with pkgs; [
     # Packages from stable 24.05
     librewolf
-    rustdesk
     zsh
     mesa
     keepassxc
@@ -112,7 +111,6 @@ in {
     android-tools
     zls
     zig
-    godot_4
 
     gradle
     renderdoc
@@ -125,10 +123,8 @@ in {
     drawio
     xmrig
     pavucontrol
-    wpsoffice
     wineWowPackages.waylandFull
     winetricks
-    bitwig-studio
     obsidian
     dotnet-combined
     teams-for-linux
