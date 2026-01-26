@@ -12,6 +12,19 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  dotnet-combined = (with pkgs.dotnetCorePackages;
+    combinePackages [ sdk_6_0 dotnet_8.sdk dotnet_9.sdk dotnet_10.sdk ]).overrideAttrs
+    (finalAttrs: previousAttrs:
+      {
+	postBuild = (previousAttrs.postBuild or '''') + ''
+	  for i in $out/sdk/*
+	  do
+	    i=$(basename $i)
+	    mkdir -p $out/metadata/workloads/''${i/-*}
+	    touch $out/metadata/workloads/''${i/-*}/userlocal
+	  done
+	'';
+      });
 in {
   environment.systemPackages = with pkgs;
     [
@@ -94,13 +107,12 @@ in {
       yubioath-flutter
       android-studio
       lm_sensors
-      dotnet-sdk_8
-      dotnet-sdk_6
       inkscape
       gnome-icon-theme
       hicolor-icon-theme
       wireguard-ui
       xmrig
+      mpv
     ] ++ (with pkgs-unstable; [
       jetbrains.idea-community-bin
       nodejs_20
@@ -112,5 +124,6 @@ in {
       ledger-live-desktop
       inputs.netextender.packages.${system}.default
       jetbrains.rider
-    ]);
+      prusa-slicer
+    ]) ++ [dotnet-combined];
 }
