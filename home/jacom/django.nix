@@ -1,6 +1,6 @@
 { ... }: {
   imports =
-    [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ./rofi ];
+    [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ./rofi ./mpv ];
 
   nixvim.enable = true;
   custom.tmux.enable = true;

@@ -33,6 +33,7 @@ in {
       csharp_ls.enable = true;
       vue_ls.enable = true;
       svelte.enable = true;
+      protols.enable = true;
     };
   };
 }
