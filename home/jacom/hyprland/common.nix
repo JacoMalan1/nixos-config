@@ -115,6 +115,7 @@ in {
         "waybar & disown"
         "easyeffects --service-mode -w & disown"
         "keepassxc & disown"
+	"hyprpaper & disown"
       ];
       animation = "global, 1, 2, default";
       general = {
