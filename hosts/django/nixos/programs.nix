@@ -114,7 +114,6 @@ in {
       xmrig
       mpv
     ] ++ (with pkgs-unstable; [
-      jetbrains.idea-community-bin
       nodejs_20
       spotify
       monero-gui

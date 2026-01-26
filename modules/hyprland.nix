@@ -1,6 +1,6 @@
 { inputs, system, ... }:
 let
-  pkgs = import inputs.nixpkgs-stable { inherit system; };
+  pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
   programs.hyprland = {
     enable = true;
