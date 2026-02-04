@@ -100,14 +100,17 @@ in {
   programs.firefox.enable = true;
 
   # NixOS Dynamically linked binaries fix
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    libspatialite
-    libxml2
-    freetype
-    icu
-    nss
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libspatialite
+      libxml2
+      freetype
+      icu
+      nss
+      nspr
+    ];
+  };
 
   # specialisation.gnome.configuration = {
   #   services.xserver = {
