@@ -95,8 +95,16 @@ in {
     enable = true;
     package = pkgs.hyprpaper;
     settings = {
-      preload = "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
-      wallpaper = ", /home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
+      wallpaper = [
+	{
+	  monitor = "DP-3";
+	  path = "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
+	}
+	{
+	  monitor = "HDMI-A-1";
+	  path = "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
+	}
+      ];
     };
   };
 
