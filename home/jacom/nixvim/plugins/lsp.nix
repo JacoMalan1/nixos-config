@@ -34,6 +34,7 @@ in {
       vue_ls.enable = true;
       svelte.enable = true;
       protols.enable = true;
+      kotlin_language_server.enable = true;
     };
   };
 }

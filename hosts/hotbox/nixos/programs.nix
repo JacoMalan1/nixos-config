@@ -137,7 +137,6 @@ in {
     lazygit
     gcc_multi
     libresplit
-    tracy-wayland
     jetbrains.rider
     prusa-slicer
     monero-gui
