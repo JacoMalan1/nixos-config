@@ -89,7 +89,7 @@ in {
 	mtr
 	traceroute
 	zip
-      ] ++ (with pkgs; [ clang net-tools ])
+      ] ++ (with pkgs; [ clang net-tools nix-sweep ])
       ++ (lib.optionals cfg.guiPresent (stableGuiApps ++ unstableGuiApps));
 
     environment.sessionVariables = {
