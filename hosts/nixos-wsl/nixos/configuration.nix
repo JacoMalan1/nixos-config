@@ -16,6 +16,14 @@ in {
   users.groups.plugdev = { };
   users.users.jacom.extraGroups = [ "plugdev" ];
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vpl-gpu-rt
+    ];
+  };
+
   programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gtk2;
 
   systemd.services.load-kernel-modules = {
@@ -52,6 +60,8 @@ in {
   };
 
   networking.wireguard.enable = true;
+  networking.firewall.allowedTCPPorts = [ 8443 ];
+  networking.firewall.allowedUDPPorts = [ 8443 ];
 
   environment.systemPackages = with pkgs; [
     usbutils
