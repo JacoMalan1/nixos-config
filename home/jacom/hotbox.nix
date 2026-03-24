@@ -4,6 +4,7 @@
 
   nixvim.enable = true;
   custom.tmux.enable = true;
+  custom.noctalia.enable = true;
 
   xdg.desktopEntries = {
     spotify = {

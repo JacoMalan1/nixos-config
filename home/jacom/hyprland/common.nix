@@ -7,7 +7,7 @@ in {
   };
 
   services.dunst = {
-    enable = true;
+    enable = false;
     settings = {
       global = {
         background = "#3c3836";
@@ -31,7 +31,7 @@ in {
   services.hyprpolkitagent.enable = true;
 
   programs.hyprlock = {
-    enable = true;
+    enable = false;
     package = pkgs.hyprlock;
     settings = {
       background = { color = "rgba(128, 128, 128, 1.0)"; };
@@ -68,29 +68,6 @@ in {
     };
   };
 
-  services.hypridle = {
-    enable = true;
-    package = pkgs.hypridle;
-    settings = {
-      general = {
-        lock_cmd = "pidof hyprlock || hyprlock";
-        before_sleep_cmd = "loginctl lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-      };
-      listener = [
-        {
-          timeout = 300;
-          on-timeout = "loginctl lock-session";
-        }
-        {
-          timeout = 330;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-      ];
-    };
-  };
-
   services.hyprpaper = {
     enable = true;
     package = pkgs.hyprpaper;
@@ -120,26 +97,43 @@ in {
         "QT_QPA_PLATFORM,wayland"
       ];
       exec-once = [
-        "waybar & disown"
+	"noctalia-shell"
         "easyeffects --service-mode -w & disown"
         "keepassxc & disown"
-	"hyprpaper & disown"
       ];
       animation = "global, 1, 2, default";
       general = {
         border_size = 1;
+	gaps_in = 5;
         gaps_out = 10;
         "col.active_border" = "0xff98971a";
         layout = "master";
       };
-      decoration = { rounding = 10; };
+      decoration = { 
+	rounding = 20;
+	rounding_power = 2;
+
+	shadow = {
+	  enabled = true;
+	  range = 4;
+	  render_power = 3;
+	  color = "rgba(1a1a1aee)";
+	};
+
+	blur = {
+	  enabled = true;
+	  size = 3;
+	  passes = 2;
+	  vibrancy = 0.1696;
+	};
+      };
       master = { mfact = 0.5; };
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";
       bind = [
         "ALT, b, exec, brave --ozone-platform=wayland --disable-features=WaylandWpColorManagerV1"
-        "ALT, p, exec, rofi -show drun -show-icons"
+        "ALT, p, exec, noctalia-shell ipc call launcher toggle"
         "ALT SHIFT, p, exec, rofi -show run"
-        "SUPER, l, exec, loginctl lock-session"
+        "SUPER, l, exec, noctalia-shell ipc call lockScreen lock"
         "ALT SHIFT, Return, exec, kitty"
         "ALT SHIFT, 1, movetoworkspacesilent, 1"
         "ALT SHIFT, 2, movetoworkspacesilent, 2"
@@ -215,6 +209,16 @@ in {
         "workspace special:keepassxc, match:class org\\.keepassxc\\.KeePassXC"
         "float on, match:class com\\.github\\.hluk\\.copyq"
         "size 40% 40%, match:class com\\.github\\.hluk\\.copyq"
+      ];
+
+      layerrule = [
+	{
+	  name = "noctalia";
+	  "match:namespace" = "noctalia-background-,*$";
+	  ignore_alpha = 0.5;
+	  blur = true;
+	  blur_popups = true;
+	}
       ];
     };
   };

@@ -41,6 +41,10 @@
       url = "/home/jacom/Code/Nix/citrix_workspace";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:
@@ -113,7 +117,7 @@
             config.allowUnfree = true;
           };
           modules =
-            [ ./home/jacom/hotbox.nix inputs.nixvim.homeModules.nixvim ];
+            [ ./home/jacom/hotbox.nix inputs.nixvim.homeModules.nixvim inputs.noctalia.homeModules.default ];
         };
         "jacom@django" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {

@@ -11,7 +11,6 @@ in {
   home.packages = with pkgs; [ hyprshot copyq ];
 
   programs.hyprlock.package = lib.mkForce pkgs.hyprlock;
-  services.hypridle.package = lib.mkForce pkgs.hypridle;
   services.hyprpaper.package = lib.mkForce pkgs.hyprpaper;
 
   wayland.windowManager.hyprland = {
