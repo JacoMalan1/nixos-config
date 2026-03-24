@@ -1,11 +1,18 @@
-{ config, inputs, system, lib, ... }:
+{
+  config,
+  inputs,
+  system,
+  lib,
+  ...
+}:
 let
   pkgs = import inputs.nixpkgs-stable {
     inherit system;
     config.allowUnfree = true;
   };
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
-in {
+in
+{
   imports = [ ./hardware-configuration.nix ];
 
   custom.commonConfiguration.enable = true;
@@ -26,7 +33,10 @@ in {
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelModules = [ "zenpower" ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.hostName = "hotbox"; # Define your hostname.
 
@@ -44,7 +54,9 @@ in {
 
   services.libinput = {
     enable = true;
-    mouse = { accelProfile = "flat"; };
+    mouse = {
+      accelProfile = "flat";
+    };
   };
 
   # Configure keymap in X11
@@ -66,12 +78,12 @@ in {
     powerOnBoot = false;
     input = {
       General = {
-	ClassicBondedOnly = false;
+        ClassicBondedOnly = false;
       };
     };
     settings = {
       General = {
-	ControllerMode = "bredr";
+        ControllerMode = "bredr";
       };
     };
   };
@@ -92,8 +104,17 @@ in {
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
-    extraGroups = [ "networkmanager" "wheel" "wireshark" "plugdev" "adbusers" ];
-    packages = with pkgs; [ kitty zellij ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "wireshark"
+      "plugdev"
+      "adbusers"
+    ];
+    packages = with pkgs; [
+      kitty
+      zellij
+    ];
   };
 
   programs.adb.enable = true;
@@ -148,8 +169,27 @@ in {
     logRefusedConnections = true;
     logReversePathDrops = true;
     checkReversePath = "loose";
-    allowedTCPPorts = [ 8384 22000 25565 22 27017 18089 18081 18084 4200 18189 18141 ];
-    allowedUDPPorts = [ 22000 21027 27017 51821 18189 18141 ];
+    allowedTCPPorts = [
+      8384
+      22000
+      25565
+      22
+      27017
+      18089
+      18081
+      18084
+      4200
+      18189
+      18141
+    ];
+    allowedUDPPorts = [
+      22000
+      21027
+      27017
+      51821
+      18189
+      18141
+    ];
   };
 
   # Do not remove
@@ -185,6 +225,13 @@ in {
   systemd.settings.Manager = {
     DefaultLimitNOFILE = lib.mkForce 1048576;
   };
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
 
   programs.netextender.enable = true;
+
+  services.tuned.enable = true;
+  services.upower.enable = true;
 }

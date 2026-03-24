@@ -131,6 +131,7 @@ in {
     yubioath-flutter
     remmina
     gparted
+    mqtt-explorer
     # inputs.citrix.packages.${system}.default
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
