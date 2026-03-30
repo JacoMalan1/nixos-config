@@ -1,4 +1,10 @@
-{ inputs, lib, config, system, ... }:
+{
+  inputs,
+  lib,
+  config,
+  system,
+  ...
+}:
 let
   pkgs = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
@@ -20,9 +26,16 @@ let
     chromium
     yubikey-manager
     figma-linux
+    mission-center
   ];
-  unstableGuiApps = with pkgs; [ novelwriter postman element-desktop ];
-in {
+  unstableGuiApps = with pkgs; [
+    novelwriter
+    postman
+    element-desktop
+    vulkan-caps-viewer
+  ];
+in
+{
   options.custom.commonConfiguration = {
     enable = lib.mkEnableOption "Enable common configuration options";
 
@@ -44,14 +57,17 @@ in {
     programs.zsh.enable = true;
     users.defaultUserShell = pkgs.pkgs.zsh;
 
-    programs.nh = { enable = true; };
+    programs.nh = {
+      enable = true;
+    };
 
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = [ ];
 
     programs.dconf.enable = true;
 
-    environment.systemPackages = with pkgs-stable;
+    environment.systemPackages =
+      with pkgs-stable;
       [
         inputs.agenix.packages.${system}.default
         glib
@@ -71,7 +87,7 @@ in {
         jq
         dig
         whois
-	tor-browser
+        tor-browser
         sshfs
         hunspell
         hunspellDicts.en_GB-ise
@@ -85,11 +101,16 @@ in {
         wireguard-tools
         tmux
         github-cli
-	gnupg
-	mtr
-	traceroute
-	zip
-      ] ++ (with pkgs; [ clang net-tools nix-sweep ])
+        gnupg
+        mtr
+        traceroute
+        zip
+      ]
+      ++ (with pkgs; [
+        clang
+        net-tools
+        nix-sweep
+      ])
       ++ (lib.optionals cfg.guiPresent (stableGuiApps ++ unstableGuiApps));
 
     environment.sessionVariables = {
