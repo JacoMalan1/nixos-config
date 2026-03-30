@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.nixvim = {
     globals.mapleader = " ";
 
@@ -36,40 +37,40 @@
         action = "<Esc>";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>qs";
-	action = "<Cmd>lua require('persistence').load()<CR>";
-	options.desc = "Load session for directory";
+        mode = [ "n" ];
+        key = "<leader>qs";
+        action = "<Cmd>lua require('persistence').load()<CR>";
+        options.desc = "Load session for directory";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>qS";
-	action = "<Cmd>lua require('persistence').select()<CR>";
-	options.desc = "Select a session to load";
+        mode = [ "n" ];
+        key = "<leader>qS";
+        action = "<Cmd>lua require('persistence').select()<CR>";
+        options.desc = "Select a session to load";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>ql";
-	action = "<Cmd>lua require('persistence').load({ last = true })<CR>";
-	options.desc = "Load last session";
+        mode = [ "n" ];
+        key = "<leader>ql";
+        action = "<Cmd>lua require('persistence').load({ last = true })<CR>";
+        options.desc = "Load last session";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>qd";
-	action = "<Cmd>lua require('persistence').stop()<CR>";
-	options.desc = "Stop persistence";
+        mode = [ "n" ];
+        key = "<leader>qd";
+        action = "<Cmd>lua require('persistence').stop()<CR>";
+        options.desc = "Stop persistence";
       }
       {
-	mode = [ "n" ];
-	key = "<C-Right>";
-	action = "<Cmd>vertical resize +5<CR>";
-	options.desc = "Increase window width";
+        mode = [ "n" ];
+        key = "<C-Right>";
+        action = "<Cmd>vertical resize +5<CR>";
+        options.desc = "Increase window width";
       }
       {
-	mode = [ "n" ];
-	key = "<C-Left>";
-	action = "<Cmd>vertical resize -5<CR>";
-	options.desc = "Decrease window width";
+        mode = [ "n" ];
+        key = "<C-Left>";
+        action = "<Cmd>vertical resize -5<CR>";
+        options.desc = "Decrease window width";
       }
       {
         mode = [ "n" ];
@@ -83,22 +84,34 @@
         action = "<Cmd>Neotree toggle<CR>";
       }
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<C-h>";
         action = "<C-w>h";
       }
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<C-l>";
         action = "<C-w>l";
       }
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<C-j>";
         action = "<C-w>j";
       }
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<C-k>";
         action = "<C-w>k";
       }
@@ -167,16 +180,16 @@
         options.desc = "LSP Floating Diagnostics";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>lD";
-	action = "<Cmd>Trouble diagnostics toggle<CR>";
-	options.desc = "List problems";
+        mode = [ "n" ];
+        key = "<leader>lD";
+        action = "<Cmd>Trouble diagnostics toggle<CR>";
+        options.desc = "List problems";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>lT";
-	action = "<Cmd>Trouble todo toggle<CR>";
-	options.desc = "List TODOs";
+        mode = [ "n" ];
+        key = "<leader>lT";
+        action = "<Cmd>Trouble todo toggle<CR>";
+        options.desc = "List TODOs";
       }
       {
         mode = [ "n" ];
@@ -189,6 +202,12 @@
         key = "<leader>lg";
         action = "<Cmd>lua vim.lsp.buf.definition()<CR>";
         options.desc = "LSP Go to Definition";
+      }
+      {
+        mode = [ "n" ];
+        key = "<leader>lu";
+        action = "<Cmd>lua require(\"telescope.builtin\").lsp_references()<CR>";
+        options.desc = "LSP Show Usages";
       }
       {
         mode = [ "n" ];
@@ -207,16 +226,16 @@
         options.desc = "Close current buffer";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>bf";
-	action = "<Cmd>lua vim.lsp.buf.format()<CR>";
-	options.desc = "Format buffer";
+        mode = [ "n" ];
+        key = "<leader>bf";
+        action = "<Cmd>lua vim.lsp.buf.format()<CR>";
+        options.desc = "Format buffer";
       }
       {
-	mode = [ "n" ];
-	key = "<leader>tc";
-	action = "<Cmd>CopilotChatToggle<CR>";
-	options.desc = "Toggle Copilot Chat Window";
+        mode = [ "n" ];
+        key = "<leader>tc";
+        action = "<Cmd>CopilotChatToggle<CR>";
+        options.desc = "Toggle Copilot Chat Window";
       }
     ];
   };

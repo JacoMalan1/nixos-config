@@ -159,6 +159,9 @@
             "textColor": "none"
           },
           {
+            "id": "plugin:network-manager-vpn"
+          },
+          {
             "colorizeDistroLogo": false,
             "colorizeSystemIcon": "none",
             "customIconPath": "",
@@ -700,7 +703,7 @@
         "y": 0,
         "active_workspace": 2,
         "vrr": false,
-        "focused": false
+        "focused": true
       },
       "DP-3": {
         "name": "DP-3",
@@ -712,11 +715,11 @@
         "y": 0,
         "active_workspace": 1,
         "vrr": false,
-        "focused": true
+        "focused": false
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1774380693000
+      "lastSeenTs": 1774381339000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.2"
