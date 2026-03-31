@@ -88,6 +88,10 @@ in {
 	  monitor = "HDMI-A-1";
 	  path = "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
 	}
+	{
+	  monitor = "eDP-1";
+	  path = "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg";
+	}
       ];
     };
   };
