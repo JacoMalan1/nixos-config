@@ -5,7 +5,7 @@
     ../common.nix
     ./nixos/programs.nix
 
-    ../../modules/nvidia.nix
+    # ../../modules/nvidia.nix
     ../../modules/steam.nix
     ../../modules/syncthing.nix
     ../../modules/yubikey.nix
@@ -29,5 +29,6 @@
     ../../modules/p2pool.nix
     ../../modules/netextender.nix
     ../../modules/protonmail.nix
+    ../../modules/amdgpu.nix
   ];
 }

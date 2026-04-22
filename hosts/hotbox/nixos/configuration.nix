@@ -30,7 +30,7 @@ in
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
   boot.kernelModules = [ "zenpower" ];
 
   nix.settings.experimental-features = [

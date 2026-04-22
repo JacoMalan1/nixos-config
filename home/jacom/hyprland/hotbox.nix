@@ -1,6 +1,6 @@
 { inputs, system, ... }:
 let
-  rightMonitor = "DP-3";
+  rightMonitor = "DP-2";
   leftMonitor = "HDMI-A-1";
   pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {

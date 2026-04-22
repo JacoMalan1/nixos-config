@@ -159,6 +159,11 @@
             "textColor": "none"
           },
           {
+            "defaultSettings": {
+              "connectedColor": "primary",
+              "disconnectedColor": "none",
+              "displayMode": "onhover"
+            },
             "id": "plugin:network-manager-vpn"
           },
           {
@@ -196,7 +201,7 @@
       "animationSpeed": 1,
       "animationDisabled": false,
       "compactLockScreen": false,
-      "lockScreenAnimations": false,
+      "lockScreenAnimations": true,
       "lockOnSuspend": true,
       "showSessionButtonsOnLockScreen": true,
       "showHibernateOnLockScreen": false,
@@ -705,8 +710,8 @@
         "vrr": false,
         "focused": true
       },
-      "DP-3": {
-        "name": "DP-3",
+      "DP-2": {
+        "name": "DP-2",
         "scale": 1,
         "width": 1920,
         "height": 1080,
@@ -719,7 +724,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1774381339000
+      "lastSeenTs": 1775827843000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.2"

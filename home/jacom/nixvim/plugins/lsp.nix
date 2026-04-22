@@ -1,12 +1,19 @@
-{ inputs, system, ... }:
+{
+  inputs,
+  system,
+  lib,
+  ...
+}:
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
-  tailwindcss-language-server = pkgs.tailwindcss-language-server.overrideAttrs
-    (finalAttrs: prevAttrs: {
+  tailwindcss-language-server = pkgs.tailwindcss-language-server.overrideAttrs (
+    finalAttrs: prevAttrs: {
       nativeBuildInputs = with pkgs; [ pnpm_9.configHook ];
       buildInputs = with pkgs; [ nodejs_24 ];
-    });
-in {
+    }
+  );
+in
+{
   programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
@@ -20,13 +27,32 @@ in {
       ts_ls.enable = true;
       yamlls.enable = true;
       tailwindcss = {
-	enable = true;
-	package = tailwindcss-language-server;
+        enable = true;
+        package = tailwindcss-language-server;
       };
       html.enable = true;
       basedpyright.enable = true;
       taplo.enable = true;
-      clangd.enable = true;
+      clangd = {
+        enable = true;
+        settings = lib.mkForce {
+          cmd = [
+            "clangd"
+            "--query-driver=\"*hipcc\""
+            "--background-index"
+          ];
+          filetypes = [
+            "cc"
+            "c"
+            "cpp"
+            "hip"
+          ];
+          root_markers = [
+            "compile_commands.json"
+            "compile_flags.txt"
+          ];
+        };
+      };
       glsl_analyzer.enable = true;
       zls.enable = true;
       cmake.enable = true;
@@ -36,6 +62,7 @@ in {
       protols.enable = true;
       kotlin_language_server.enable = true;
       lua_ls.enable = true;
+      texlab.enable = true;
     };
   };
 }

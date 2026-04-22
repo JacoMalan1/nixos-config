@@ -51,7 +51,7 @@ in {
       wants = [ "network-online.target" ];
       serviceConfig = {
         ExecStart =
-          "${pkgs.monero-cli}/bin/monerod --config-file ${conf-file} --add-priority-node=nodes.hashvault.pro:18080 --add-priority-node=p2pmd.xmrvsbeast.com:18080 --non-interactive --ban-list ${node-ban-list}";
+          "${pkgs.monero-cli}/bin/monerod --config-file ${conf-file} --add-priority-node=p2pmd.xmrvsbeast.com:18080 --non-interactive --ban-list ${node-ban-list}";
         ExecStartPost = "/run/current-system/sw/bin/sleep 0.1";
 	Environment = [ "DNS_PUBLIC=tcp://1.1.1.1" ];
 

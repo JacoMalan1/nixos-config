@@ -101,7 +101,7 @@ in {
     vlc
     go
     kdePackages.kdenlive
-    blender
+    blender-hip
     ghidra-bin
     brave
     firebase-tools
@@ -132,6 +132,7 @@ in {
     remmina
     gparted
     mqtt-explorer
+    texlive.combined.scheme-full
     # inputs.citrix.packages.${system}.default
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
@@ -150,5 +151,6 @@ in {
     renderdoc
     spotify
     android-studio
+    furmark
   ]);
 }

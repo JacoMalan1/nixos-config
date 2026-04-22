@@ -1,17 +1,35 @@
-{ inputs, config, lib, system, ... }:
-let pkgs = import inputs.nixpkgs-unstable { inherit system; };
+{
+  inputs,
+  config,
+  lib,
+  system,
+  ...
+}:
+let
+  pkgs = import inputs.nixpkgs-unstable { inherit system; };
   cfg = config.nixvim;
-in {
-  imports = [ ./keymaps.nix ./plugins ./dap.nix ./ftplugin.nix ];
+in
+{
+  imports = [
+    ./keymaps.nix
+    ./plugins
+    ./dap.nix
+    ./ftplugin.nix
+  ];
 
-  options.nixvim = { enable = lib.mkEnableOption "Enable nixvim"; };
+  options.nixvim = {
+    enable = lib.mkEnableOption "Enable nixvim";
+  };
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
 
-      extraPlugins =
-        [ pkgs.vimPlugins.nvim-ts-autotag pkgs.vimPlugins.onedarkpro-nvim ];
+      extraPlugins = [
+        pkgs.vimPlugins.nvim-ts-autotag
+        pkgs.vimPlugins.onedarkpro-nvim
+        pkgs.vimPlugins.vimtex
+      ];
 
       extraConfigLua = ''
         require("nvim-ts-autotag").setup({
@@ -50,7 +68,7 @@ in {
         shiftwidth = 2;
         signcolumn = "yes:1";
         showmode = false;
-	cmdheight = 0;
+        cmdheight = 0;
       };
     };
 
