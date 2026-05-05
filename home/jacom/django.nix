@@ -1,9 +1,10 @@
 { ... }: {
   imports =
-    [ ./common.nix ./hyprland/django.nix ./waybar/django.nix ./nixvim ./rofi ./mpv ];
+    [ ./common.nix ./hyprland/django.nix ./nixvim ./mpv ];
 
   nixvim.enable = true;
   custom.tmux.enable = true;
+  custom.noctalia.enable = true;
 
   xdg.desktopEntries = {
     spotify = {

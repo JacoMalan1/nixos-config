@@ -1,4 +1,8 @@
-{ ... }: {
+{ inputs, system, ... }:
+let
+  pkgs = import inputs.nixpkgs-unstable { inherit system; };
+in
+{
   imports = [
     ./neo-tree.nix
     # ./cmp.nix
@@ -13,10 +17,10 @@
   programs.nixvim = {
     plugins = {
       ccc = {
-	enable = true;
-	settings.highlighter = {
-	  auto_enable = true;
-	};
+        enable = true;
+        settings.highlighter = {
+          auto_enable = true;
+        };
       };
       persistence.enable = true;
       # tailwind-tools.enable = true;
@@ -33,19 +37,27 @@
       };
       gitsigns.enable = true;
       rustaceanvim.enable = true;
-      
+
       notify = {
         enable = true;
         settings.level = "warn";
       };
       fidget = {
         enable = true;
-        settings = { progress.display.done_ttl = 1; };
+        settings = {
+          progress.display.done_ttl = 1;
+        };
       };
-      aerial = { enable = true; };
+      aerial = {
+        enable = true;
+      };
       dropbar = {
         enable = true;
-        settings = { icons.ui.bar = { separator = " > "; }; };
+        settings = {
+          icons.ui.bar = {
+            separator = " > ";
+          };
+        };
       };
       nvim-autopairs.enable = true;
       lualine = {
@@ -63,18 +75,31 @@
       bufferline = {
         enable = true;
         settings.options = {
-          offsets = [{
-            filetype = "neo-tree";
-            text = "File Explorer";
-            highlight = "Directory";
-            padding = 1;
-          }];
+          offsets = [
+            {
+              filetype = "neo-tree";
+              text = "File Explorer";
+              highlight = "Directory";
+              padding = 1;
+            }
+          ];
         };
       };
       treesitter = {
         enable = true;
         settings.indent.enable = true;
         settings.highlight.enable = true;
+	grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [
+	  inputs.tree-sitter-flatbuffers.packages.${system}.default
+	];
+	languageRegister.flatbuffers = "fbs";
+	luaConfig.post = ''
+	  vim.filetype.add({
+	    extension = {
+	      fbs = "flatbuffers",
+	    },
+	  })
+	'';
       };
       neoscroll.enable = true;
       toggleterm.enable = true;

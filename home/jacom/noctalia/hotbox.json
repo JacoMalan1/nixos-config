@@ -126,15 +126,6 @@
             "unreadBadgeColor": "primary"
           },
           {
-            "deviceNativePath": "__default__",
-            "displayMode": "graphic-clean",
-            "hideIfIdle": false,
-            "hideIfNotDetected": true,
-            "id": "Battery",
-            "showNoctaliaPerformance": false,
-            "showPowerProfiles": false
-          },
-          {
             "displayMode": "onhover",
             "iconColor": "none",
             "id": "Volume",
@@ -167,6 +158,15 @@
               "displayMode": "onhover"
             },
             "id": "plugin:network-manager-vpn"
+          },
+          {
+            "deviceNativePath": "__default__",
+            "displayMode": "graphic",
+            "hideIfIdle": false,
+            "hideIfNotDetected": true,
+            "id": "Battery",
+            "showNoctaliaPerformance": false,
+            "showPowerProfiles": false
           },
           {
             "colorizeDistroLogo": false,
