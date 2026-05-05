@@ -131,7 +131,6 @@ in {
     yubioath-flutter
     remmina
     gparted
-    mqtt-explorer
     texlive.combined.scheme-full
     # inputs.citrix.packages.${system}.default
   ]) ++ (with pkgs-unstable; [
@@ -147,10 +146,10 @@ in {
     easyeffects
     ledger-live-desktop
     thunderbird
-    lutris
     renderdoc
     spotify
     android-studio
     furmark
+    zellij
   ]);
 }

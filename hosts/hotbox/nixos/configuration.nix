@@ -113,7 +113,6 @@ in
     ];
     packages = with pkgs; [
       kitty
-      zellij
     ];
   };
 
