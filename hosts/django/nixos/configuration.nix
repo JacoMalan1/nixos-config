@@ -2,7 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, inputs, system, ... }:
+{
+  lib,
+  config,
+  inputs,
+  system,
+  ...
+}:
 let
   pkgs = import inputs.nixpkgs-unstable {
     inherit system;
@@ -12,8 +18,10 @@ let
     inherit system;
     config.allowUnfree = true;
   };
-in {
-  imports = [ # Include the results of the hardware scan.
+in
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./fs.nix
   ];
@@ -29,10 +37,16 @@ in {
 
   boot.blacklistedKernelModules = [ "k10temp" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
-  boot.kernelModules = [ "zenpower" "amdgpu" ];
+  boot.kernelModules = [
+    "zenpower"
+    "amdgpu"
+  ];
   hardware.cpu.x86.msr.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.hostName = "django"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -44,7 +58,9 @@ in {
   # Enable networking
   networking.networkmanager.enable = true;
 
-  environment.sessionVariables = { FLAKE = "$HOME/nix"; };
+  environment.sessionVariables = {
+    FLAKE = "$HOME/nix";
+  };
 
   # Enable the X11 windowing system.
   services.libinput.touchpad.naturalScrolling = true;
@@ -65,7 +81,10 @@ in {
     extraRules = ''
       SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"
     '';
-    packages = [ pkgs.gnome-settings-daemon pkgs.gcr ];
+    packages = [
+      pkgs.gnome-settings-daemon
+      pkgs.gcr
+    ];
   };
 
   # Configure keymap in X11
@@ -89,10 +108,13 @@ in {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [ vulkan-validation-layers ];
   };
 
   security.rtkit.enable = true;
-  security.polkit = { enable = true; };
+  security.polkit = {
+    enable = true;
+  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -114,7 +136,12 @@ in {
   users.users.jacom = {
     isNormalUser = true;
     description = "Jaco Malan";
-    extraGroups = [ "networkmanager" "wheel" "plugdev" "kvm" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "plugdev"
+      "kvm"
+    ];
   };
 
   programs.nix-ld.enable = true;
@@ -126,8 +153,7 @@ in {
   # Allow unfree packages
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys =
-      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -148,7 +174,10 @@ in {
   networking.firewall = {
     enable = true;
     checkReversePath = "loose";
-    allowedTCPPorts = [ 22 22000 ];
+    allowedTCPPorts = [
+      22
+      22000
+    ];
     allowedUDPPorts = [ 22000 ];
   };
   # Or disable the firewall altogether.
@@ -172,6 +201,9 @@ in {
       X11Forwarding = true;
     };
   };
+
+  services.tuned.enable = true;
+  services.upower.enable = true;
 
   systemd.services.netextender = {
     description = "SonicWall NetExtender service";

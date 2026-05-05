@@ -124,5 +124,6 @@ in {
       inputs.netextender.packages.${system}.default
       jetbrains.rider
       prusa-slicer
+      blender
     ]) ++ [dotnet-combined];
 }

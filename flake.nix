@@ -41,6 +41,10 @@
       url = "/home/jacom/Code/Nix/citrix_workspace";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    tree-sitter-flatbuffers = {
+      url = "/home/jacom/Code/JavaScript/tree-sitter-flatbuffers";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell/v4.7.7";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -137,6 +141,7 @@
 	    ./home/jacom/django.nix 
 	    inputs.nixvim.homeModules.nixvim
             agenix.homeManagerModules.default
+	    inputs.noctalia.homeModules.default
 	  ];
         };
         "jacom@workhorse" = home-manager.lib.homeManagerConfiguration {

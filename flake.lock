@@ -430,7 +430,8 @@
         "nixvim": "nixvim",
         "noctalia": "noctalia",
         "rust-overlay": "rust-overlay",
-        "strain": "strain"
+        "strain": "strain",
+        "tree-sitter-flatbuffers": "tree-sitter-flatbuffers"
       }
     },
     "rust-overlay": {
@@ -553,6 +554,23 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "tree-sitter-flatbuffers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775230817,
+        "narHash": "sha256-7NPFhnHbe6eEOnol94NbbVktb9FM63aiGS63XAx/T5Y=",
+        "path": "/home/jacom/Code/JavaScript/tree-sitter-flatbuffers",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/jacom/Code/JavaScript/tree-sitter-flatbuffers",
+        "type": "path"
       }
     },
     "treefmt-nix": {
