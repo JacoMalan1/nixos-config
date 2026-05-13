@@ -13,7 +13,7 @@ in {
     exec-once = [ "copyq --start-server" ];
     env = [ "ELECTRON_OZONE_PLATFORM_HINT,auto" "LIBVA_DRIVER_NAME,nvidia" ];
     bind = [
-      "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
+      # "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
       "ALT, h, focusmonitor, ${leftMonitor}"
       "ALT, l, focusmonitor, ${rightMonitor}"
       "SUPER, s, exec, hyprshot -o ~/Pictures -m region"
@@ -31,6 +31,18 @@ in {
     monitor = [
       "${rightMonitor}, 1920x1080@120, 1920x0, 1"
       "${leftMonitor}, 1920x1080, 0x0, 1"
+    ];
+
+    workspace = [
+      "2, monitor:${leftMonitor}"
+      "4, monitor:${leftMonitor}"
+      "6, monitor:${leftMonitor}"
+      "8, monitor:${leftMonitor}"
+      "1, monitor:${rightMonitor}"
+      "3, monitor:${rightMonitor}"
+      "5, monitor:${rightMonitor}"
+      "7, monitor:${rightMonitor}"
+      "9, monitor:${rightMonitor}"
     ];
   };
 }
