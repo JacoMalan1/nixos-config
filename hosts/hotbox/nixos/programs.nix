@@ -151,5 +151,6 @@ in {
     android-studio
     furmark
     zellij
+    bambu-studio
   ]);
 }
