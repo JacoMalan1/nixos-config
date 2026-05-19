@@ -11,7 +11,7 @@ in {
   wayland.windowManager.hyprland.settings = {
     general.allow_tearing = true;
     exec-once = [ "copyq --start-server" ];
-    env = [ "ELECTRON_OZONE_PLATFORM_HINT,auto" "LIBVA_DRIVER_NAME,nvidia" ];
+    env = [ "ELECTRON_OZONE_PLATFORM_HINT,auto" ];
     bind = [
       # "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
       "ALT, h, focusmonitor, ${leftMonitor}"
@@ -25,7 +25,7 @@ in {
       "tile on, match:initial_class (steam_app_311210)"
       "fullscreen on, match:initial_class (steam_app_311210)"
       "float on, match:initial_title (pisim)"
-      # "immediate, class:^Minecraft. 1.21.5$"
+      "immediate on, match:initial_class (steam_app_3017860)"
     ];
 
     monitor = [
