@@ -110,6 +110,7 @@ in
       "wireshark"
       "plugdev"
       "adbusers"
+      "gamemode"
     ];
     packages = with pkgs; [
       kitty
