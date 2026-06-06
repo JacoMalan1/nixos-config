@@ -6,7 +6,7 @@ let
 in {
   imports = [ ./common.nix ];
 
-  home.packages = with pkgs; [ hyprshot copyq ];
+  home.packages = with pkgs; [ hyprshot copyq wayvnc ];
 
   wayland.windowManager.hyprland.settings = {
     general.allow_tearing = true;
@@ -31,6 +31,7 @@ in {
     monitor = [
       "${rightMonitor}, 1920x1080@120, 1920x0, 1"
       "${leftMonitor}, 1920x1080, 0x0, 1"
+
     ];
 
     workspace = [
