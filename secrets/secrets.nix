@@ -13,4 +13,5 @@ let
 in {
   "hotbox-monerod-conf.age".publicKeys = users ++ systems;
   "monero-mining-address.age".publicKeys = users ++ systems;
+  "nextcloud-autosync-env.age".publicKeys = users ++ systems;
 }

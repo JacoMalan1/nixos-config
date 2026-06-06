@@ -132,6 +132,8 @@ in {
     remmina
     gparted
     texlive.combined.scheme-full
+    tigervnc
+    bottles
     # inputs.citrix.packages.${system}.default
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
@@ -151,6 +153,5 @@ in {
     android-studio
     furmark
     zellij
-    bambu-studio
   ]);
 }
