@@ -117,7 +117,6 @@ in
     ];
   };
 
-  programs.adb.enable = true;
   programs.firefox.enable = true;
 
   # NixOS Dynamically linked binaries fix

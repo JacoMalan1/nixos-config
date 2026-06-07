@@ -5,6 +5,7 @@ let
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [ "dotnet-sdk-6.0.428" "libsoup-2.74.3" ];
+      rocmSupport = true;
     };
   };
   pkgs-unstable = import inputs.nixpkgs-unstable {
@@ -63,7 +64,7 @@ in {
     gnome-disk-utility
     evince
 
-    neofetch
+    hyfetch
     onefetch
     btop
 
@@ -71,7 +72,7 @@ in {
     zenmonitor
     unzip
 
-    nodejs_20
+    nodejs
     yarn
 
     gmp
@@ -101,7 +102,7 @@ in {
     vlc
     go
     kdePackages.kdenlive
-    blender-hip
+    blender
     ghidra-bin
     brave
     firebase-tools
@@ -153,5 +154,6 @@ in {
     android-studio
     furmark
     zellij
+    android-tools
   ]);
 }

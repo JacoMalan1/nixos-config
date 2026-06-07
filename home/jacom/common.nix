@@ -1,4 +1,4 @@
-{ inputs, system, ... }:
+{ inputs, system, config, ... }:
 let pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
   imports = [ ./tmux.nix ./noctalia ];
@@ -76,6 +76,7 @@ in {
     '';
     gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
     gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
+    gtk4.theme = config.gtk.theme;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

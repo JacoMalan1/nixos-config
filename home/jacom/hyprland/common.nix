@@ -1,5 +1,12 @@
-{ inputs, system, ... }:
-let pkgs = import inputs.nixpkgs-unstable { inherit system; };
+{ inputs, lib, system, ... }:
+let 
+  pkgs = import inputs.nixpkgs-unstable { inherit system; };
+  mkExecBind = ({ bind, cmd }: {
+    _args = [
+      "${bind}"
+      (lib.generators.mkLuaInline "hl.dsp.exec_cmd('${cmd}')")
+    ];
+  });
 in {
   xdg.portal = {
     enable = true;
@@ -88,134 +95,155 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
+    configType = "lua";
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
     settings = {
-      ecosystem.enforce_permissions = false;
       env = [
-        "HYPRCURSOR_THEME,Adwaita"
-        "HYPRCURSOR_SIZE,24"
-        "QT_QPA_PLATFORM,wayland"
+	{ _args = ["HYPRCURSOR_THEME" "Adwaita"]; }
+	{ _args = ["HYPRCURSOR_SIZE" "24"]; }
+        { _args = ["QT_QPA_PLATFORM" "wayland"]; }
       ];
-      exec-once = [
-	"noctalia-shell"
-        "easyeffects --service-mode -w & disown"
-        "keepassxc & disown"
+      on = [
+	{
+	  _args = [
+	    "hyprland.start"
+	    (lib.generators.mkLuaInline "function()\nhl.exec_cmd(\"noctalia-shell\")\nhl.exec_cmd(\"easyeffects --service-mode -w\")\nhl.exec_cmd(\"keepassxc\")\nend")
+	  ];
+	}
       ];
-      animation = "global, 1, 2, default";
-      general = {
-        border_size = 1;
-	gaps_in = 5;
-        gaps_out = 10;
-        "col.active_border" = "0xff98971a";
-        layout = "master";
-      };
-      decoration = { 
-	rounding = 20;
-	rounding_power = 2;
 
-	shadow = {
+      animation = [
+	{
+	  leaf = "global";
 	  enabled = true;
-	  range = 4;
-	  render_power = 3;
-	  color = "rgba(1a1a1aee)";
-	};
+	  speed = 2;
+	  bezier = "default";
+	}
+      ];
 
-	blur = {
-	  enabled = true;
-	  size = 3;
-	  passes = 2;
-	  vibrancy = 0.1696;
+      config = {
+	ecosystem.enforce_permissions = false;
+	general = {
+	  border_size = 1;
+	  gaps_in = 5;
+	  gaps_out = 10;
+	  "col.active_border" = "0xff98971a";
+	  layout = "master";
 	};
+	decoration = { 
+	  rounding = 20;
+	  rounding_power = 2;
+
+	  shadow = {
+	    enabled = true;
+	    range = 4;
+	    render_power = 3;
+	    color = "rgba(1a1a1aee)";
+	  };
+
+	  blur = {
+	    enabled = true;
+	    size = 3;
+	    passes = 2;
+	    vibrancy = 0.1696;
+	  };
+	};
+	master = { mfact = 0.5; };
+	input.accel_profile = "flat";
       };
-      master = { mfact = 0.5; };
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";
-      bind = [
-        "ALT, b, exec, brave --ozone-platform=wayland --disable-features=WaylandWpColorManagerV1"
-        "ALT, p, exec, noctalia-shell ipc call launcher toggle"
-        "ALT SHIFT, p, exec, rofi -show run"
-        "SUPER, l, exec, noctalia-shell ipc call lockScreen lock"
-        "ALT SHIFT, Return, exec, kitty"
-        "ALT SHIFT, 1, movetoworkspacesilent, 1"
-        "ALT SHIFT, 2, movetoworkspacesilent, 2"
-        "ALT SHIFT, 3, movetoworkspacesilent, 3"
-        "ALT SHIFT, 4, movetoworkspacesilent, 4"
-        "ALT SHIFT, 5, movetoworkspacesilent, 5"
-        "ALT SHIFT, 6, movetoworkspacesilent, 6"
-        "ALT SHIFT, 7, movetoworkspacesilent, 7"
-        "ALT SHIFT, 8, movetoworkspacesilent, 8"
-        "ALT SHIFT, 9, movetoworkspacesilent, 9"
-        "ALT SHIFT, code:21, layoutmsg, mfact +0.05"
-        "ALT SHIFT, code:20, layoutmsg, mfact -0.05"
-	"ALT, code:49, workspace, emptynm"
-        "ALT, 1, workspace, 1"
-        "ALT, 2, workspace, 2"
-        "ALT, 3, workspace, 3"
-        "ALT, 4, workspace, 4"
-        "ALT, 5, workspace, 5"
-        "ALT, 6, workspace, 6"
-        "ALT, 7, workspace, 7"
-        "ALT, 8, workspace, 8"
-        "ALT, 9, workspace, 9"
-        "ALT, e, workspace, empty"
-        "ALT SHIFT, q, killactive"
-        "ALT, j, cyclenext"
-        "ALT SHIFT, j, swapnext"
-        "ALT SHIFT, k, swapnext, prev"
-        "ALT, k, cyclenext, prev"
-        "ALT, f, fullscreen"
-        "ALT SHIFT, x, exit"
-        "ALT SHIFT, f, togglefloating"
-        "ALT, c, togglespecialworkspace, calculator"
-        "ALT, c, exec, pgrep qalculate-gtk || qalculate-gtk &"
-        "ALT, v, togglespecialworkspace, obsidian"
-        "ALT, v, exec, pgrep -a electron | grep obsidian || obsidian &"
-        "ALT, t, togglespecialworkspace, thunderbird"
-        "ALT, t, exec, pgrep thunderbird || thunderbird &"
-        "ALT SHIFT, t, togglespecialworkspace, teams"
-        "ALT SHIFT, t, exec, pgrep -a electron | grep teams-for-linux || teams-for-linux &"
-        "ALT, s, togglespecialworkspace, spotify"
-        "ALT, s, exec, pgrep .spotify-wrappe || spotify --enable-features=UseOzonePlatform --ozone-platform=x11 &"
-        "ALT, a, togglespecialworkspace, yubioath"
-        "ALT, a, exec, pgrep .yubioath-flutt || yubioath-flutter &"
-        "SUPER, k, togglespecialworkspace, keepassxc"
-        "SUPER, k, exec, keepassxc"
-        "ALT SHIFT, c, exec, copyq toggle"
-        "ALT SHIFT, v, togglespecialworkspace, netextender"
-      ];
-      bindl = [
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPause, exec, playerctl play-pause"
-        ", XF86AudioPrev, exec, playerctl previous"
-        ", XF86AudioNext, exec, playerctl next"
-      ];
-      bindm =
-        [ "SUPER, mouse:272, movewindow" "SUPER, mouse:273, resizewindow" ];
+      bind = let terminal = "kitty"; in [
+	(mkExecBind { bind = "ALT + b"; cmd = "brave --ozone-platform=wayland --disable-features=WaylandWpColorManagerV1";})
+	(mkExecBind { bind = "ALT + p"; cmd = "noctalia-shell ipc call launcher toggle"; })
+	(mkExecBind { bind = "ALT + SHIFT + p"; cmd = "rofi -show run"; })
+	(mkExecBind { bind = "SUPER + l"; cmd = "noctalia-shell ipc call lockScreen lock"; })
+	(mkExecBind { bind = "ALT + SHIFT + Return"; cmd = terminal; })
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '1', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '2', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '3', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '4', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '5', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '6', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '7', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '8', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '9', follow = false })")]; }
 
-      input.accel_profile = "flat";
+	{ _args = ["ALT + SHIFT + code:21" (lib.generators.mkLuaInline "hl.dsp.layout('mfact +0.05')")]; }
+	{ _args = ["ALT + SHIFT + code:20" (lib.generators.mkLuaInline "hl.dsp.layout('mfact -0.05')")]; }
+	{ _args = ["ALT + code:49" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 'emptynm' })")]; }
 
-      windowrule = [
-        "float on, match:class (Tor Browser)"
-        "float on, match:class (qalculate-gtk)"
-        "workspace special:calculator, match:class qalculate-gtk"
-        "workspace special:obsidian, match:class obsidian"
-        "workspace special:thunderbird, match:class thunderbird"
-        "workspace special:spotify, match:class Spotify"
-        "workspace special:yubioath, match:class yubioath-flutter"
-        "workspace special:teams, match:class teams-for-linux"
-        "workspace special:netextender, match:class NetExtender"
-        "float on, match:class yubioath-flutter"
-        "float on, match:class (org\\.keepassxc\\.KeePassXC)"
-        "float on, match:class NetExtender"
-        "size 50% 50%, match:class NetExtender"
-        "workspace special:keepassxc, match:class org\\.keepassxc\\.KeePassXC"
-        "float on, match:class com\\.github\\.hluk\\.copyq"
-        "size 40% 40%, match:class com\\.github\\.hluk\\.copyq"
+	{ _args = ["ALT + 1" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 1 })")]; }
+	{ _args = ["ALT + 2" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 2 })")]; }
+	{ _args = ["ALT + 3" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 3 })")]; }
+	{ _args = ["ALT + 4" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 4 })")]; }
+	{ _args = ["ALT + 5" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 5 })")]; }
+	{ _args = ["ALT + 6" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 6 })")]; }
+	{ _args = ["ALT + 7" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 7 })")]; }
+	{ _args = ["ALT + 8" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 8 })")]; }
+	{ _args = ["ALT + 9" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = 9 })")]; }
+        
+	{ _args = ["ALT + SHIFT + q" (lib.generators.mkLuaInline "hl.dsp.window.close()")]; }
+	{ _args = ["ALT + j" (lib.generators.mkLuaInline "hl.dsp.window.cycle_next()")]; }
+	{ _args = ["ALT + k" (lib.generators.mkLuaInline "hl.dsp.window.cycle_next({ next = false })")]; }
+	{ _args = ["ALT + SHIFT + j" (lib.generators.mkLuaInline "hl.dsp.window.swap({ next = true })")]; }
+	{ _args = ["ALT + SHIFT + k" (lib.generators.mkLuaInline "hl.dsp.window.swap({ prev = true })")]; }
+	{ _args = ["ALT + f" (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({ mode = 'fullscreen', action = 'toggle' })")]; }
+	{ _args = ["ALT + SHIFT + x" (lib.generators.mkLuaInline "hl.dsp.exit()")]; }
+	{ _args = ["ALT + SHIFT + f" (lib.generators.mkLuaInline "hl.dsp.window.float({ action = 'toggle' })")]; }
+
+	# --------- Special workspaces -----------
+	{ _args = ["ALT + c" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('calculator')")]; }
+	(mkExecBind { bind = "ALT + c"; cmd = "pgrep qalculate-gtk || qalculate-gtk &"; })
+
+	{ _args = ["ALT + v" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('obsidian')")]; }
+	(mkExecBind { bind = "ALT + v"; cmd = "pgrep -a electron | grep obsidian || obsidian &"; })
+
+	{ _args = ["ALT + t" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('thunderbird')")]; }
+	(mkExecBind { bind = "ALT + t"; cmd = "pgrep thunderbird || thunderbird &"; })
+
+	{ _args = ["ALT + SHIFT + t" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('teams')")]; }
+	(mkExecBind { bind = "ALT + SHIFT + t"; cmd = "pgrep -a electron | grep teams-for-linux || teams-for-linux &"; })
+
+	{ _args = ["ALT + s" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('spotify')")]; }
+	(mkExecBind { bind = "ALT + s"; cmd = "pgrep .spotify-wrappe || spotify --enable-features=UseOzonePlatform --ozone-platform=x11 &"; })
+
+	{ _args = ["ALT + a" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('yubioath')")]; }
+	(mkExecBind { bind = "ALT + a"; cmd = "pgrep .yubioath-flutt || yubioath-flutter &"; })
+
+	{ _args = ["SUPER + k" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('keepassxc')")]; }
+	(mkExecBind { bind = "SUPER + k"; cmd = "keepassxc"; })
+	# ----------------------------------------
+
+	(mkExecBind { bind = "ALT + SHIFT + c"; cmd = "copyq toggle"; })
+
+	{ _args = ["ALT + SHIFT + v" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('netextender')")]; }
+
+	{ _args = ["XF86AudioPlay" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause', { locked = true })")]; }
+	{ _args = ["XF86AudioPause" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause', { locked = true })")]; }
+	{ _args = ["XF86AudioPrev" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl previous', { locked = true })")]; }
+	{ _args = ["XF86AudioNext" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl next', { locked = true })")]; }
+
+	{ _args = ["SUPER + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()") { mouse = true; drag = true; }]; }
+	{ _args = ["SUPER + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()") { mouse = true; }]; }
       ];
 
-      layerrule = [
+      window_rule = [
+	{ match.class = "Tor Browser"; float = true; }
+	{ match.class = "qalculate-gtk"; float = true; workspace = "special:calculator"; }
+	{ match.class = "obsidian"; workspace = "special:obsidian"; }
+	{ match.class = "thunderbird"; workspace = "special:thunderbird"; }
+	{ match.class = "Spotify"; workspace = "special:spotify"; }
+	{ match.class = "yubioath-flutter"; workspace = "special:yubioath"; float = true; }
+	{ match.class = "teams-for-linux"; workspace = "special:teams"; }
+	{ match.class = "NetExtender"; workspace = "special:netextender"; float = true; size = "{\"50%\", \"50%\"}"; }
+	{ match.class = "org\\.keepassxc\\.KeePassXC"; float = true; workspace = "special:keepassxc"; }
+	{ match.class = "com\\.github\\.hluk\\.copyq"; float = true; size = "{\"50%\", \"50%\"}"; }
+      ];
+
+      layer_rule = [
 	{
 	  name = "noctalia";
-	  "match:namespace" = "noctalia-background-,*$";
+	  match.namespace = "noctalia-background-,*$";
 	  ignore_alpha = 0.5;
 	  blur = true;
 	  blur_popups = true;

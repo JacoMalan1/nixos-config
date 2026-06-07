@@ -17,8 +17,14 @@
     device = "/dev/disk/by-uuid/bdd1a1f1-a1f4-4067-aab8-e7eff3d5b027";
     fsType = "ext4";
   };
-  fileSystems."/home".device = "/dev/mapper/crypthome";
-  fileSystems."/mnt/bulk".device = "/dev/mapper/crypthdd";
+  fileSystems."/home" = {
+    device = "/dev/mapper/crypthome";
+    fsType = "ext4";
+  };
+  fileSystems."/mnt/bulk" = {
+    device = "/dev/mapper/crypthdd";
+    fsType = "ext4";
+  };
 
   environment.etc.crypttab.text = ''
     crypthome UUID=7b8ccd1d-d947-4378-bc49-e6cb397e4261 /root/keyfile

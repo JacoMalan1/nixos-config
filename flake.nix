@@ -3,14 +3,13 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -117,7 +116,12 @@
             config.allowUnfree = true;
           };
           modules =
-            [ ./home/jacom/hotbox.nix inputs.nixvim.homeModules.nixvim inputs.noctalia.homeModules.default ];
+            [ 
+	      ./home/jacom/hotbox.nix 
+	      inputs.nixvim.homeModules.nixvim 
+	      inputs.noctalia.homeModules.default 
+	      agenix.homeManagerModules.default
+	    ];
         };
         "jacom@django" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {

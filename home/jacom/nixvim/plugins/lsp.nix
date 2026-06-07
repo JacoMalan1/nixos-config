@@ -8,7 +8,7 @@ let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
   tailwindcss-language-server = pkgs.tailwindcss-language-server.overrideAttrs (
     finalAttrs: prevAttrs: {
-      nativeBuildInputs = with pkgs; [ pnpm_9.configHook ];
+      nativeBuildInputs = with pkgs; [ pnpmConfigHook pnpm_9 ];
       buildInputs = with pkgs; [ nodejs_24 ];
     }
   );

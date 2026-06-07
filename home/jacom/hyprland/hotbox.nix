@@ -1,4 +1,4 @@
-{ inputs, system, ... }:
+{ inputs, system, lib, ... }:
 let
   rightMonitor = "DP-2";
   leftMonitor = "HDMI-A-1";
@@ -9,41 +9,51 @@ in {
   home.packages = with pkgs; [ hyprshot copyq wayvnc ];
 
   wayland.windowManager.hyprland.settings = {
-    general.allow_tearing = true;
-    exec-once = [ "copyq --start-server" ];
-    env = [ "ELECTRON_OZONE_PLATFORM_HINT,auto" ];
-    bind = [
-      # "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
-      "ALT, h, focusmonitor, ${leftMonitor}"
-      "ALT, l, focusmonitor, ${rightMonitor}"
-      "SUPER, s, exec, hyprshot -o ~/Pictures -m region"
-      "SUPER SHIFT, s, exec, hyprshot -o ~/Pictures -m window"
+    config = {
+      general.allow_tearing = true;
+    };
+
+    on = [
+      {
+	_args = [
+	  "hyprland.start"
+	  (lib.generators.mkLuaInline "function()\nhl.dsp.exec_cmd('copyq --start-server')\nend")
+	];
+      }
     ];
 
-    windowrule = [
-      "workspace 1, match:initial_class (steam_app_311210)"
-      "tile on, match:initial_class (steam_app_311210)"
-      "fullscreen on, match:initial_class (steam_app_311210)"
-      "float on, match:initial_title (pisim)"
-      "immediate on, match:initial_class (steam_app_3017860)"
+    env = [ 
+      { _args = ["ELECTRON_OZONE_PLATFORM_HINT" "auto"]; } 
+    ];
+
+    bind = [
+      { _args = ["ALT + h" (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = '${leftMonitor}' })")]; }
+      { _args = ["ALT + l" (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = '${rightMonitor}' })")]; }
+      { _args = ["SUPER + s" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('hyprshot -o ~/Pictures -m region')")]; }
+      { _args = ["SUPER + SHIFT + s" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('hyprshot -o ~/Pictures -m window')")]; }
+    ];
+
+    window_rule = [
+      { match.initial_class = "steam_app_311210"; workspace = 1; float = false; fullscreen = true; }
+      { match.initial_class = "steam_app_3017860"; immediate = true; }
     ];
 
     monitor = [
-      "${rightMonitor}, 1920x1080@120, 1920x0, 1"
-      "${leftMonitor}, 1920x1080, 0x0, 1"
-
+      { output = "${rightMonitor}"; mode = "1920x1080@120"; position = "1920x0"; scale = 1; }
+      { output = "${leftMonitor}"; mode = "1920x1080"; position = "0x0"; scale = 1; }
     ];
 
-    workspace = [
-      "2, monitor:${leftMonitor}"
-      "4, monitor:${leftMonitor}"
-      "6, monitor:${leftMonitor}"
-      "8, monitor:${leftMonitor}"
-      "1, monitor:${rightMonitor}"
-      "3, monitor:${rightMonitor}"
-      "5, monitor:${rightMonitor}"
-      "7, monitor:${rightMonitor}"
-      "9, monitor:${rightMonitor}"
+    workspace_rule = [
+      { workspace = "2"; monitor = "${leftMonitor}"; }
+      { workspace = "4"; monitor = "${leftMonitor}"; }
+      { workspace = "6"; monitor = "${leftMonitor}"; }
+      { workspace = "8"; monitor = "${leftMonitor}"; }
+      
+      { workspace = "1"; monitor = "${rightMonitor}"; }
+      { workspace = "3"; monitor = "${rightMonitor}"; }
+      { workspace = "5"; monitor = "${rightMonitor}"; }
+      { workspace = "7"; monitor = "${rightMonitor}"; }
+      { workspace = "9"; monitor = "${rightMonitor}"; }
     ];
   };
 }
