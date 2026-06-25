@@ -20,7 +20,7 @@ in {
 
   environment.sessionVariables = {
     AMD_VULKAN_ICD = "RADV";
-    radv_gfx12_hiz_wa = 2;
+    radv_gfx12_hiz_wa = "full";
   };
 
   services.lact = {

@@ -143,6 +143,7 @@ in {
     libresplit
     jetbrains.rider
     prusa-slicer
+    orca-slicer
     monero-gui
     monero-cli
     signal-desktop
@@ -155,5 +156,6 @@ in {
     furmark
     zellij
     android-tools
+    lightgbm
   ]);
 }

@@ -30,8 +30,10 @@ in
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
-  boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
   boot.kernelModules = [ "zenpower" ];
+  boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
+  boot.kernelParams = [ "video=DP-2:e" ];
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -122,14 +124,14 @@ in
   # NixOS Dynamically linked binaries fix
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
+    libraries = (with pkgs; [
       libspatialite
       libxml2
       freetype
       icu
       nss
       nspr
-    ];
+    ]) ++ (with pkgs-unstable; [ lightgbm ]);
   };
 
   # specialisation.gnome.configuration = {
