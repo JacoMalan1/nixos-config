@@ -159,14 +159,14 @@ in {
 	(mkExecBind { bind = "SUPER + l"; cmd = "noctalia-shell ipc call lockScreen lock"; })
 	(mkExecBind { bind = "ALT + SHIFT + Return"; cmd = terminal; })
 	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '1', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '2', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '3', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '4', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '5', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '6', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '7', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '8', follow = false })")]; }
-	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '9', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 2" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '2', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 3" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '3', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 4" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '4', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 5" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '5', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 6" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '6', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 7" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '7', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 8" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '8', follow = false })")]; }
+	{ _args = ["ALT + SHIFT + 9" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '9', follow = false })")]; }
 
 	{ _args = ["ALT + SHIFT + code:21" (lib.generators.mkLuaInline "hl.dsp.layout('mfact +0.05')")]; }
 	{ _args = ["ALT + SHIFT + code:20" (lib.generators.mkLuaInline "hl.dsp.layout('mfact -0.05')")]; }
@@ -218,12 +218,12 @@ in {
 
 	{ _args = ["ALT + SHIFT + v" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('netextender')")]; }
 
-	{ _args = ["XF86AudioPlay" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause', { locked = true })")]; }
-	{ _args = ["XF86AudioPause" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause', { locked = true })")]; }
-	{ _args = ["XF86AudioPrev" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl previous', { locked = true })")]; }
-	{ _args = ["XF86AudioNext" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl next', { locked = true })")]; }
+	{ _args = ["XF86AudioPlay" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')") { locked = true; }]; }
+	{ _args = ["XF86AudioPause" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl play-pause')") { locked = true; }]; }
+	{ _args = ["XF86AudioPrev" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl previous')") { locked = true; }]; }
+	{ _args = ["XF86AudioNext" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('playerctl next')") { locked = true; }]; }
 
-	{ _args = ["SUPER + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()") { mouse = true; drag = true; }]; }
+	{ _args = ["SUPER + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()") { mouse = true; }]; }
 	{ _args = ["SUPER + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()") { mouse = true; }]; }
       ];
 

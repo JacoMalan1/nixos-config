@@ -30,6 +30,7 @@
         "left": [
           {
             "colorizeSystemIcon": "none",
+            "colorizeSystemText": "none",
             "customIconPath": "",
             "enableColorization": false,
             "icon": "rocket",
@@ -75,6 +76,7 @@
             "maxWidth": 300,
             "scrollingMode": "hover",
             "showIcon": true,
+            "showText": true,
             "textColor": "none",
             "useFixedWidth": false
           }
@@ -169,11 +171,12 @@
           {
             "colorizeDistroLogo": false,
             "colorizeSystemIcon": "none",
+            "colorizeSystemText": "none",
             "customIconPath": "",
             "enableColorization": false,
             "icon": "noctalia",
             "id": "ControlCenter",
-            "useDistroLogo": false
+            "useDistroLogo": true
           }
         ]
       },
@@ -249,7 +252,8 @@
           "Del"
         ]
       },
-      "reverseScroll": false
+      "reverseScroll": false,
+      "smoothScrollEnabled": true
     },
     "ui": {
       "fontDefault": "Sans Serif",
@@ -269,6 +273,7 @@
       "name": "Pretoria",
       "weatherEnabled": true,
       "weatherShowEffects": true,
+      "weatherTaliaMascotAlways": false,
       "useFahrenheit": false,
       "use12hourFormat": false,
       "showWeekNumberInCalendar": false,
@@ -277,7 +282,8 @@
       "analogClockInCalendar": false,
       "firstDayOfWeek": 1,
       "hideWeatherTimezone": false,
-      "hideWeatherCityName": false
+      "hideWeatherCityName": false,
+      "autoLocate": false
     },
     "calendar": {
       "cards": [
@@ -304,6 +310,7 @@
       "showHiddenFiles": false,
       "viewMode": "single",
       "setWallpaperOnAllMonitors": true,
+      "linkLightAndDarkWallpapers": true,
       "fillMode": "crop",
       "fillColor": "#000000",
       "useSolidColor": false,
@@ -489,7 +496,6 @@
       "indicatorOpacity": 0.6
     },
     "network": {
-      "airplaneModeEnabled": false,
       "bluetoothRssiPollingEnabled": false,
       "bluetoothRssiPollIntervalMs": 60000,
       "networkPanelView": "wifi",
@@ -624,7 +630,7 @@
     "brightness": {
       "brightnessStep": 5,
       "enforceMinimum": true,
-      "enableDdcSupport": false,
+      "enableDdcSupport": true,
       "backlightDeviceMappings": []
     },
     "colorSchemes": {
@@ -695,9 +701,24 @@
     "barVisible": true,
     "openedPanel": "",
     "lockScreenActive": false,
-    "wallpapers": {},
+    "wallpapers": {
+      "DP-2": "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg",
+      "HDMI-A-1": "/home/jacom/nix/home/jacom/gruvbox-wallpaper.jpg"
+    },
     "desktopWidgetsEditMode": false,
     "display": {
+      "DP-2": {
+        "name": "DP-2",
+        "scale": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh_rate": 120,
+        "x": 1920,
+        "y": 0,
+        "active_workspace": 3,
+        "vrr": false,
+        "focused": true
+      },
       "HDMI-A-1": {
         "name": "HDMI-A-1",
         "scale": 1,
@@ -708,26 +729,14 @@
         "y": 0,
         "active_workspace": 2,
         "vrr": false,
-        "focused": true
-      },
-      "DP-2": {
-        "name": "DP-2",
-        "scale": 1,
-        "width": 1920,
-        "height": 1080,
-        "refresh_rate": 120,
-        "x": 1920,
-        "y": 0,
-        "active_workspace": 1,
-        "vrr": false,
         "focused": false
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1775827843000
+      "lastSeenTs": 1782160396000
     },
     "changelogState": {
-      "lastSeenVersion": "v4.7.2"
+      "lastSeenVersion": "v4.7.8"
     },
     "colorSchemesList": {
       "schemes": [],
