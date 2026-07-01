@@ -205,7 +205,7 @@ in {
 	(mkExecBind { bind = "ALT + SHIFT + t"; cmd = "pgrep -a electron | grep teams-for-linux || teams-for-linux &"; })
 
 	{ _args = ["ALT + s" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('spotify')")]; }
-	(mkExecBind { bind = "ALT + s"; cmd = "pgrep .spotify-wrappe || spotify --enable-features=UseOzonePlatform --ozone-platform=x11 &"; })
+	(mkExecBind { bind = "ALT + s"; cmd = "pgrep .spotify-wrappe || spotify &"; })
 
 	{ _args = ["ALT + a" (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special('yubioath')")]; }
 	(mkExecBind { bind = "ALT + a"; cmd = "pgrep .yubioath-flutt || yubioath-flutter &"; })

@@ -57,7 +57,6 @@ in
       zls.enable = true;
       cmake.enable = true;
       csharp_ls.enable = true;
-      vue_ls.enable = true;
       svelte.enable = true;
       protols.enable = true;
       kotlin_language_server.enable = true;

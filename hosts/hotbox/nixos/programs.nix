@@ -90,7 +90,6 @@ in {
     gimp
     jdk21
     jdk17
-    anydesk
     python3
     kdePackages.kcachegrind
     gperftools

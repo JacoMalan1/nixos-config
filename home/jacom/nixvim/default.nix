@@ -23,6 +23,7 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
+      nixpkgs.source = inputs.nixpkgs-unstable;
       enable = true;
 
       extraPlugins = [

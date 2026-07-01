@@ -14,7 +14,6 @@ in {
     meslo-lgs-nf
     fira-code
     fira-code-symbols
-    cantarell-fonts
     inter
     jetbrains-mono
   ];

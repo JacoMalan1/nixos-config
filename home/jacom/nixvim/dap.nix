@@ -16,6 +16,19 @@ in {
     	stopAtEntry = true,
       },
     }
+
+    require('dap').configurations.rust = {
+      {
+    	name = "Launch file",
+    	type = "codelldb",
+    	request = "launch",
+    	program = function()
+    	  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    	end,
+    	cwd = '\$\{workspaceFolder\}',
+    	stopAtEntry = true,
+      },
+    }
   '';
 
   programs.nixvim = {
@@ -78,16 +91,6 @@ in {
               [ "--interpreter=dap" "--eval-command" "set print pretty on" ];
           };
           codelldb = { command = "${pkgs.lldb_19}/bin/lldb-dap"; };
-        };
-        configurations = {
-          rust = [{
-            name = "Launch (gdb)";
-            type = "gdb";
-            request = "launch";
-            program =
-              "\n      function()\n	return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')\n      end\n    ";
-            stopAtBeginningOfMainSubprogram = true;
-          }];
         };
       };
     };
