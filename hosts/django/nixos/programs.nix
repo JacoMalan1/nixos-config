@@ -113,6 +113,8 @@ in {
       wireguard-ui
       xmrig
       mpv
+      texlive.combined.scheme-full
+      vulkan-validation-layers
     ] ++ (with pkgs-unstable; [
       nodejs_20
       spotify

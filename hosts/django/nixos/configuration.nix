@@ -191,8 +191,6 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
-  services.postgresql.settings.port = lib.mkForce 5433;
-
   services.openssh = {
     enable = true;
     settings = {
