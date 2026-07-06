@@ -1,8 +1,8 @@
 { inputs, lib, system, ... }:
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
-  rightMonitor = "HDMI-A-1";
-  leftMonitor = "eDP-1";
+  leftMonitor = "HDMI-A-1";
+  rightMonitor = "eDP-1";
 in {
   imports = [ ./common.nix ];
 
@@ -30,8 +30,8 @@ in {
         ", mouse:275, workspace, -1"
       ];
       monitor = [
-        "${rightMonitor}, 1920x1080, 1920x0, 1"
-        "${leftMonitor}, 2880x1620@120.00, 0x0, 1.5"
+        "${rightMonitor}, 2880x1620@120.00, 1920x0, 1.5"
+        "${leftMonitor}, 1920x1080@60.00, 0x0, 1"
       ];
     };
   };
