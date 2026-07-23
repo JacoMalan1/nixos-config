@@ -10,7 +10,7 @@ in {
 
   wayland.windowManager.hyprland.settings = {
     config = {
-      general.allow_tearing = true;
+      general.allow_tearing = false;
     };
 
     on = [
@@ -35,7 +35,6 @@ in {
 
     window_rule = [
       { match.initial_class = "steam_app_311210"; workspace = 1; float = false; fullscreen = true; }
-      { match.initial_class = "steam_app_3017860"; immediate = true; }
     ];
 
     monitor = [
