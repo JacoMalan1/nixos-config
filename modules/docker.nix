@@ -4,8 +4,11 @@ in {
   environment.systemPackages = with pkgs; [ skopeo slirp4netns passt ];
   networking.firewall.enable = lib.mkForce false;
 
-  systemd.user.services.docker.environment = {
-    DOCKERD_ROOTLESS_ROOTLESSKIT_NET = "pasta";
+  systemd.user.services.docker = {
+    enable = true;
+    environment = {
+      DOCKERD_ROOTLESS_ROOTLESSKIT_NET = "pasta";
+    };
   };
 
   virtualisation = {

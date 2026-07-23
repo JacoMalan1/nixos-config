@@ -206,24 +206,24 @@ in
   services.resolved.enable = true;
   services.flatpak.enable = true;
 
-  age.secrets.monero-mining-address = {
-    file = ../../../secrets/monero-mining-address.age;
-    owner = "p2pool";
-    group = "p2pool";
-  };
+  # age.secrets.monero-mining-address = {
+  #   file = ../../../secrets/monero-mining-address.age;
+  #   owner = "p2pool";
+  #   group = "p2pool";
+  # };
 
-  services.p2pool = {
-    enable = true;
-    walletAddress = "$WALLET_ADDRESS";
-    environmentFile = config.age.secrets.monero-mining-address.path;
-    sidechain = "mini";
-    package = pkgs.p2pool;
-    mergeMining = {
-      enable = true;
-      walletAddress = "$TARI_WALLET_ADDRESS";
-      nodeAddress = "tari://127.0.0.1:18102";
-    };
-  };
+  # services.p2pool = {
+  #   enable = true;
+  #   walletAddress = "$WALLET_ADDRESS";
+  #   environmentFile = config.age.secrets.monero-mining-address.path;
+  #   sidechain = "mini";
+  #   package = pkgs.p2pool;
+  #   mergeMining = {
+  #     enable = true;
+  #     walletAddress = "$TARI_WALLET_ADDRESS";
+  #     nodeAddress = "tari://127.0.0.1:18102";
+  #   };
+  # };
 
   systemd.settings.Manager = {
     DefaultLimitNOFILE = lib.mkForce 1048576;
