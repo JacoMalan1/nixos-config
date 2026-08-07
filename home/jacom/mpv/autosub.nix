@@ -2,14 +2,14 @@
 let 
   pkgs = import inputs.nixpkgs-stable { inherit system; };
 in {
-  home.packages = [(pkgs.python312.withPackages (p: (with p; [ subliminal ])))];
+  home.packages = with pkgs; [python313 python313Packages.subliminal];
   home.file.".config/mpv/scripts/autosub.lua".text = ''
     --=============================================================================
     -->>    SUBLIMINAL PATH:
     --=============================================================================
     --          This script uses Subliminal to download subtitles,
     --          so make sure to specify your system's Subliminal location below:
-    local subliminal = '${pkgs.python312Packages.subliminal}/bin/subliminal'
+    local subliminal = '${pkgs.python313Packages.subliminal}/bin/subliminal'
     --=============================================================================
     -->>    SUBTITLE LANGUAGE:
     --=============================================================================

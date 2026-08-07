@@ -1,8 +1,8 @@
 { inputs, lib, system, ... }:
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
-  leftMonitor = "HDMI-A-1";
-  rightMonitor = "eDP-1";
+  rightMonitor = "HDMI-A-1";
+  leftMonitor = "eDP-1";
 in {
   imports = [ ./common.nix ];
 
@@ -16,22 +16,29 @@ in {
   wayland.windowManager.hyprland = {
     package = lib.mkForce null;
     portalPackage = lib.mkForce null;
+
     settings = {
-      exec-once = [ "copyq --start-server" ];
-      debug = { disable_logs = false; };
-      input.touchpad.natural_scroll = true;
+on = [
+      {
+	_args = [
+	  "hyprland.start"
+	  (lib.generators.mkLuaInline "function()\nhl.dsp.exec_cmd('copyq --start-server')\nend")
+	];
+      }
+    ];
+      config = {
+	input.touchpad.natural_scroll = true;
+      };
       bind = [
-        "ALT, w, swapactiveworkspaces, ${rightMonitor} ${leftMonitor}"
-        "ALT, h, focusmonitor, ${leftMonitor}"
-        "ALT, l, focusmonitor, ${rightMonitor}"
-        "SUPER, s, exec, hyprshot -o ~/Pictures -m region"
-        "SUPER SHIFT, s, exec, hyprshot -o ~/Pictures -m window"
-        ", mouse:276, workspace, +1"
-        ", mouse:275, workspace, -1"
+	{ _args = ["ALT + w" (lib.generators.mkLuaInline "hl.dsp.workspace.swap_monitors({ monitor1 = '${leftMonitor}', monitor2 = '${rightMonitor}' })")]; }
+	{ _args = ["ALT + h" (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = '${leftMonitor}' })")]; }
+	{ _args = ["ALT + l" (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = '${rightMonitor}' })")]; }
+	{ _args = ["SUPER + s" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('hyprshot -o ~/Pictures -m region')")]; }
+	{ _args = ["SUPER + SHIFT + s" (lib.generators.mkLuaInline "hl.dsp.exec_cmd('hyprshot -o ~/Pictures -m window')")]; }
       ];
       monitor = [
-        "${rightMonitor}, 2880x1620@120.00, 1920x0, 1.5"
-        "${leftMonitor}, 1920x1080@60.00, 0x0, 1"
+	{ output = "${leftMonitor}"; mode = "2880x1620@120.00"; position = "0x0"; scale = 1.5; }
+	{ output = "${rightMonitor}"; mode = "1920x1080"; position = "2880x0"; scale = 1; }
       ];
     };
   };

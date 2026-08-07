@@ -89,17 +89,7 @@ in
         enable = true;
         settings.indent.enable = true;
         settings.highlight.enable = true;
-	grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [
-	  inputs.tree-sitter-flatbuffers.packages.${system}.default
-	];
-	languageRegister.flatbuffers = "fbs";
-	luaConfig.post = ''
-	  vim.filetype.add({
-	    extension = {
-	      fbs = "flatbuffers",
-	    },
-	  })
-	'';
+	grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
       };
       neoscroll.enable = true;
       toggleterm.enable = true;
