@@ -62,7 +62,6 @@ in {
 
       yarn
 
-      neofetch
       onefetch
       btop
       kitty
@@ -85,7 +84,6 @@ in {
       dolphin-emu
       wiimms-iso-tools
       ntfs3g
-      thunderbird
       vlc
       gparted
       steam-run
@@ -116,7 +114,7 @@ in {
       texlive.combined.scheme-full
       vulkan-validation-layers
     ] ++ (with pkgs-unstable; [
-      nodejs_20
+      nodejs_22
       spotify
       monero-gui
       monero-cli
@@ -127,5 +125,7 @@ in {
       jetbrains.rider
       prusa-slicer
       blender
+      fastfetch
+      thunderbird
     ]) ++ [dotnet-combined];
 }
