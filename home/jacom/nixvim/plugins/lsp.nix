@@ -6,12 +6,6 @@
 }:
 let
   pkgs = import inputs.nixpkgs-stable { inherit system; };
-  tailwindcss-language-server = pkgs.tailwindcss-language-server.overrideAttrs (
-    finalAttrs: prevAttrs: {
-      nativeBuildInputs = with pkgs; [ pnpmConfigHook pnpm_9 ];
-      buildInputs = with pkgs; [ nodejs_24 ];
-    }
-  );
 in
 {
   programs.nixvim.plugins.lsp = {
@@ -28,7 +22,6 @@ in
       yamlls.enable = true;
       tailwindcss = {
         enable = true;
-        package = tailwindcss-language-server;
       };
       html.enable = true;
       basedpyright.enable = true;
@@ -63,6 +56,7 @@ in
       kotlin_language_server.enable = true;
       lua_ls.enable = true;
       texlab.enable = true;
+      terraformls.enable = true;
     };
   };
 }

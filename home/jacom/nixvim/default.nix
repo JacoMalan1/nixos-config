@@ -24,6 +24,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       nixpkgs.source = inputs.nixpkgs-unstable;
+      nixpkgs.config.allowUnfree = true;
       enable = true;
 
       extraPlugins = [
@@ -46,6 +47,12 @@ in
             vim.highlight.on_yank()
           end,
         })
+
+	vim.filetype.add({
+	  extensions = {
+	    tf = "terraform",
+	  }
+	})
       '';
 
       colorschemes = {

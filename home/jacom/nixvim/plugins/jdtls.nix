@@ -1,6 +1,6 @@
 { ... }: {
   programs.nixvim.plugins.jdtls = {
-    enable = true;
+    enable = false;
     settings = {
       cmd = [ "jdtls" ];
       root_dir = {

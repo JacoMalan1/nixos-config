@@ -1,5 +1,5 @@
 { inputs, system, config, ... }:
-let pkgs = import inputs.nixpkgs-unstable { inherit system; };
+let pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 in {
   imports = [ ./tmux.nix ./noctalia ];
 
@@ -25,9 +25,9 @@ in {
     gcr
     seahorse
     networkmanagerapplet
-    gnome-icon-theme
     hicolor-icon-theme
     fzf
+    claude-code
   ];
 
   dconf.settings = {
@@ -107,6 +107,7 @@ in {
   home.sessionVariables = { };
 
   home.pointerCursor = {
+    enable = true;
     package = pkgs.adwaita-icon-theme;
     name = "Adwaita";
     size = 24;

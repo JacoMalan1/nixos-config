@@ -38,7 +38,7 @@ on = [
       ];
       monitor = [
 	{ output = "${leftMonitor}"; mode = "2880x1620@120.00"; position = "0x0"; scale = 1.5; }
-	{ output = "${rightMonitor}"; mode = "1920x1080"; position = "2880x0"; scale = 1; }
+	{ output = "${rightMonitor}"; mode = "preferred"; position = "1920x0"; scale = 1; }
       ];
     };
   };

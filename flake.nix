@@ -37,10 +37,6 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    citrix = {
-      url = "/home/jacom/Code/Nix/citrix_workspace";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell/v4.7.7";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

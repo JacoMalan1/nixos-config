@@ -106,7 +106,6 @@ in {
       android-studio
       lm_sensors
       inkscape
-      gnome-icon-theme
       hicolor-icon-theme
       wireguard-ui
       xmrig
