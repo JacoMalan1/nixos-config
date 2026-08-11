@@ -1,6 +1,6 @@
 { inputs, system, ... }:
 let
-  pkgs = import inputs.nixpkgs-unstable { inherit system; };
+  pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 in
 {
   imports = [
@@ -10,8 +10,8 @@ in
     ./jdtls.nix
     ./none-ls.nix
     ./toggleterm.nix
-    ./copilot.nix
     ./blink.nix
+    ./claude.nix
   ];
 
   programs.nixvim = {
@@ -89,7 +89,17 @@ in
         enable = true;
         settings.indent.enable = true;
         settings.highlight.enable = true;
-	grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+	grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [
+	  # inputs.tree-sitter-flatbuffers.packages.${system}.default
+	];
+	languageRegister.flatbuffers = "fbs";
+	luaConfig.post = ''
+	  vim.filetype.add({
+	    extension = {
+	      fbs = "flatbuffers",
+	    },
+	  })
+	'';
       };
       neoscroll.enable = true;
       toggleterm.enable = true;

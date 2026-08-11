@@ -6,7 +6,7 @@
   ...
 }:
 let
-  pkgs = import inputs.nixpkgs-unstable { inherit system; };
+  pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
   cfg = config.nixvim;
 in
 {
@@ -49,8 +49,9 @@ in
         })
 
 	vim.filetype.add({
-	  extensions = {
+	  extension = {
 	    tf = "terraform",
+	    tfvars = "terraform-vars",
 	  }
 	})
       '';
