@@ -131,6 +131,7 @@ in
       icu
       nss
       nspr
+      stdenv.cc.cc.lib
     ]) ++ (with pkgs-unstable; [ lightgbm ]);
   };
 

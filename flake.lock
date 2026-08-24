@@ -205,11 +205,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757694318,
-        "narHash": "sha256-ppE5WhzyigoBDhZv6kFg3NZ8zOR9WqWdgAcrx2Aj3nk=",
+        "lastModified": 1786454130,
+        "narHash": "sha256-4c9sHR9p/0JBKfIHGRIw3OhXiitavX8+M3itTrSkRqE=",
         "owner": "JacoMalan1",
         "repo": "nixos-netextender",
-        "rev": "9ea22865fe014da57b719ed58a043e0a98ae06aa",
+        "rev": "86fb14d8232c40d20213723ae25f5a4572507e65",
         "type": "github"
       },
       "original": {

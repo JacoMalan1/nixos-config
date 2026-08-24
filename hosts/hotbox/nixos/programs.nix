@@ -28,7 +28,6 @@ let
 in {
   # System packages
   environment.systemPackages = (with pkgs; [
-    # Packages from stable 24.05
     librewolf
     zsh
     mesa
@@ -38,7 +37,6 @@ in {
     git
     eza
     bat
-    dust
     discord
     prismlauncher
     pciutils
@@ -47,7 +45,6 @@ in {
     networkmanagerapplet
     rustup
     psmisc
-    xorg.xkill
     lshw
     mesa-demos
     cmake
@@ -59,7 +56,6 @@ in {
     kdePackages.breeze
     grim
 
-    # GNOME utilities
     nautilus
     gnome-disk-utility
     evince
@@ -100,7 +96,6 @@ in {
     sage
     vlc
     go
-    kdePackages.kdenlive
     blender
     ghidra-bin
     brave
@@ -108,7 +103,6 @@ in {
 
     wineWowPackages.stable
 
-    android-tools
     zls
     zig
 
@@ -120,7 +114,6 @@ in {
     wireshark-qt
     dbeaver-bin
     freecad
-    drawio
     xmrig
     pavucontrol
     wineWowPackages.waylandFull
@@ -134,7 +127,7 @@ in {
     texlive.combined.scheme-full
     tigervnc
     bottles
-    # inputs.citrix.packages.${system}.default
+    pandoc
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
@@ -142,7 +135,6 @@ in {
     libresplit
     jetbrains.rider
     prusa-slicer
-    orca-slicer
     monero-gui
     monero-cli
     signal-desktop
