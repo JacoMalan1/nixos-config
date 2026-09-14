@@ -128,6 +128,7 @@ in {
     tigervnc
     bottles
     pandoc
+    inkscape
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
