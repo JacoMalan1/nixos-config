@@ -57,6 +57,7 @@ in
       lua_ls.enable = true;
       texlab.enable = true;
       terraformls.enable = true;
+      astro.enable = true;
     };
   };
 }

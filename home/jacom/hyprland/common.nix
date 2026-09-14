@@ -76,7 +76,7 @@ in {
   };
 
   services.hyprpaper = {
-    enable = true;
+    enable = false;
     package = pkgs.hyprpaper;
     settings = {
       wallpaper = [
