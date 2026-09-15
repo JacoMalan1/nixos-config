@@ -111,7 +111,7 @@ in {
 	{
 	  _args = [
 	    "hyprland.start"
-	    (lib.generators.mkLuaInline "function()\nhl.exec_cmd(\"noctalia-shell\")\nhl.exec_cmd(\"easyeffects --service-mode -w\")\nhl.exec_cmd(\"keepassxc\")\nend")
+	    (lib.generators.mkLuaInline "function()\nhl.exec_cmd(\"noctalia\")\nhl.exec_cmd(\"easyeffects --service-mode -w\")\nhl.exec_cmd(\"keepassxc\")\nend")
 	  ];
 	}
       ];
@@ -158,9 +158,9 @@ in {
       # windowrulev2 = "immediate,class:^(Minecraft.*)$";
       bind = let terminal = "kitty"; in [
 	(mkExecBind { bind = "ALT + b"; cmd = "brave --ozone-platform=wayland --disable-features=WaylandWpColorManagerV1";})
-	(mkExecBind { bind = "ALT + p"; cmd = "noctalia-shell ipc call launcher toggle"; })
+	(mkExecBind { bind = "ALT + p"; cmd = "noctalia msg panel-toggle launcher"; })
 	(mkExecBind { bind = "ALT + SHIFT + p"; cmd = "rofi -show run"; })
-	(mkExecBind { bind = "SUPER + l"; cmd = "noctalia-shell ipc call lockScreen lock"; })
+	(mkExecBind { bind = "SUPER + l"; cmd = "noctalia msg session lock"; })
 	(mkExecBind { bind = "ALT + SHIFT + Return"; cmd = terminal; })
 	{ _args = ["ALT + SHIFT + 1" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '1', follow = false })")]; }
 	{ _args = ["ALT + SHIFT + 2" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = '2', follow = false })")]; }

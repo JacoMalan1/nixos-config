@@ -101,8 +101,6 @@ in {
     brave
     firebase-tools
 
-    wineWowPackages.stable
-
     zls
     zig
 
@@ -116,8 +114,6 @@ in {
     freecad
     xmrig
     pavucontrol
-    wineWowPackages.waylandFull
-    winetricks
     obsidian
     dotnet-combined
     teams-for-linux

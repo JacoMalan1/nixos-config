@@ -12,9 +12,10 @@ in {
       };
     };
 
-    programs.noctalia-shell = {
+    home.file.".config/noctalia/config.toml".source = ./hotbox.toml;
+
+    programs.noctalia = {
       enable = true;
-      settings = (builtins.fromJSON (builtins.readFile ./hotbox.json)).settings;
     };
   };
 }

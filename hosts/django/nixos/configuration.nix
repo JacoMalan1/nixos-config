@@ -83,7 +83,7 @@ in
     '';
     packages = [
       pkgs.gnome-settings-daemon
-      pkgs.gcr
+      pkgs.gcr_4
     ];
   };
 

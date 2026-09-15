@@ -123,7 +123,7 @@ in
       enableSSHSupport = true;
     };
 
-    services.dbus.packages = [ pkgs.gcr ];
+    services.dbus.packages = [ pkgs.gcr_4 ];
     services.gvfs.enable = cfg.services;
     services.smartd.enable = cfg.services;
     services.pcscd.enable = cfg.services;

@@ -22,7 +22,7 @@ in {
   home.packages = with pkgs; [
     zsh-powerlevel10k
     meslo-lgs-nf
-    gcr
+    gcr_4
     seahorse
     networkmanagerapplet
     hicolor-icon-theme
