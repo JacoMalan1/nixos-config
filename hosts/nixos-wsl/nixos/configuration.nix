@@ -1,13 +1,12 @@
 { inputs, system, lib, ... }: 
 let
-  pkgs = import inputs.nixpkgs-unstable { inherit system; };
+  pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 in {
   wsl.enable = true;
   wsl.defaultUser = "jacom";
   wsl.usbip = {
     enable = true;
     autoAttach = [
-      "2-6"
     ];
   };
   wsl.useWindowsDriver = true;
@@ -24,7 +23,7 @@ in {
     ];
   };
 
-  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gtk2;
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
   systemd.services.load-kernel-modules = {
     description = "Load additional kernel modules";
@@ -69,6 +68,7 @@ in {
     monero-cli
     rustup
     monero-gui
+    claude-code
   ];
 
   # This value determines the NixOS release from which the default

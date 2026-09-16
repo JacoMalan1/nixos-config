@@ -2,6 +2,6 @@
   imports = [
     ./nixos/configuration.nix
     ../common.nix
-    ../../modules/postgres.nix
+    ../../modules/docker.nix
   ];
 }

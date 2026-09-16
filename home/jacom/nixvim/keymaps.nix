@@ -237,6 +237,30 @@
         action = "<Cmd>CopilotChatToggle<CR>";
         options.desc = "Toggle Copilot Chat Window";
       }
+      {
+	mode = [ "n" ];
+	key = "<A-S-j>";
+	action = "<Cmd>MoveLine(1)<CR>";
+	options.desc = "Move line down";
+      }
+      {
+	mode = [ "v" ];
+	key = "<A-S-j>";
+	action = "<Cmd>MoveBlock(1)<CR>";
+	options.desc = "Move selection down";
+      }
+      {
+	mode = [ "n" ];
+	key = "<A-S-k>";
+	action = "<Cmd>MoveLine(-1)<CR>";
+	options.desc = "Move line up";
+      }
+      {
+	mode = [ "v" ];
+	key = "<A-S-k>";
+	action = "<Cmd>MoveBlock(-1)<CR>";
+	options.desc = "Move selection up";
+      }
     ];
   };
 }
