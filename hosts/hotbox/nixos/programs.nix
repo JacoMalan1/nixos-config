@@ -12,6 +12,29 @@ let
     inherit system;
     config.allowUnfree = true;
   };
+  rubberband2 = pkgs-unstable.rubberband.overrideAttrs (oldAttrs: {
+    version = "3.3.0";
+    src = pkgs-unstable.fetchurl {
+      url = "https://breakfastquay.com/files/releases/rubberband-3.3.0.tar.bz2";
+      hash = "sha256-2e+J4rjvn4WxOsPC+uww4grPLJ86nIxFzmN/K8leV2w=";
+    };
+    patches = [ ];
+  });
+  bitwig-studio-wrapped = pkgs-unstable.bitwig-studio.overrideAttrs (oldAttrs: {
+    postFixup = (oldAttrs.postFixup or "") + ''
+      wrapProgram $out/bin/bitwig-studio \
+        --prefix LD_LIBRARY_PATH : ${pkgs-unstable.lib.makeLibraryPath (with pkgs-unstable; [
+          freetype
+          fontconfig
+	  fftw
+	  fftwFloat
+	  aubio
+	  soundtouch
+	  rubberband2
+	  stdenv.cc.cc.lib
+        ])}
+    '';
+  });
   dotnet-combined = (with pkgs.dotnetCorePackages;
     combinePackages [ sdk_6_0 dotnet_8.sdk dotnet_9.sdk dotnet_10.sdk ]).overrideAttrs
     (finalAttrs: previousAttrs:
@@ -122,9 +145,11 @@ in {
     gparted
     texlive.combined.scheme-full
     tigervnc
-    bottles
     pandoc
     inkscape
+    wineWow64Packages.stable
+    winetricks
+    qjackctl
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit
@@ -145,5 +170,10 @@ in {
     zellij
     android-tools
     lightgbm
-  ]);
+    bottles
+    glab
+    winbox
+  ]) ++ [
+    bitwig-studio-wrapped
+  ];
 }

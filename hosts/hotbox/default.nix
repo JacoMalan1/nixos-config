@@ -23,8 +23,8 @@
     ../../modules/docker.nix
     # ../../modules/rstudio.nix
     ../../modules/ntpclient.nix
-    ../../modules/mariadb.nix
-    ../../modules/postgres.nix
+    # ../../modules/mariadb.nix
+    # ../../modules/postgres.nix
     ../../modules/monero-node.nix
     # ../../modules/p2pool.nix
     ../../modules/netextender.nix

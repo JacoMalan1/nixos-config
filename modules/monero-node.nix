@@ -11,12 +11,14 @@ in {
     relay.onionServices = {
       monero = {
         version = 3;
-        map = [ { port = 18089; } { port = 18084; } { port = 18080; } ];
+        # 18089 (restricted RPC) intentionally excluded - do not expose RPC over Tor.
+        map = [ { port = 18084; } { port = 18080; } ];
       };
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 18080 18081 18089 18084 3333 ];
+  # 18081 (unrestricted daemon RPC) intentionally excluded - must stay localhost-only.
+  networking.firewall.allowedTCPPorts = [ 18080 18089 18084 3333 ];
 
   # Enable Model-Specific Registers for XMRig
   hardware.cpu.x86.msr.enable = true;
@@ -65,6 +67,31 @@ in {
 
         StandardOutput = "journal";
         StandardError = "journal";
+
+        # Hardening. ProtectSystem=full (not strict) since the exact set of
+        # paths monerod touches outside its datadir isn't known here - full
+        # still locks down /usr, /etc, /boot without risking the datadir.
+        # ProtectHome=read-only + ReadWritePaths punches a hole just for the
+        # real data dir (confirmed from the daemon's own "permission denied
+        # /home/monero/.monerod" error after ProtectHome=true blocked it
+        # outright) while still blocking writes everywhere else under /home.
+        # MemoryDenyWriteExecute is deliberately omitted: monerod's RandomX
+        # block verification can need a JIT, which W^X would break.
+        NoNewPrivileges = true;
+        ProtectSystem = "full";
+        ProtectHome = "read-only";
+        ReadWritePaths = [ "/home/monero/.monerod" ];
+        PrivateTmp = true;
+        ProtectKernelTunables = true;
+        ProtectKernelModules = true;
+        ProtectKernelLogs = true;
+        ProtectControlGroups = true;
+        ProtectClock = true;
+        RestrictSUIDSGID = true;
+        RestrictRealtime = true;
+        RestrictNamespaces = true;
+        LockPersonality = true;
+        CapabilityBoundingSet = [ ];
       };
       wantedBy = [ "multi-user.target" ];
     };
