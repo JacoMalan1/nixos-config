@@ -145,7 +145,7 @@ in
   };
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ icu ];
+  programs.nix-ld.libraries = with pkgs; [ icu stdenv.cc.cc.lib ];
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -172,7 +172,7 @@ in
 
   # Open ports in the firewall.
   networking.firewall = {
-    enable = true;
+    enable = false;
     checkReversePath = "loose";
     allowedTCPPorts = [
       22

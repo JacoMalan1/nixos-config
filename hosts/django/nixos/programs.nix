@@ -126,5 +126,6 @@ in {
       blender
       fastfetch
       thunderbird
+      winbox
     ]) ++ [dotnet-combined];
 }
