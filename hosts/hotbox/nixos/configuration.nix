@@ -181,8 +181,9 @@ in
     enable = true;
     settings = {
       PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      X11Forwarding = true;
+      X11Forwarding = false;
     };
   };
 
@@ -201,30 +202,12 @@ in
     logReversePathDrops = true;
     checkReversePath = "loose";
     allowedTCPPorts = [
-      8384
       22000
-      25565
       22
-      27017
-      18080
-      18089
-      18084
-      4200
-      18189
-      18141
-      5900
-      8766
     ];
     allowedUDPPorts = [
       22000
       21027
-      27017
-      18080
-      51821
-      18189
-      18141
-      5900
-      8766
     ];
   };
 

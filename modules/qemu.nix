@@ -9,7 +9,7 @@ in {
     enable = true;
     qemu = {
       package = pkgs.qemu_full;
-      runAsRoot = true;
+      runAsRoot = false;
       swtpm.enable = true;
     };
   };

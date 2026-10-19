@@ -7,7 +7,7 @@ in {
     enable = true;
     client.enable = true;
     enableGeoIP = false;
-    settings.ControlPort = [ { port = 9051; } ];
+    settings.ControlPort = [ ];
     relay.onionServices = {
       monero = {
         version = 3;
@@ -18,7 +18,7 @@ in {
   };
 
   # 18081 (unrestricted daemon RPC) intentionally excluded - must stay localhost-only.
-  networking.firewall.allowedTCPPorts = [ 18080 18089 18084 3333 ];
+  networking.firewall.allowedTCPPorts = [ 18080 18089 ];
 
   # Enable Model-Specific Registers for XMRig
   hardware.cpu.x86.msr.enable = true;

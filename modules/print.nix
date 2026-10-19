@@ -14,7 +14,7 @@ in {
       enable = true;
       nssmdns4 = true;
     };
-    saned.enable = true;
+    saned.enable = false;
   };
 
   environment.systemPackages = with pkgs; [

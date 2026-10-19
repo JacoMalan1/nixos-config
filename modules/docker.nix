@@ -2,7 +2,6 @@
 let pkgs = import inputs.nixpkgs-stable { inherit system; };
 in {
   environment.systemPackages = with pkgs; [ skopeo slirp4netns passt ];
-  networking.firewall.enable = lib.mkForce false;
 
   systemd.user.services.docker = {
     enable = true;
