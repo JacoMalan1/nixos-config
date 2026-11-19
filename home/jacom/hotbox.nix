@@ -1,5 +1,7 @@
-{ lib, ... }:
-{
+{ inputs, system, lib, ... }:
+let
+  pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
+in {
   imports = [
     ./common.nix
     ./hyprland/hotbox.nix
@@ -57,6 +59,7 @@
 
   programs.mangohud = {
     enable = true;
+    package = pkgs-stable.mangohud;
     settings = {
       position = "top-right";
     };
