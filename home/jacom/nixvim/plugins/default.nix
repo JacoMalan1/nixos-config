@@ -1,7 +1,9 @@
-{ inputs, system, ... }:
-let
-  pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-in
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 {
   imports = [
     ./neo-tree.nix
@@ -89,17 +91,17 @@ in
         enable = true;
         settings.indent.enable = true;
         settings.highlight.enable = true;
-	grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [
-	  # inputs.tree-sitter-flatbuffers.packages.${system}.default
-	];
-	languageRegister.flatbuffers = "fbs";
-	luaConfig.post = ''
-	  vim.filetype.add({
-	    extension = {
-	      fbs = "flatbuffers",
-	    },
-	  })
-	'';
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [
+          # inputs.tree-sitter-flatbuffers.packages.${system}.default
+        ];
+        languageRegister.flatbuffers = "fbs";
+        luaConfig.post = ''
+          	  vim.filetype.add({
+          	    extension = {
+          	      fbs = "flatbuffers",
+          	    },
+          	  })
+          	'';
       };
       neoscroll.enable = true;
       toggleterm.enable = true;

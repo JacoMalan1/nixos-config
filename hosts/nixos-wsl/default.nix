@@ -1,7 +1,7 @@
 { ... }: {
   imports = [
-    ./nixos/configuration.nix
+    ./configuration.nix
     ../common.nix
-    ../../modules/docker.nix
+    ../../modules/services/docker.nix
   ];
 }

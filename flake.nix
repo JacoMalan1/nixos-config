@@ -43,18 +43,55 @@
     };
   };
 
-  outputs = { nixpkgs-stable, nixpkgs-unstable, home-manager, lanzaboote, agenix, ... }@inputs:
-    let system = "x86_64-linux";
-    in {
+  outputs =
+    {
+      nixpkgs-stable,
+      nixpkgs-unstable,
+      home-manager,
+      lanzaboote,
+      agenix,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      channels = default: final: prev: {
+        stable =
+          if default == "stable" then
+            final
+          else
+            import nixpkgs-stable {
+              inherit system;
+              config = { inherit (prev.config) allowUnfree permittedInsecurePackages; };
+            };
+        unstable =
+          if default == "unstable" then
+            final
+          else
+            import nixpkgs-unstable {
+              inherit system;
+              config = { inherit (prev.config) allowUnfree permittedInsecurePackages; };
+            };
+      };
+      localPackages = final: prev: {
+        dotnet-combined = final.callPackage ./pkgs/dotnet-combined.nix { };
+      };
+    in
+    {
       nixosConfigurations = {
         hotbox = nixpkgs-stable.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-	    inherit system;
+            inherit system;
           };
           modules = [
             lanzaboote.nixosModules.lanzaboote
             ./hosts/hotbox
+            {
+              nixpkgs.overlays = [
+                (channels "stable")
+                localPackages
+              ];
+            }
             agenix.nixosModules.default
           ];
         };
@@ -66,41 +103,47 @@
           modules = [
             lanzaboote.nixosModules.lanzaboote
             ./hosts/django
+            {
+              nixpkgs.overlays = [
+                (channels "stable")
+                localPackages
+              ];
+            }
             agenix.nixosModules.default
           ];
         };
-        workhorse = nixpkgs-stable.lib.nixosSystem {
+        nixos-wsl = nixpkgs-unstable.lib.nixosSystem {
+          # WSL Configuration
+          inherit system;
           specialArgs = {
             inherit inputs;
             inherit system;
           };
-          modules = [ lanzaboote.nixosModules.lanzaboote ./hosts/workhorse ];
-        };
-	nixos-wsl = nixpkgs-unstable.lib.nixosSystem { # WSL Configuration
-	  inherit system;
-	  specialArgs = {
-	    inherit inputs;
-	    inherit system;
-	  };
 
-	  modules = [
-	    inputs.nixos-wsl.nixosModules.default
-	    inputs.home-manager.nixosModules.home-manager
-	    ./hosts/nixos-wsl
-	    {
-	      home-manager.useGlobalPkgs = true;
-	      home-manager.useUserPackages = true;
-	      home-manager.extraSpecialArgs = { inherit inputs; inherit system; };
-	      home-manager.users.jacom = { ... }: {
-		imports = [ 
-		  inputs.nixvim.homeModules.nixvim
-		  ./home/jacom/nixos-wsl.nix 
-		];
-	      };
-	    }
-	  ];
-	};
+          modules = [
+            inputs.nixos-wsl.nixosModules.default
+            inputs.home-manager.nixosModules.home-manager
+            ./hosts/nixos-wsl
+            { nixpkgs.overlays = [ (channels "unstable") ]; }
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit system;
+              };
+              home-manager.users.jacom = { ... }: {
+                imports = [
+                  inputs.nixvim.homeModules.nixvim
+                  ./home/jacom/nixos-wsl.nix
+                ];
+              };
+            }
+          ];
+        };
       };
+
+      formatter.${system} = nixpkgs-unstable.legacyPackages.${system}.nixfmt-tree;
 
       homeConfigurations = {
         "jacom@hotbox" = home-manager.lib.homeManagerConfiguration {
@@ -111,14 +154,14 @@
           pkgs = import inputs.nixpkgs-unstable {
             inherit system;
             config.allowUnfree = true;
+            overlays = [ (channels "unstable") ];
           };
-          modules =
-            [ 
-	      ./home/jacom/hotbox.nix 
-	      inputs.nixvim.homeModules.nixvim 
-	      inputs.noctalia.homeModules.default 
-	      agenix.homeManagerModules.default
-	    ];
+          modules = [
+            ./home/jacom/hotbox.nix
+            inputs.nixvim.homeModules.nixvim
+            inputs.noctalia.homeModules.default
+            agenix.homeManagerModules.default
+          ];
         };
         "jacom@django" = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
@@ -128,26 +171,13 @@
           pkgs = import inputs.nixpkgs-unstable {
             inherit system;
             config.allowUnfree = true;
-          };
-          modules = [ 
-	    ./home/jacom/django.nix 
-	    inputs.nixvim.homeModules.nixvim
-            agenix.homeManagerModules.default
-	    inputs.noctalia.homeModules.default
-	  ];
-        };
-        "jacom@workhorse" = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-          pkgs = import inputs.nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
+            overlays = [ (channels "unstable") ];
           };
           modules = [
-            ./home/jacom/workhorse.nix
+            ./home/jacom/django.nix
             inputs.nixvim.homeModules.nixvim
+            agenix.homeManagerModules.default
+            inputs.noctalia.homeModules.default
           ];
         };
       };

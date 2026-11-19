@@ -1,0 +1,32 @@
+{ pkgs, ... }:
+{
+  services = {
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        gutenprintBin
+        cnijfilter2
+      ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
+    saned.enable = false;
+  };
+
+  environment.systemPackages = with pkgs; [
+    system-config-printer
+    kdePackages.skanlite
+    simple-scan
+  ];
+
+  hardware.sane = {
+    enable = true;
+    extraBackends = with pkgs; [ sane-airscan ];
+  };
+  users.users."jacom".extraGroups = [
+    "scanner"
+    "lp"
+  ];
+}

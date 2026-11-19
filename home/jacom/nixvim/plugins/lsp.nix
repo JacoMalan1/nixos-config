@@ -1,12 +1,4 @@
-{
-  inputs,
-  system,
-  lib,
-  ...
-}:
-let
-  pkgs = import inputs.nixpkgs-stable { inherit system; };
-in
+{ pkgs, lib, ... }:
 {
   programs.nixvim.plugins.lsp = {
     enable = true;
@@ -15,7 +7,7 @@ in
       angularls.enable = true;
       cssls = {
         enable = true;
-        package = pkgs.csharp-ls;
+        package = pkgs.stable.csharp-ls;
       };
       eslint.enable = true;
       ts_ls.enable = true;

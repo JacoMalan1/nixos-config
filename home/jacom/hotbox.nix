@@ -1,48 +1,17 @@
-{ inputs, system, lib, ... }:
-let
-  pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
-in {
+{ pkgs, lib, ... }:
+{
   imports = [
     ./common.nix
     ./hyprland/hotbox.nix
-    ./waybar/hotbox.nix
     ./nixvim
     ./rofi
     ./nextcloud.nix
+    ./desktop-entries.nix
   ];
 
-  nixvim.enable = true;
-  custom.tmux.enable = true;
-  custom.noctalia.enable = true;
+  home.file.".config/noctalia/config.toml".source = ./noctalia/hotbox.toml;
 
   xdg.desktopEntries = {
-    spotify = {
-      name = "Spotify";
-      genericName = "Music Player";
-      exec = "spotify --enable-features=UseOzonePlatform --ozone-platform=x11 %U";
-      terminal = false;
-      icon = "spotify-client";
-      mimeType = [ "x-scheme-handler/spotify" ];
-      categories = [
-        "Audio"
-        "Music"
-        "Player"
-        "AudioVideo"
-      ];
-    };
-    dbeaver = {
-      name = "dbeaver-ce";
-      genericName = "Universal Database Manager";
-      terminal = false;
-      comment = "Universal Database Manager and SQL Client";
-      icon = "dbeaver";
-      settings = {
-        StartupWMClass = "DBeaver";
-      };
-      startupNotify = true;
-      mimeType = [ "application/sql" ];
-      exec = "env GDK_BACKEND=x11 dbeaver";
-    };
     ledger-live-desktop = {
       name = "Ledger Live";
       exec = "ledger-live-desktop --enable-features=UseOzonePlatform --ozone-platform=x11 --no-sandbox %U";
@@ -59,7 +28,7 @@ in {
 
   programs.mangohud = {
     enable = true;
-    package = pkgs-stable.mangohud;
+    package = pkgs.stable.mangohud;
     settings = {
       position = "top-right";
     };

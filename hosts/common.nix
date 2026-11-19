@@ -1,4 +1,5 @@
 {
+  pkgs,
   inputs,
   lib,
   config,
@@ -6,17 +7,9 @@
   ...
 }:
 let
-  pkgs = import inputs.nixpkgs-unstable {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-  };
-  pkgs-stable = import inputs.nixpkgs-stable {
-    inherit system;
-    config.allowUnfree = true;
-  };
-  cfg = config.custom.commonConfiguration;
+  cfg = config.custom.common;
 
-  stableGuiApps = with pkgs; [
+  stableGuiApps = with pkgs.stable; [
     transmission_4-gtk
     qalculate-gtk
     networkmanagerapplet
@@ -28,7 +21,7 @@ let
     figma-linux
     mission-center
   ];
-  unstableGuiApps = with pkgs; [
+  unstableGuiApps = with pkgs.unstable; [
     novelwriter
     postman
     element-desktop
@@ -36,10 +29,8 @@ let
   ];
 in
 {
-  options.custom.commonConfiguration = {
-    enable = lib.mkEnableOption "Enable common configuration options";
-
-    guiPresent = lib.mkOption {
+  options.custom.common = {
+    gui = lib.mkOption {
       type = lib.types.bool;
       default = true;
     };
@@ -50,12 +41,18 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = {
+    nixpkgs.config.allowUnfree = true;
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
     time.timeZone = "Africa/Johannesburg";
     i18n.defaultLocale = "en_ZA.UTF-8";
 
     programs.zsh.enable = true;
-    users.defaultUserShell = pkgs.pkgs.zsh;
+    users.defaultUserShell = pkgs.unstable.zsh;
 
     programs.nh = {
       enable = true;
@@ -67,7 +64,7 @@ in
     programs.dconf.enable = true;
 
     environment.systemPackages =
-      with pkgs-stable;
+      with pkgs.stable;
       [
         inputs.agenix.packages.${system}.default
         glib
@@ -106,12 +103,12 @@ in
         traceroute
         zip
       ]
-      ++ (with pkgs; [
+      ++ (with pkgs.unstable; [
         clang
         net-tools
         nix-sweep
       ])
-      ++ (lib.optionals cfg.guiPresent (stableGuiApps ++ unstableGuiApps));
+      ++ (lib.optionals cfg.gui (stableGuiApps ++ unstableGuiApps));
 
     environment.sessionVariables = {
       FLAKE = "$HOME/nix";
@@ -120,10 +117,10 @@ in
 
     programs.gnupg.agent = {
       enable = true;
-      enableSSHSupport = true;
+      enableSSHSupport = lib.mkDefault true;
     };
 
-    services.dbus.packages = [ pkgs.gcr_4 ];
+    services.dbus.packages = [ pkgs.unstable.gcr_4 ];
     services.gvfs.enable = cfg.services;
     services.smartd.enable = cfg.services;
     services.pcscd.enable = cfg.services;

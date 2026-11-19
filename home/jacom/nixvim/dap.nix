@@ -1,7 +1,6 @@
-{ inputs, system, ... }:
-let pkgs = import inputs.nixpkgs-stable { inherit system; };
-in {
-  home.packages = with pkgs; [ lldb_19 ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs.stable; [ lldb_19 ];
 
   programs.nixvim.extraConfigLua = ''
     require('dap').configurations.cpp = {
@@ -80,17 +79,27 @@ in {
     plugins = {
       dap-ui = {
         enable = true;
-        settings.floating.mappings = { close = [ "<ESC>" "q" ]; };
+        settings.floating.mappings = {
+          close = [
+            "<ESC>"
+            "q"
+          ];
+        };
       };
       dap = {
         enable = true;
         adapters.executables = {
           gdb = {
             command = "gdb";
-            args =
-              [ "--interpreter=dap" "--eval-command" "set print pretty on" ];
+            args = [
+              "--interpreter=dap"
+              "--eval-command"
+              "set print pretty on"
+            ];
           };
-          codelldb = { command = "${pkgs.lldb_19}/bin/lldb-dap"; };
+          codelldb = {
+            command = "${pkgs.stable.lldb_19}/bin/lldb-dap";
+          };
         };
       };
     };

@@ -1,31 +1,33 @@
 { ... }: {
   imports = [
-    ./nixos/configuration.nix
-    ./nixos/programs.nix
+    ./configuration.nix
+    ./hardware-configuration.nix
+    ./fs.nix
+    ./packages.nix
     ../common.nix
+    ../../modules/desktop
+    ../../modules/hardware/amd-cpu.nix
+    ../../modules/hardware/amdgpu.nix
 
-    ../../modules/yubikey.nix
-    ../../modules/wifi.nix
-    ../../modules/syncthing.nix
-    ../../modules/fonts.nix
-    ../../modules/hyprland.nix
-    ../../modules/golang.nix
-    ../../modules/mongodb.nix
-    ../../modules/print.nix
-    ../../modules/docker.nix
-    ../../modules/mariadb.nix
-    ../../modules/pritunl.nix
-    ../../modules/wireshark.nix
-    ../../modules/jdk17.nix
-    ../../modules/secureboot.nix
-    ../../modules/postgres.nix
-    # ../../modules/rstudio.nix
-    ../../modules/flatpak.nix
-    ../../modules/qemu.nix
-    # ../../modules/jupyter.nix
-    # ../../modules/i2pd.nix
-    ../../modules/mullvad.nix
-    ../../modules/protonmail.nix
-    ../../modules/netextender.nix
+    ../../modules/hardware/yubikey.nix
+    ../../modules/services/wifi.nix
+    ../../modules/services/syncthing.nix
+    ../../modules/desktop/fonts.nix
+    ../../modules/desktop/hyprland.nix
+    ../../modules/apps/golang.nix
+    ../../modules/services/mongodb.nix
+    ../../modules/hardware/print.nix
+    ../../modules/services/docker.nix
+    ../../modules/services/mariadb.nix
+    ../../modules/services/pritunl.nix
+    ../../modules/apps/wireshark.nix
+    ../../modules/apps/java.nix
+    ../../modules/hardware/secureboot.nix
+    ../../modules/services/postgres.nix
+    ../../modules/desktop/flatpak.nix
+    ../../modules/services/qemu.nix
+    ../../modules/services/mullvad.nix
+    ../../modules/services/protonmail.nix
+    ../../modules/services/netextender.nix
   ];
 }

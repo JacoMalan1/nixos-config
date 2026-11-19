@@ -1,7 +1,10 @@
-{ inputs, system, config, ... }:
-let pkgs = import inputs.nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-in {
-  imports = [ ./tmux.nix ./noctalia ];
+{ pkgs, config, ... }:
+{
+  imports = [
+    ./tmux.nix
+    ./zsh.nix
+    ./noctalia
+  ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -31,7 +34,9 @@ in {
   ];
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
   };
 
   programs.kitty = {
@@ -74,8 +79,12 @@ in {
     gtk2.extraConfig = ''
       gtk-application-prefer-dark-theme = true
     '';
-    gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
-    gtk4.extraConfig = { gtk-application-prefer-dark-theme = true; };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
     gtk4.theme = config.gtk.theme;
   };
 
@@ -83,9 +92,6 @@ in {
   # plain files is through 'home.file'.
   home.file = {
     ".config/leftwm/config.ron".source = ./leftwm.ron;
-    ".config/waybar/style.css".source = ./waybar/style_gruvbox.css;
-    ".config/waybar/macchiato.css".source = ./waybar/macchiato.css;
-    ".config/waybar/gruvbox.css".source = ./waybar/gruvbox.css;
   };
 
   # Home Manager can also manage your environment variables through
@@ -119,50 +125,9 @@ in {
   programs.home-manager.enable = true;
   programs.lazygit = {
     enable = true;
-    settings = { git.autoFetch = false; };
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    defaultKeymap = "viins";
-
-    initContent = ''
-      export PATH=$PATH:$HOME/.cargo/bin
-      export PATH=$PATH:$HOME/go/bin
-      export PATH=$PATH:$HOME/.npm-global/bin
-      export PATH=$PATH:$HOME/bin
-      export PATH=$PATH:$HOME/.local/bin
-      export PATH=$PATH:$HOME/.yarn/bin
-      export EDITOR=nvim
-      source ~/.p10k.zsh
-      bindkey -M viins 'jj' vi-cmd-mode
-      eval "$(direnv hook zsh)"
-      eval "$(zoxide init --cmd cd zsh)"
-      eval "$(fzf --zsh)"
-
-      if [ $TTY = '/dev/tty1' ]; then start-hyprland; fi
-
-      if [ -d $HOME/bin ]; then
-      	export PATH=$PATH:$HOME/bin
-      fi
-    '';
-
-    shellAliases = {
-      ls = "${pkgs.eza}/bin/eza";
-      cat = "${pkgs.bat}/bin/bat";
-      nx = "${pkgs.yarn}/bin/yarn nx";
-      ns = "nix-shell --command zsh -p";
+    settings = {
+      git.autoFetch = false;
     };
-
-    plugins = [{
-      name = "zsh-powerlevel10k";
-      src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
-      file = "powerlevel10k.zsh-theme";
-    }];
   };
 
   services.wlsunset = {
