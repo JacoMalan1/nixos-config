@@ -2,7 +2,7 @@
 let pkgs = import inputs.nixpkgs-unstable { inherit system; };
 in {
   # Prepare enough huge pages for all the nodes.
-  boot.kernel.sysctl."vm.nr_hugepages" = 3072;
+  # boot.kernel.sysctl."vm.nr_hugepages" = 3072;
   services.tor = {
     enable = true;
     client.enable = true;
@@ -21,7 +21,7 @@ in {
   networking.firewall.allowedTCPPorts = [ 18080 18089 ];
 
   # Enable Model-Specific Registers for XMRig
-  hardware.cpu.x86.msr.enable = true;
+  # hardware.cpu.x86.msr.enable = true;
 
   users = {
     users.monero = {

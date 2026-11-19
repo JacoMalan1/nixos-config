@@ -150,6 +150,8 @@ in {
     wineWow64Packages.stable
     winetricks
     qjackctl
+    mqtt-explorer
+    kdePackages.kdenlive
   ]) ++ (with pkgs-unstable; [
     # Packages from nixpkgs-unstable
     lazygit

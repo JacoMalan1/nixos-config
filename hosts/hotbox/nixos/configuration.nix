@@ -68,6 +68,7 @@ in
   };
 
   services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
 
   services.fwupd.enable = true;
 
@@ -172,7 +173,10 @@ in
   #   };
   # };
 
-  programs.ssh.startAgent = false;
+  programs.ssh.startAgent = true;
+  programs.ssh.enableAskPassword = true;
+  programs.ssh.askPassword = "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
+  programs.gnupg.agent.enableSSHSupport = lib.mkForce false;
 
   programs.wireshark.enable = true;
 
@@ -202,6 +206,7 @@ in
     logReversePathDrops = true;
     checkReversePath = "loose";
     allowedTCPPorts = [
+      8888
       22000
       22
     ];
