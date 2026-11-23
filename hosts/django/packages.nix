@@ -31,6 +31,7 @@
       wireguard-ui
       mpv
       vulkan-validation-layers
+      obs-studio
     ]
     ++ (with pkgs.unstable; [
       nodejs_22

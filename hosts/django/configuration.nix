@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
   boot.kernelModules = [ "amdgpu" ];
   hardware.cpu.x86.msr.enable = true;
 
